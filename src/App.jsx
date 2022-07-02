@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import Robohash from 'react-robohash'
 
 import { useWallet } from './services/useWallet'
 
@@ -10,6 +11,8 @@ function App() {
     connectPhantomWallet
   } = useWallet()
 
+  const [robohashString, setRobohashString] = useState(null)
+
   useEffect(() => { connectPhantomWallet() }, [])
 
   return (
@@ -19,7 +22,12 @@ function App() {
       {walletAddress ?
         <>
           <Text>Your wallet address is {walletAddress}.</Text>
-          <Button>Generate Your NFT</Button>
+          <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
+          {robohashString && <RobohashContainer>
+            <Robohash
+              name='123'
+            />
+          </RobohashContainer>}
         </> :
         <Text
           cursorPointer={true}
@@ -58,6 +66,10 @@ const Button = styled.button`
   background: linear-gradient(to right, #fdbb2d, #22c1c3);
   border-radius: 10px;
   border: none;
+`
+
+const RobohashContainer = styled.div`
+  text-align: center;
 `
 
 export default App
