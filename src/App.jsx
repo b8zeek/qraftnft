@@ -24,9 +24,7 @@ function App() {
           <Text>Your wallet address is {walletAddress}.</Text>
           <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
           {robohashString && <RobohashContainer>
-            <Robohash
-              name='123'
-            />
+            <Robohash name={robohashString} />
           </RobohashContainer>}
         </> :
         <Text
