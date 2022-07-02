@@ -17,14 +17,13 @@ function App() {
 
   return (
     <Container>
-      <Text>Mirko Basic</Text>
       {!phantomWalletInstalled && <Text>Please install Phantom Wallet.</Text>}
       {walletAddress ?
         <>
           <Text>Your wallet address is {walletAddress}.</Text>
           <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
           {robohashString && <RobohashContainer>
-            <Robohash name={robohashString} />
+            <Robohash name={robohashString} type='cat' />
           </RobohashContainer>}
         </> :
         <Text
@@ -39,14 +38,15 @@ function App() {
 }
 
 const Container = styled.div`
-  padding: 0 10%;
   height: 100%;
+  padding: 0 10%;
+  text-align: center;
 `
 
 const Text = styled.p`
   line-height: 48px;
   font-size: 36px;
-  font-family: SF Pro;
+  font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
   color: white;
   margin: 0;
 
@@ -55,7 +55,7 @@ const Text = styled.p`
 
 const Button = styled.button`
   height: 32px;
-  padding: 4px 15px;
+  padding: 4px 30px;
   line-height: 24px;
   font-size: 16px;
   color: #7303c0;
@@ -68,6 +68,7 @@ const Button = styled.button`
 
 const RobohashContainer = styled.div`
   text-align: center;
+  margin-top: 40px;
 `
 
 export default App
