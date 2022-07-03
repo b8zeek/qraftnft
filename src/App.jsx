@@ -5,8 +5,6 @@ import Robohash from 'react-robohash'
 import { useWallet } from './services/useWallet'
 import { AwesomeQRCode } from '@awesomeqr/react'
 
-import logoImg from './assets/HxQVBHkT53gwHSJvnaPs1qSEx1E8eyXXgtawCjBaf6r1.png'
-
 function App() {
   const {
     phantomWalletInstalled,
