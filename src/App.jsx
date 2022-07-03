@@ -19,6 +19,24 @@ function App() {
 
   useEffect(() => { connectPhantomWallet() }, [])
 
+  const generateQRCodeImage = () => {
+    const url = document.getElementById('123').getElementsByTagName('img')[0].src
+
+    const imageLink = url.split('?')[0]
+
+    var request = new XMLHttpRequest()
+    request.open('GET', imageLink, true)
+    request.responseType = 'blob'
+    request.onload = function() {
+        var reader = new FileReader()
+        reader.readAsDataURL(request.response)
+        reader.onload =  function(e){
+          setRobohashURL(e.target.result)
+        }
+    }
+    request.send()
+  }
+
   return (
     <Container>
       {!phantomWalletInstalled && <Text>Please install Phantom Wallet.</Text>}
@@ -30,23 +48,24 @@ function App() {
             <RobohashContainer id='123'>
               <Robohash name={robohashString} type='robot' />
             </RobohashContainer>
-            <Button onClick={() => {}}>Generate QR Code</Button>
+            <Button onClick={generateQRCodeImage}>Generate QR Code</Button>
           </>}
         </> :
-        <button
+        <Button
           cursorPointer={true}
           onClick={connectPhantomWallet.bind(null, false)}  
         >
           Connect Phantom Wallet
-        </button>
+        </Button>
       }
-        <QRCodeContainer><AwesomeQRCode
+      {robohashURL && <QRCodeContainer>
+        <AwesomeQRCode
           options={{
             text: robohashString,
-            backgroundImage: logoImg
+            backgroundImage: robohashURL
           }}
         />
-      </QRCodeContainer>
+      </QRCodeContainer>}
     </Container>
   )
 }
