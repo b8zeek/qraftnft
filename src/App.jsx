@@ -23,15 +23,15 @@ function App() {
           <Text>Your wallet address is {walletAddress}.</Text>
           <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
           {robohashString && <RobohashContainer>
-            <Robohash name={robohashString} type='cat' />
+            <Robohash name={robohashString} type='robot' />
           </RobohashContainer>}
         </> :
-        <Text
+        <button
           cursorPointer={true}
           onClick={connectPhantomWallet.bind(null, false)}  
         >
-          Please connect Phantom Wallet by clicking on this paragraph.
-        </Text>
+          Connect Phantom Wallet
+        </button>
       }
     </Container>
   )
