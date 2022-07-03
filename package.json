@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@awesomeqr/react": "^0.1.2-rc.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-robohash": "^1.0.9",

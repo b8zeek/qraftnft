@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Robohash from 'react-robohash'
 
 import { useWallet } from './services/useWallet'
+import {AwesomeQRCode} from "@awesomeqr/react";
 
 function App() {
   const {
@@ -25,6 +26,23 @@ function App() {
           {robohashString && <RobohashContainer>
             <Robohash name={robohashString} type='robot' />
           </RobohashContainer>}
+
+          <AwesomeQRCode
+              options={{
+                text: "Awesome-qr.js",
+                // ...
+              }}
+              onStateChange={(state) => {
+                switch (state) {
+                  case "working":
+                    // ...
+                    break;
+                  case "idle":
+                    // ...
+                    break;
+                }
+              }}
+          />
         </> :
         <button
           cursorPointer={true}
