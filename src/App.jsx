@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Robohash from 'react-robohash'
-
+import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from  "@solana/web3.js";
+import { createMint, getOrCreateAssociatedTokenAccount, mintTo, setAuthority, transfer } from  "@solana/spl-token";
 import { useWallet } from './services/useWallet'
 import { AwesomeQRCode } from '@awesomeqr/react'
 
@@ -16,6 +17,13 @@ function App() {
   const [robohashURL, setRobohashURL] = useState(null)
 
   useEffect(() => { connectPhantomWallet() }, [])
+
+  const connection = () => {
+    console.log(new Connection(clusterApiUrl('devnet'), "confirmed"))
+
+  }
+
+  connection();
 
   const generateQRCodeImage = () => {
     const url = document.getElementById('123').getElementsByTagName('img')[0].src

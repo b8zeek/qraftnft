@@ -12,7 +12,9 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-robohash": "^1.0.9",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "@solana/spl-token": "^0.2.0",
+    "@solana/web3.js": "^1.47.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
