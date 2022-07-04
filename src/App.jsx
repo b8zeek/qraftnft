@@ -36,11 +36,14 @@ function App() {
   }
 
   return (
-    <Container>
+    <Container className='main-container'>
+      <img src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient2'/>
+      <img src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient'/>
       {!phantomWalletInstalled && <Text>Please install Phantom Wallet.</Text>}
       {walletAddress ?
         <>
-          <Text>Your wallet address is {walletAddress}.</Text>
+          <Text>Your wallet address is </Text>
+          <p className='wallet-address'>{walletAddress}</p>
           <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
           {robohashString && <>
             <RobohashContainer id='123'>
@@ -51,7 +54,8 @@ function App() {
         </> :
         <Button
           cursorPointer={true}
-          onClick={connectPhantomWallet.bind(null, false)}  
+        <button
+          onClick={connectPhantomWallet.bind(null, false)}
         >
           Connect Phantom Wallet
         </Button>

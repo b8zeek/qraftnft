@@ -30,3 +30,36 @@ code {
     background-position: 0% 50%;
   }
 }
+
+.blurry-gradient2 {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  opacity: 0.5;
+}
+
+
+.blurry-gradient {
+  position: absolute !important;
+  bottom: 100px;
+  right: 50px;
+  width: 500px;
+  height: 500px;
+  opacity: 0.5;
+}
+
+.main-container {
+  border-color: chartreuse;
+  margin: 100px;
+  padding: 33px !important;
+  border-radius: 12px;
+  border-style: double;
+  background: turquoise;
+  min-height: 536px;
+}
+
+.wallet-address {
+  font-size:12px;
+}
