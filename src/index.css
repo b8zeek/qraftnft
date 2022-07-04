@@ -38,6 +38,10 @@ code {
   width: 500px;
   height: 500px;
   opacity: 0.5;
+  animation-name            : pulse;
+  animation-duration        : 15.5s;
+  animation-iteration-count : infinite;
+  animation-direction       : alternate;
 }
 
 
@@ -48,6 +52,10 @@ code {
   width: 500px;
   height: 500px;
   opacity: 0.5;
+  animation: pulse, myOrbit 10s linear infinite;
+  animation-duration        : 11.5s;
+  animation-iteration-count : infinite;
+  animation-direction       : alternate;
 }
 
 .main-container {
@@ -56,10 +64,55 @@ code {
   padding: 33px !important;
   border-radius: 12px;
   border-style: double;
-  background: turquoise;
+  /*background: turquoise;*/
   min-height: 536px;
+  background: #B3FFAB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #12FFF7, #B3FFAB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #12FFF7, #B3FFAB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .wallet-address {
   font-size:12px;
+}
+
+@keyframes pulse {
+  from {
+    transform : scale(1);
+    opacity   : 0.75;
+  }
+  50% {
+    transform : scale(0.75);
+    opacity   : 0.25;
+  }
+  to {
+    transform : scale(1);
+    opacity   : 0.55;
+  }
+}
+
+
+/*
+ * Set up the keyframes to actually describe the begining and end states of
+ * the animation.  The browser will interpolate all the frames between these
+ * points.  Again, remember your vendor-specific prefixes for now!
+ */
+@-webkit-keyframes myOrbit {
+  from { -webkit-transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  to   { -webkit-transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@-moz-keyframes myOrbit {
+  from { -moz-transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  to   { -moz-transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@-o-keyframes myOrbit {
+  from { -o-transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  to   { -o-transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@keyframes myOrbit {
+  from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
 }
