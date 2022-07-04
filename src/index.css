@@ -6,11 +6,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #c94b4b;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #8A2BE2, #9400D3);
+  background: #4B0082;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4B0082, #330033);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(-45deg, #4B0082, #330033, #1A0019, #9400D3);
   background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+  animation: gradient 8s ease infinite;
   height: 100vh;
 }
 
@@ -38,10 +38,7 @@ code {
   width: 500px;
   height: 500px;
   opacity: 0.5;
-  animation-name            : pulse;
-  animation-duration        : 15.5s;
-  animation-iteration-count : infinite;
-  animation-direction       : alternate;
+  animation: pulse, myMove 15.5s alternate infinite;
 }
 
 
@@ -52,10 +49,7 @@ code {
   width: 500px;
   height: 500px;
   opacity: 0.5;
-  animation: pulse, myOrbit 10s linear infinite;
-  animation-duration        : 11.5s;
-  animation-iteration-count : infinite;
-  animation-direction       : alternate;
+  animation: pulse, myOrbit 15s alternate infinite;
 }
 
 .main-container {
@@ -114,5 +108,11 @@ code {
 
 @keyframes myOrbit {
   from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-  to   { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+  to   { transform: rotate(360deg) translateX(220px) rotate(-360deg); }
+}
+
+
+@keyframes myMove {
+  from { transform: rotate(0deg) translateX(150px) rotate(0deg); scale(1, 1); }
+  to   { transform: rotate(0deg) translateX(220px) rotate(-360deg); scale(2, 0.5);  }
 }
