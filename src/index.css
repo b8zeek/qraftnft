@@ -34,7 +34,7 @@ code {
 .blurry-gradient2 {
   position: absolute !important;
   top: 0;
-  left: 0;
+  left: -110px;
   width: 500px;
   height: 500px;
   opacity: 0.5;
@@ -67,7 +67,8 @@ code {
 }
 
 .wallet-address {
-  font-size:12px;
+  font-family: monospace;
+  font-size: 14px;
 }
 
 @keyframes pulse {
