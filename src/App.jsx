@@ -53,8 +53,6 @@ function App() {
           </>}
         </> :
         <Button
-          cursorPointer={true}
-        <button
           onClick={connectPhantomWallet.bind(null, false)}
         >
           Connect Phantom Wallet
