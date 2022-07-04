@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Robohash from 'react-robohash'
 
 import { useWallet } from './services/useWallet'
-import {AwesomeQRCode} from "@awesomeqr/react";
+import { AwesomeQRCode } from '@awesomeqr/react'
 
 function App() {
   const {
@@ -13,8 +13,27 @@ function App() {
   } = useWallet()
 
   const [robohashString, setRobohashString] = useState(null)
+  const [robohashURL, setRobohashURL] = useState(null)
 
   useEffect(() => { connectPhantomWallet() }, [])
+
+  const generateQRCodeImage = () => {
+    const url = document.getElementById('123').getElementsByTagName('img')[0].src
+
+    const imageLink = url.split('?')[0]
+
+    var request = new XMLHttpRequest()
+    request.open('GET', imageLink, true)
+    request.responseType = 'blob'
+    request.onload = function() {
+        var reader = new FileReader()
+        reader.readAsDataURL(request.response)
+        reader.onload =  function(e){
+          setRobohashURL(e.target.result)
+        }
+    }
+    request.send()
+  }
 
   return (
     <Container>
@@ -23,34 +42,28 @@ function App() {
         <>
           <Text>Your wallet address is {walletAddress}.</Text>
           <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
-          {robohashString && <RobohashContainer>
-            <Robohash name={robohashString} type='robot' />
-          </RobohashContainer>}
-
-          <AwesomeQRCode
-              options={{
-                text: "Awesome-qr.js",
-                // ...
-              }}
-              onStateChange={(state) => {
-                switch (state) {
-                  case "working":
-                    // ...
-                    break;
-                  case "idle":
-                    // ...
-                    break;
-                }
-              }}
-          />
+          {robohashString && <>
+            <RobohashContainer id='123'>
+              <Robohash name={robohashString} type='robot' />
+            </RobohashContainer>
+            <Button onClick={generateQRCodeImage}>Generate QR Code</Button>
+          </>}
         </> :
-        <button
+        <Button
           cursorPointer={true}
           onClick={connectPhantomWallet.bind(null, false)}  
         >
           Connect Phantom Wallet
-        </button>
+        </Button>
       }
+      {robohashURL && <QRCodeContainer>
+        <AwesomeQRCode
+          options={{
+            text: robohashString,
+            backgroundImage: robohashURL
+          }}
+        />
+      </QRCodeContainer>}
     </Container>
   )
 }
@@ -82,11 +95,18 @@ const Button = styled.button`
   background: linear-gradient(to right, #fdbb2d, #22c1c3);
   border-radius: 10px;
   border: none;
+  cursor: pointer;
 `
 
 const RobohashContainer = styled.div`
   text-align: center;
   margin-top: 40px;
+`
+
+const QRCodeContainer = styled.div`
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
 `
 
 export default App
