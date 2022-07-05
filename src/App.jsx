@@ -75,8 +75,8 @@ function App() {
 
         <AwesomeQRCode
           options={{
-            text: 'https://www.linkedin.com/in/itmilos/',
-            size: 2400,
+            text: 'https://sol-nft-from-wallet.vercel.app/ ',
+            size: 400,
             backgroundImage: robohashURL
           }}
         />
