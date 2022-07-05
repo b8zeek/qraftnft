@@ -44,7 +44,6 @@ function App() {
         setModalOpened(false)
     }
 
-
     return (
         <Container className='main-container'>
             <img alt='left-orb' src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient2'/>
@@ -59,7 +58,7 @@ function App() {
                     {robohashString && !robohashURL && <>
                         <Button onClick={openModal}>Add QR Code Link</Button>
                         <RobohashContainer id='123'>
-                            <Robohash name='CZjZ5MAfuQQL4K893Z7zrGMfeDM8bFrLSQ4DyceTC4fD' type='robot'/>
+                            <Robohash name={walletAddress} type='robot'/>
                         </RobohashContainer>
                     </>}
                 </> :
