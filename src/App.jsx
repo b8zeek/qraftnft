@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Robohash from 'react-robohash'
-import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from  "@solana/web3.js";
-import { createMint, getOrCreateAssociatedTokenAccount, mintTo, setAuthority, transfer } from  "@solana/spl-token";
 import { useWallet } from './services/useWallet'
 import { AwesomeQRCode } from '@awesomeqr/react'
+import Modal from './components/Modal'
 
 function App() {
   const {
@@ -15,15 +14,12 @@ function App() {
 
   const [robohashString, setRobohashString] = useState(null)
   const [robohashURL, setRobohashURL] = useState(null)
+  const [modalOpened, setModalOpened] = useState(null)
 
   useEffect(() => { connectPhantomWallet() }, [])
 
-  const connection = () => {
-    console.log(new Connection(clusterApiUrl('devnet'), "confirmed"))
-
-  }
-
-  connection();
+  const openModal = () => setModalOpened(true)
+  const closeModal = () => setModalOpened(false)
 
   const generateQRCodeImage = () => {
     const url = document.getElementById('123').getElementsByTagName('img')[0].src
@@ -55,7 +51,7 @@ function App() {
           {!robohashString &&
               <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>}
           {robohashString && !robohashURL && <>
-            <Button onClick={generateQRCodeImage}>Generate QR Code</Button>
+            <Button onClick={openModal}>Add QR Code Link</Button>
             <RobohashContainer id='123'>
               <Robohash name={walletAddress} type='robot' />
             </RobohashContainer>
@@ -81,6 +77,12 @@ function App() {
           }}
         />
       </QRCodeContainer>}
+      <Modal show={modalOpened}>
+        <ModalContent>
+          <StyledInput />
+          <Button onClick={closeModal}>Generate QR Code</Button>
+        </ModalContent>
+      </Modal>
     </Container>
   )
 }
@@ -129,6 +131,22 @@ const QRCodeContainer = styled.div`
   height: 400px;
   width: 400px;
   margin: 0 auto;
+`
+
+const ModalContent = styled.div`
+  min-height: 100px;
+  width: 60%;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px 10%;
+  text-align: center;
+  margin: 70px auto 0;
+`
+
+const StyledInput = styled.input`
+  height: 32px;
+  width: 100%;
+  margin-bottom: 30px;
 `
 
 export default App
