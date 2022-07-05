@@ -81,6 +81,7 @@ function App() {
       </QRCodeContainer>}
       <Modal show={modalOpened}>
         <ModalContent>
+          <StyledLabel>Please insert QR code link</StyledLabel>
           <StyledInput ref={inputRef} />
           <Button onClick={closeModal}>Generate QR Code</Button>
         </ModalContent>
@@ -145,9 +146,27 @@ const ModalContent = styled.div`
   margin: 70px auto 0;
 `
 
+const StyledLabel = styled.label`
+  display: block;
+  line-height: 32px;
+  font-size: 24px;
+  color: purple;
+  text-align: left;
+  margin-bottom: 10px;
+`
+
 const StyledInput = styled.input`
   height: 32px;
   width: 100%;
+  padding: 4px 15px;
+  line-height: 24px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background: #C6FFDD;
+  background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
+  background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
   margin-bottom: 30px;
 `
 
