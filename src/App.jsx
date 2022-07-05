@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Robohash from 'react-robohash'
-import { clusterApiUrl, Connection, Keypair, LAMPORTS_PER_SOL } from  "@solana/web3.js";
-import { createMint, getOrCreateAssociatedTokenAccount, mintTo, setAuthority, transfer } from  "@solana/spl-token";
+import { clusterApiUrl, Connection } from  "@solana/web3.js";
 import { useWallet } from './services/useWallet'
 import { AwesomeQRCode } from '@awesomeqr/react'
 
@@ -45,9 +44,9 @@ function App() {
 
   return (
     <Container className='main-container'>
-      <img src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient2'/>
-      <img src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient'/>
-      {!phantomWalletInstalled && <Text>Please install Phantom Wallet.</Text>}
+      <img alt='left-orb' src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient2'/>
+      <img alt='right-orb' src={'https://i.imgur.com/r0VFFep.png'} className='blurry-gradient'/>
+      {!phantomWalletInstalled && <Text>No Phantom Wallet / No Business here :( </Text>}
       {walletAddress ?
         <>
           <Text>Your wallet address is </Text>
@@ -68,14 +67,14 @@ function App() {
         </Button>
       }
       {robohashURL && <QRCodeContainer>
-        {Robohash.name &&  <Button onClick={() => window.location = 'mailto:milosrujevic@gmail.com?subject=QR NFT for ' + walletAddress + '!&body=Please state address where you want your stickers delivered: ___Your Address__"'}>
+        {Robohash.name &&   <Button  onClick={() => window.location = 'mailto:milosrujevic@gmail.com?subject=QR NFT for ' + walletAddress + '!&body=Please state address where you want your stickers delivered: ___Your Address__"'}>
            Order NFT Sticker
         </Button>
         }
 
         <AwesomeQRCode
           options={{
-            text: 'https://sol-nft-from-wallet.vercel.app/ ',
+            text: 'https://sol-nft-from-wallet.vercel.app/',
             size: 400,
             backgroundImage: robohashURL
           }}
@@ -117,7 +116,7 @@ const Button = styled.button`
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C81D77", endColorstr="#6710C2", GradientType=1 );
     border-radius: 10px;
     border: none;
-    cursor: pointer;
+    cursor: copy;
 `
 
 const RobohashContainer = styled.div`
