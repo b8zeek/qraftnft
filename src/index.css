@@ -111,6 +111,21 @@ code {
     padding: 0;
     border-radius: 0;
   }
+
+  .wallet-address {
+    font-size: 0.76em;
+  }
+
+  #root {
+    padding: 0;
+  }
+
+  button {
+    font-size: 0.36em;
+  }
+
+  img {    width: 244px;
+  }
   .blurry-gradient2,
   .blurry-gradient {
     visibility: hidden;

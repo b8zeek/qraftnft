@@ -58,7 +58,7 @@ function App() {
                     {robohashString && !robohashURL && <>
                         <Button onClick={openModal}>Add QR Code Link</Button>
                         <RobohashContainer id='123'>
-                            <Robohash name={walletAddress} type='robot'/>
+                            <Robohash name='https://phantom.app/ul/browse/https://sol-nft-from-wallet.vercel.app' type='robot'/>
                         </RobohashContainer>
                     </>}
                 </> :
@@ -137,6 +137,9 @@ const QRCodeContainer = styled.div`
   height: 400px;
   width: 400px;
   margin: 0 auto;
+  @media screen and (max-width: 1420px) {
+    width: 244px;
+  }
 `
 
 const ModalContent = styled.div`
