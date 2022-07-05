@@ -52,12 +52,13 @@ function App() {
         <>
           <Text>Your wallet address is </Text>
           <p className='wallet-address'>{walletAddress}</p>
-          <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
-          {robohashString && <>
-            <RobohashContainer id='123'>
-              <Robohash name={robohashString} type='robot' />
-            </RobohashContainer>
+          {!robohashString &&
+              <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>}
+          {robohashString && !robohashURL && <>
             <Button onClick={generateQRCodeImage}>Generate QR Code</Button>
+            <RobohashContainer id='123'>
+              <Robohash name={walletAddress} type='robot' />
+            </RobohashContainer>
           </>}
         </> :
         <Button
@@ -67,9 +68,15 @@ function App() {
         </Button>
       }
       {robohashURL && <QRCodeContainer>
+        {Robohash.name &&  <Button onClick={() => window.location = 'mailto:milosrujevic@gmail.com?subject=QR NFT for ' + walletAddress + '!&body=Please state address where you want your stickers delivered: ___Your Address__"'}>
+           Order NFT Sticker
+        </Button>
+        }
+
         <AwesomeQRCode
           options={{
-            text: robohashString,
+            text: 'https://www.linkedin.com/in/itmilos/',
+            size: 2400,
             backgroundImage: robohashURL
           }}
         />
@@ -90,22 +97,27 @@ const Text = styled.p`
   font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
   color: white;
   margin: 0;
-
+  text-shadow: 0 0 2px #330033;
   ${props => props.cursorPointer && 'cursor: pointer;'}
 `
 
 const Button = styled.button`
-  height: 32px;
-  padding: 4px 30px;
-  line-height: 24px;
   font-size: 16px;
-  color: #7303c0;
-  background: #22c1c3;
-  background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);
-  background: linear-gradient(to right, #fdbb2d, #22c1c3);
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
+  height: 47px;
+    padding: 5px 30px;
+    line-height: 24px;
+    font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #fff;
+    background: hsla(328, 75%, 45%, 1);
+    background: linear-gradient(90deg, hsla(328, 75%, 45%, 1) 0%, hsla(269, 85%, 41%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(328, 75%, 45%, 1) 0%, hsla(269, 85%, 41%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(328, 75%, 45%, 1) 0%, hsla(269, 85%, 41%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C81D77", endColorstr="#6710C2", GradientType=1 );
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 `
 
 const RobohashContainer = styled.div`
