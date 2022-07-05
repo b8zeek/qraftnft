@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
 body {
   position: relative;
   min-height: 100vh;
@@ -13,10 +15,6 @@ body {
   background-size: 400% 400%;
   animation: gradient 8s ease infinite;
   height: 100vh;
-}
-
-#root {
-  padding: 50px;
 }
 
 code {
@@ -57,20 +55,6 @@ code {
   height: 500px;
   opacity: 0.5;
   animation: pulse, myOrbit 15s alternate infinite;
-}
-
-.main-container {
-  border-color: chartreuse;
-  padding: 33px !important;
-  border-radius: 12px;
-  border-style: double;
-  /*background: turquoise;*/
-  min-height: 536px;
-  background: #B3FFAB;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #12FFF7, #B3FFAB);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #12FFF7, #B3FFAB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  filter: drop-shadow(1px 1px 20px #12FFF7);
-
 }
 
 .wallet-address {
