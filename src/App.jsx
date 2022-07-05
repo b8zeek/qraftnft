@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import styled from 'styled-components'
 import Robohash from 'react-robohash'
 import { useWallet } from './services/useWallet'
@@ -6,6 +6,8 @@ import { AwesomeQRCode } from '@awesomeqr/react'
 import Modal from './components/Modal'
 
 function App() {
+  const inputRef = useRef(null)
+
   const {
     phantomWalletInstalled,
     walletAddress,
@@ -14,14 +16,13 @@ function App() {
 
   const [robohashString, setRobohashString] = useState(null)
   const [robohashURL, setRobohashURL] = useState(null)
+  const [QRText, setQRText] = useState(null)
   const [modalOpened, setModalOpened] = useState(null)
 
   useEffect(() => { connectPhantomWallet() }, [])
 
   const openModal = () => setModalOpened(true)
-  const closeModal = () => setModalOpened(false)
-
-  const generateQRCodeImage = () => {
+  const closeModal = () => {
     const url = document.getElementById('123').getElementsByTagName('img')[0].src
 
     const imageLink = url.split('?')[0]
@@ -37,6 +38,8 @@ function App() {
         }
     }
     request.send()
+    setQRText(inputRef.current.value)
+    setModalOpened(false)
   }
 
   return (
@@ -68,18 +71,17 @@ function App() {
            Order NFT Sticker
         </Button>
         }
-
-        <AwesomeQRCode
+        {QRText && <AwesomeQRCode
           options={{
-            text: 'https://sol-nft-from-wallet.vercel.app/',
+            text: QRText,
             size: 400,
             backgroundImage: robohashURL
           }}
-        />
+        />}
       </QRCodeContainer>}
       <Modal show={modalOpened}>
         <ModalContent>
-          <StyledInput />
+          <StyledInput ref={inputRef} />
           <Button onClick={closeModal}>Generate QR Code</Button>
         </ModalContent>
       </Modal>
