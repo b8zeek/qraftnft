@@ -62,6 +62,10 @@ const Logo = styled.p`
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+
+    @media (max-width: 768px) {
+        padding-left: 20px;
+    }
 `
 
 export default Header

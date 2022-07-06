@@ -96,6 +96,10 @@ const Container = styled.div`
     padding: 130px 50px 50px;
     text-align: center;
 
+    @media (max-width: 768px) {
+        width: calc(100% - 40px);
+        padding: 130px 20px 20px;
+    }
 `
 
 const Content = styled.div`
