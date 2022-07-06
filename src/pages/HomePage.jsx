@@ -19,12 +19,13 @@ const options = [
   ]
 
 const HomePage = () => {
-    const inputRef = useRef(null)
+    const deliveryAddressRef = useRef(null)
 
     const [robohashString, setRobohashString] = useState(null)
     const [robohashURL, setRobohashURL] = useState(null)
     const [chosenSocialNetwork, setChosenSocialNetwork] = useState('https://linktr.ee')
-    const [QRText, setQRText] = useState(null)
+    const [QRText, setQRText] = useState('')
+    const [deliveryAddress, setDeliveryAddress] = useState('')
 
     const {
       phantomWalletInstalled,
@@ -39,26 +40,25 @@ const HomePage = () => {
     } = useModals()
 
     const closeModalCallback = () => {
-      const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
-  
-      const imageLink = url.split('?')[0]
-  
-      var request = new XMLHttpRequest()
-      request.open('GET', imageLink, true)
-      request.responseType = 'blob'
-      request.onload = function() {
-          var reader = new FileReader()
-          reader.readAsDataURL(request.response)
-          reader.onload = e => setRobohashURL(e.target.result)
-      }
-      request.send()
-
-      setQRText(inputRef.current.value)
+        const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
+    
+        const imageLink = url.split('?')[0]
+    
+        var request = new XMLHttpRequest()
+        request.open('GET', imageLink, true)
+        request.responseType = 'blob'
+        request.onload = function() {
+            var reader = new FileReader()
+            reader.readAsDataURL(request.response)
+            reader.onload = e => setRobohashURL(e.target.result)
+        }
+        request.send()
 
         const templateParams = {
-            currentValue: inputRef.current.value,
+            currentValue: QRText,
             walletAddress: walletAddress
-        };
+        }
+
         emailjs.send('service_w6acx2m', 'template_0gczmq7', templateParams, 'FsM-UuY5XXpVXOUdZ')
             .then(result => {
                 console.log(result.text)
@@ -68,7 +68,6 @@ const HomePage = () => {
     }
 
     const chooseSocialNetwork = event => {
-        console.log(event.value)
         setChosenSocialNetwork(event.value)
     }
 
@@ -116,8 +115,15 @@ const HomePage = () => {
                 <ModalContent>
                     <Select onChange={chooseSocialNetwork} options={options} />
                     <StyledLabel>Your ID</StyledLabel>
-                    <StyledInput ref={inputRef} />
-                    <Button onClick={closeModal.bind(null, closeModalCallback)}>Generate QR Code</Button>
+                    <StyledInput value={QRText} onChange={event => setQRText(event.target.value)} />
+                    <StyledLabel>Delivery Address</StyledLabel>
+                    <StyledInput value={deliveryAddress} onChange={event => setDeliveryAddress(event.target.value)} />
+                    <Button
+                        onClick={closeModal.bind(null, closeModalCallback)}
+                        disabled={!QRText.trim() || !deliveryAddress.trim()}
+                    >
+                        Generate QR Code
+                    </Button>
                 </ModalContent>
             </Modal>
         </Content>
@@ -215,10 +221,12 @@ const StyledInput = styled.input`
     border-radius: 9px;
     padding: 8px 20px 8px 36px;
     color: #fff;
+    margin-bottom: 20px;
+
     &:hover {
-      border-color: #d5ff64;
-      -webkit-box-shadow: 0 0 0 3px rgb(213 255 100 / 30%);
-      box-shadow: 0 0 0 3px rgb(213 255 100 / 30%);
+        border-color: #d5ff64;
+        -webkit-box-shadow: 0 0 0 3px rgb(213 255 100 / 30%);
+        box-shadow: 0 0 0 3px rgb(213 255 100 / 30%);
     }
 `
 

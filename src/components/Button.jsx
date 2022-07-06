@@ -1,6 +1,12 @@
 import styled from 'styled-components'
 
-const Button = ({ onClick, children }) => <StyledButton onClick={onClick}>{children}</StyledButton>
+const Button = ({ onClick, children, disabled }) =>
+  <StyledButton
+    onClick={onClick}
+    disabled={disabled}
+  >
+    {children}
+  </StyledButton>
 
 const StyledButton = styled.button`
   font-size: 16px;
@@ -19,9 +25,16 @@ const StyledButton = styled.button`
   border-radius: 10px;
   border: none;
   cursor: copy;
+
+  &:disabled {
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(134,134,134,1) 100%);
+    cursor: not-allowed;
+  }
+  
   @media (max-width: 768px) {
-        margin:0
-    }
+    margin: 0;
+  }
 `
 
 export default Button
