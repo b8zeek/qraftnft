@@ -115,7 +115,7 @@ const HomePage = () => {
             <Modal show={modalOpened}>
                 <ModalContent>
                     <Select onChange={chooseSocialNetwork} options={options} />
-                    <StyledLabel>Your LINKTR id</StyledLabel>
+                    <StyledLabel>Your ID</StyledLabel>
                     <StyledInput ref={inputRef} />
                     <Button onClick={closeModal.bind(null, closeModalCallback)}>Generate QR Code</Button>
                 </ModalContent>
@@ -193,8 +193,9 @@ const ModalContent = styled.div`
 const StyledLabel = styled.label`
     display: block;
     line-height: 32px;
+    padding: 23px 5px 4px 1px;
     font-size: 24px;
-    color: purple;
+    color: #fff;
     text-align: left;
     margin-bottom: 10px;
 `

@@ -5,15 +5,15 @@ const QRCode = ({QRText, robohashURL}) =>
         options={{
             text: QRText,
             size: 321,
-            logoCornerRadius: 0,
-            logoMargin: 0,
-            margin: 0,
-            logoScale: 0,
+            logoCornerRadius: 2,
+            logoMargin: 2,
+            margin: 4,
+            logoScale: 2,
             cornerAlignment: {
-                scale: 0.5,
+                scale: 1.5,
                 protectors: false,
             },
-            protectors: false,
+            protectors: true,
             backgroundImage: robohashURL
         }}
     />
