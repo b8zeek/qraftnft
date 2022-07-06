@@ -1,6 +1,7 @@
 
 import { useState, useRef } from 'react'
 import styled from 'styled-components'
+import emailjs from '@emailjs/browser';
 
 import { useWallet } from '../services/useWallet'
 
@@ -43,7 +44,19 @@ const HomePage = () => {
           reader.onload = e => setRobohashURL(e.target.result)
       }
       request.send()
+
       setQRText(inputRef.current.value)
+
+        const templateParams = {
+            currentValue: inputRef.current.value,
+            walletAddress: walletAddress
+        };
+        emailjs.send('service_w6acx2m', 'template_0gczmq7', templateParams, 'FsM-UuY5XXpVXOUdZ')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
 
     return <Container>
@@ -68,9 +81,7 @@ const HomePage = () => {
             </Button>
             }
             {robohashURL && <QRCodeContainer>
-            {Robohash.name && <Button  onClick={() => window.location = 'mailto:milosrujevic@gmail.com?subject=QR NFT for ' + walletAddress + '!&body=Please state address where you want your stickers delivered: ___Your Address__"'}>
-                Order NFT Sticker
-            </Button>
+            {Robohash.name && <p>Sticker and NFT will arrive shortly :) </p>
             }
             {QRText &&
                 <QRCode
@@ -82,7 +93,7 @@ const HomePage = () => {
 
             <Modal show={modalOpened}>
                 <ModalContent>
-                    <StyledLabel>Please insert QR code link</StyledLabel>
+                    <StyledLabel>Your LINKTR id</StyledLabel>
                     <StyledInput ref={inputRef} />
                     <Button onClick={closeModal.bind(null, closeModalCallback)}>Generate QR Code</Button>
                 </ModalContent>
@@ -147,6 +158,7 @@ const ModalContent = styled.div`
     margin-right: auto;
     margin-left: auto;
     position: relative;
+    filter: drop-shadow(1px 1px 3px #000);
     @media (max-width: 768px) {
         width: calc(100%-20px);
         padding: 10px;
@@ -168,7 +180,8 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input`
     display: block;
     height: 32px;
-    width: calc(100%-30px);
+    width: 90%;
+    width: calc(100% - 3.4em);
     padding: 4px 15px;
     line-height: 24px;
     font-size: 1em;
