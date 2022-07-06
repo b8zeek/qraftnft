@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   height: 47px;
   padding: 5px 30px;
   line-height: 24px;
-  font-family: Arial Rounded MT Bold,Helvetica Rounded,Arial,sans-serif;
+  font-family: Inter,sans-serif;
   font-size: 16px;
   margin-bottom: 20px;
   color: #fff;
