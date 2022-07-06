@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
     height: 80px;
     position: fixed;
     z-index: 1;
+    filter: drop-shadow(2px 4px 6px black);
 `
 
 const Logo = styled.p`
@@ -37,7 +38,7 @@ const Logo = styled.p`
             hsl(66deg 81% 49%) 100%
         );
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -webkit-text-fill-color: aqua;
     }
 
     & span.aft {
