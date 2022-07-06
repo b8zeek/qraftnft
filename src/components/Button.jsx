@@ -19,6 +19,9 @@ const StyledButton = styled.button`
   border-radius: 10px;
   border: none;
   cursor: copy;
+  @media (max-width: 768px) {
+        margin:0
+    }
 `
 
 export default Button

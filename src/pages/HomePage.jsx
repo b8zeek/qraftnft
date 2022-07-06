@@ -93,7 +93,7 @@ const HomePage = () => {
 
 const Container = styled.div`
     width: calc(100% - 100px);
-    padding: 130px 50px 50px;
+    padding: 81px 50px 50px;
     text-align: center;
 
     @media (max-width: 768px) {
@@ -103,7 +103,6 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-    min-height: 900px;
     border-color: chartreuse;
     padding: 40px;
     border-radius: 12px;
@@ -111,7 +110,12 @@ const Content = styled.div`
     background: #B3FFAB;
     background: -webkit-linear-gradient(to right, #12FFF7, #B3FFAB);
     background: linear-gradient(to right, #12FFF7, #B3FFAB);
-    filter: drop-shadow(1px 1px 20px #12FFF7);
+    filter: drop-shadow(1px 1px 3px #12FFF7);
+    padding: 92px;
+    @media (max-width: 768px) {
+        width: calc(100%-20px);
+        padding: 10px;
+    }
 `
 
 const Text = styled.p`
@@ -126,22 +130,29 @@ const Text = styled.p`
 
 const QRCodeContainer = styled.div`
     height: 400px;
-    width: 400px;
+    width: 321px;
     margin: 0 auto;
 `
 
 const ModalContent = styled.div`
     min-height: 100px;
     width: 60%;
-    background-color: white;
-    border-radius: 10px;
     padding: 30px 20%;
     text-align: center;
     margin: 70px auto 0;
-
+    background: black;
+    border-radius: 20px;
+    border: 2px solid #292e42;
+    padding: 60px 65px 15px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
     @media (max-width: 768px) {
         width: calc(100%-20px);
         padding: 10px;
+    }
+    & button {
+        margin-top: 20px;
     }
 `
 
@@ -155,18 +166,24 @@ const StyledLabel = styled.label`
 `
 
 const StyledInput = styled.input`
+    display: block;
     height: 32px;
     width: calc(100%-30px);
     padding: 4px 15px;
     line-height: 24px;
-    font-size: 16px;
+    font-size: 1em;
     border-radius: 4px;
     border: none;
     outline: none;
-    background: #C6FFDD;
-    background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
-    background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);
-    margin-bottom: 30px;
+    background:  #141620;
+    border-radius: 9px;
+    padding: 8px 20px 8px 36px;
+    color: #fff;
+    &:hover {
+      border-color: #d5ff64;
+      -webkit-box-shadow: 0 0 0 3px rgb(213 255 100 / 30%);
+      box-shadow: 0 0 0 3px rgb(213 255 100 / 30%);
+    }
 `
 
 export default HomePage

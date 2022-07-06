@@ -4,7 +4,7 @@ const QRCode = ({ QRText, robohashURL }) =>
     <AwesomeQRCode
         options={{
         text: QRText,
-        size: 400,
+        size: 321,
         backgroundImage: robohashURL
         }}
     />
