@@ -3,7 +3,7 @@ import {AwesomeQRCode} from '@awesomeqr/react'
 const QRCode = ({QRText, robohashURL}) =>
     <AwesomeQRCode
         options={{
-            text: 'https://linktr.ee/'+QRText,
+            text: QRText,
             size: 321,
             logoCornerRadius: 0,
             logoMargin: 0,

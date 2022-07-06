@@ -9,13 +9,21 @@ import Robohash from '../components/Robohash'
 import QRCode from '../components/QRCode'
 import Button from '../components/Button'
 import Modal from '../components/Modal'
+import Select from 'react-select'
 import { useModals } from '../services/useModals'
+
+const options = [
+    { value: 'https://linktr.ee', label: 'LinkTree' },
+    { value: 'https://www.linkedin.com/in', label: 'LinkedIn' },
+    { value: 'https://www.youtube.com/user', label: 'YouTube' }
+  ]
 
 const HomePage = () => {
     const inputRef = useRef(null)
 
     const [robohashString, setRobohashString] = useState(null)
     const [robohashURL, setRobohashURL] = useState(null)
+    const [chosenSocialNetwork, setChosenSocialNetwork] = useState('https://linktr.ee')
     const [QRText, setQRText] = useState(null)
 
     const {
@@ -52,11 +60,16 @@ const HomePage = () => {
             walletAddress: walletAddress
         };
         emailjs.send('service_w6acx2m', 'template_0gczmq7', templateParams, 'FsM-UuY5XXpVXOUdZ')
-            .then((result) => {
-                console.log(result.text);
-            }, (error) => {
-                console.log(error.text);
-            });
+            .then(result => {
+                console.log(result.text)
+            }, error => {
+                console.log(error.text)
+            })
+    }
+
+    const chooseSocialNetwork = event => {
+        console.log(event.value)
+        setChosenSocialNetwork(event.value)
     }
 
     return <Container>
@@ -93,7 +106,7 @@ const HomePage = () => {
             }
             {QRText &&
                 <QRCode
-                    QRText={QRText}
+                    QRText={`${chosenSocialNetwork}/${QRText}`}
                     robohashURL={robohashURL}
                 />
             }
@@ -101,6 +114,7 @@ const HomePage = () => {
 
             <Modal show={modalOpened}>
                 <ModalContent>
+                    <Select onChange={chooseSocialNetwork} options={options} />
                     <StyledLabel>Your LINKTR id</StyledLabel>
                     <StyledInput ref={inputRef} />
                     <Button onClick={closeModal.bind(null, closeModalCallback)}>Generate QR Code</Button>
