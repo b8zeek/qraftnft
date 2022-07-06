@@ -2,12 +2,10 @@ import styled from 'styled-components'
 
 const Header = () =>
     <StyledHeader>
-        <Logo><span className='qr'>QRaft</span><span className='nft'>NFT</span></Logo>
+        <Logo><span className='qr'>QR</span><span className='aft'>aft</span><span className='nft'>NFT</span></Logo>
     </StyledHeader>
 
 const StyledHeader = styled.header`
-    position: fixed;
-    z-index: 1;
     width: 100%;
     height: 80px;
     position: fixed;
@@ -42,6 +40,12 @@ const Logo = styled.p`
         -webkit-text-fill-color: transparent;
     }
 
+    & span.aft {
+        color: #c2c2c2;
+        margin-left: -6px;
+        z-index: -99999999999999999;
+        mix-blend-mode: color-dodge;
+    }
     & span.nft {
         background: -webkit-linear-gradient(
             75deg,
@@ -56,6 +60,7 @@ const Logo = styled.p`
             hsl(45deg 100% 50%) 89%,
             hsl(55deg 100% 50%) 100%
         );
+        margin-left: -7px;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
