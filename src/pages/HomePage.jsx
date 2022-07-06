@@ -135,9 +135,14 @@ const ModalContent = styled.div`
     width: 60%;
     background-color: white;
     border-radius: 10px;
-    padding: 30px 10%;
+    padding: 30px 20%;
     text-align: center;
     margin: 70px auto 0;
+
+    @media (max-width: 768px) {
+        width: calc(100%-40px);
+        padding: 20px;
+    }
 `
 
 const StyledLabel = styled.label`
@@ -151,7 +156,7 @@ const StyledLabel = styled.label`
 
 const StyledInput = styled.input`
     height: 32px;
-    width: 100%;
+    width: calc(100%-30px);
     padding: 4px 15px;
     line-height: 24px;
     font-size: 16px;

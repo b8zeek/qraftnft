@@ -6,10 +6,10 @@ const Header = () =>
     </StyledHeader>
 
 const StyledHeader = styled.header`
-    position: fixed;
-    z-index: 1;
     width: 100%;
     height: 80px;
+    position: fixed;
+    z-index: 1;
     background: rgba(255, 255, 255, 0.23);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
