@@ -1,5 +1,5 @@
 
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import emailjs from '@emailjs/browser';
 
@@ -19,8 +19,6 @@ const options = [
   ]
 
 const HomePage = () => {
-    const deliveryAddressRef = useRef(null)
-
     const [robohashString, setRobohashString] = useState(null)
     const [robohashURL, setRobohashURL] = useState(null)
     const [chosenSocialNetwork, setChosenSocialNetwork] = useState('https://linktr.ee')
@@ -56,7 +54,8 @@ const HomePage = () => {
 
         const templateParams = {
             currentValue: QRText,
-            walletAddress: walletAddress
+            walletAddress,
+            deliveryAddress
         }
 
         emailjs.send('service_w6acx2m', 'template_0gczmq7', templateParams, 'FsM-UuY5XXpVXOUdZ')
