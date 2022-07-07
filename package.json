@@ -13,6 +13,7 @@
     "@solana/spl-token": "^0.2.0",
     "@solana/web3.js": "^1.47.3",
     "react": "^18.0.0",
+    "react-device-detect": "^2.2.2",
     "react-dom": "^18.0.0",
     "react-robohash": "^1.0.9",
     "react-select": "^5.4.0",
