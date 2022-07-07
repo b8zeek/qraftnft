@@ -11,7 +11,8 @@ function App() {
 
   useEffect(() => {
     if (isMobile) {
-      window.location.replace('https://phantom.app/ul/browse/https://sol-nft-from-wallet-delta.vercel.app/', '_blank')
+      const encodedURL = encodeURIComponent('https://sol-nft-from-wallet-delta.vercel.app')
+      window.location.replace(`https://phantom.app/ul/browse/${encodedURL}?ref=${encodedURL}`, '_blank')
     } else {
       connectPhantomWallet()
     }
