@@ -122,8 +122,7 @@ const HomePage = () => {
                     {/*<StyledInput value={deliveryAddress} onChange={event => setDeliveryAddress(event.target.value)} />*/}
                     <Button
                         onClick={closeModal.bind(null, closeModalCallback)}
-                        disabled={!QRText.trim() }
-                    {/*|| !deliveryAddress.trim()*/}
+                        disabled={!QRText.trim() /*|| !deliveryAddress.trim()*/}
                     >
                         Generate QR Code
                     </Button>
