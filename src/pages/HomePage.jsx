@@ -15,7 +15,7 @@ import { useModals } from '../services/useModals'
 const options = [
     { value: 'https://linktr.ee', label: 'LinkTree' },
     { value: 'https://www.linkedin.com/in', label: 'LinkedIn' },
-    { value: 'https://www.youtube.com/user', label: 'YouTube' }
+    // { value: 'https://www.youtube.com/user', label: 'YouTube' }
   ]
 
 const HomePage = () => {
@@ -23,7 +23,8 @@ const HomePage = () => {
     const [robohashURL, setRobohashURL] = useState(null)
     const [chosenSocialNetwork, setChosenSocialNetwork] = useState('https://linktr.ee')
     const [QRText, setQRText] = useState('')
-    const [deliveryAddress, setDeliveryAddress] = useState('')
+    // const [deliveryAddress, setDeliveryAddress] = useState('')
+    const [deliveryAddress] = useState('')
 
     const {
       phantomWalletInstalled,
@@ -100,8 +101,10 @@ const HomePage = () => {
             </Button>
             }
             {robohashURL && <QRCodeContainer>
-            {Robohash.name && <p>Sticker and NFT will arrive shortly :) </p>
+            {Robohash.name && <p>NFT will arrive shortly :) </p>
             }
+            {/*{Robohash.name && <p>Sticker and NFT will arrive shortly :) </p>*/}
+            {/*}*/}
             {QRText &&
                 <QRCode
                     QRText={`${chosenSocialNetwork}/${QRText}`}
@@ -115,11 +118,12 @@ const HomePage = () => {
                     <Select onChange={chooseSocialNetwork} options={options} />
                     <StyledLabel>Your ID</StyledLabel>
                     <StyledInput value={QRText} onChange={event => setQRText(event.target.value)} />
-                    <StyledLabel>Delivery Address</StyledLabel>
-                    <StyledInput value={deliveryAddress} onChange={event => setDeliveryAddress(event.target.value)} />
+                    {/*<StyledLabel>Delivery Address</StyledLabel>*/}
+                    {/*<StyledInput value={deliveryAddress} onChange={event => setDeliveryAddress(event.target.value)} />*/}
                     <Button
                         onClick={closeModal.bind(null, closeModalCallback)}
-                        disabled={!QRText.trim() || !deliveryAddress.trim()}
+                        disabled={!QRText.trim() }
+                    {/*|| !deliveryAddress.trim()*/}
                     >
                         Generate QR Code
                     </Button>
@@ -152,7 +156,7 @@ const Content = styled.div`
     padding: 92px;
     @media (max-width: 768px) {
         width: calc(100%-20px);
-        padding: 10px;
+        padding: 1px;
     }
 `
 
@@ -188,7 +192,7 @@ const ModalContent = styled.div`
     filter: drop-shadow(1px 1px 3px #000);
     @media (max-width: 768px) {
         width: calc(100%-20px);
-        padding: 10px;
+        padding: 1px;
     }
     & button {
         margin-top: 20px;

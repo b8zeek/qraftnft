@@ -68,7 +68,7 @@ const Logo = styled.p`
     }
 
     @media (max-width: 768px) {
-        padding-left: 20px;
+        padding-left: 0px;
     }
 `
 
