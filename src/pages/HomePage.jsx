@@ -80,15 +80,15 @@ const HomePage = () => {
             {walletAddress ?
             <>
             {!robohashString && <Text>Your wallet address is </Text>}
-            {!robohashString && <p className='wallet-address'>{walletAddress}</p>}
-                {!robohashString && <p className='wallet-address' style={{fontSize: '16px', color:'purple'}}>NFT will be generated based on your wallet address</p>}
+            {!robohashString && <p>{walletAddress}</p>}
+                {!robohashString && <p style={{fontSize: '16px', color:'purple'}}>NFT will be generated based on your wallet address</p>}
                 {!robohashString &&
                     <Button onClick={setRobohashString.bind(null, walletAddress)}>Generate Your NFT</Button>
                 }
 
 
                 {robohashString && !robohashURL &&
-                    <p className='wallet-address' style={{fontSize: '16px', color:'purple'}}>Add QR Code to your NFT, we will mint and create Sticker for you
+                    <p style={{fontSize: '16px', color:'purple'}}>Add QR Code to your NFT, we will mint and create Sticker for you
                     </p>
                 }
                 {robohashString && !robohashURL && <>

@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
 
+import ApplicationTypeWrapper from './wrappers/ApplicationType'
+
 import { useWallet } from './services/useWallet'
 
 import HomePage from './pages/HomePage'
@@ -18,11 +20,11 @@ function App() {
     }
   }, [])
 
-  return (
+  return <ApplicationTypeWrapper>
     <ApplicationLayout>
       <HomePage />
     </ApplicationLayout>
-  )
+  </ApplicationTypeWrapper>
 }
 
 export default App
