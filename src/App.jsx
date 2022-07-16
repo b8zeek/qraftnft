@@ -11,14 +11,14 @@ import ApplicationLayout from './layout/ApplicationLayout'
 function App() {
   const { connectPhantomWallet } = useWallet()
 
-  useEffect(() => {
-    if (isMobile) {
-      const encodedURL = encodeURIComponent('https://sol-nft-from-wallet-delta.vercel.app')
-      window.location.replace(`https://phantom.app/ul/browse/${encodedURL}?ref=${encodedURL}`, '_blank')
-    } else {
-      connectPhantomWallet()
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (isMobile) {
+  //     const encodedURL = encodeURIComponent('https://sol-nft-from-wallet-delta.vercel.app')
+  //     window.location.replace(`https://phantom.app/ul/browse/${encodedURL}?ref=${encodedURL}`, '_blank')
+  //   } else {
+  //     connectPhantomWallet()
+  //   }
+  // }, [])
 
   return <ApplicationTypeWrapper>
     <ApplicationLayout>

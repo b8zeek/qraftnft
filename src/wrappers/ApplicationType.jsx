@@ -1,9 +1,12 @@
 import { isMobile } from 'react-device-detect'
 
+import MobileHomePage from '../pages/mobile/MobileHomePage'
+import ComputerHomePage from '../pages/web/ComputerHomePage'
+
 const ApplicationTypeWrapper = () => {
     return isMobile ?
-        <div>Mobile</div> :
-        <div>Web</div>
+        <MobileHomePage /> :
+        <ComputerHomePage />
 }
 
 export default ApplicationTypeWrapper
