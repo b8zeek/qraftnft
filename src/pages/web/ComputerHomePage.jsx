@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import bg from '../../assets/index_scale_adoption.webp'
 import circle from '../../assets/circle.png'
+import solana from '../../assets/s-logo.webp'
 
 import Heading from '../../components/Heading'
 
@@ -9,8 +10,9 @@ const ComputerHomePage = () => {
         <Content>
             <Heading>Welcome</Heading>
         </Content>
-        <MovingCircle src={circle} alt='background-circle' />
+        <SolanaLogo src={solana} />
         <BGImage src={bg} />
+        <MovingCircle src={circle} alt='background-circle' />
     </Container>
 }
 
@@ -23,7 +25,8 @@ const Container = styled.div`
 `
 
 const Content = styled.div`
-    width: 100%;
+    width: 70%;
+    padding: 50px 15%;
     position: relative;
     z-index: 3;
 `
@@ -35,6 +38,14 @@ const BGImage = styled.img`
     z-index: 2;
     width: 60%;
     opacity: .3;
+`
+const SolanaLogo = styled.img`
+    width: 200px;
+    position: absolute;
+    bottom: 0%;
+    left: 15%;
+    z-index: 2;
+    opacity: .5;
 `
 
 const MovingCircle = styled.img`
