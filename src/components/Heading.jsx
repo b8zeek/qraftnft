@@ -23,6 +23,7 @@ const SmallHeading = styled.h2`
     line-height: 40px;
     font-size: 32px;
     letter-spacing: -2px;
+    color: white;
     margin: 0;
 `
 

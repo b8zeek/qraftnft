@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-const Button = ({ children }) =>
+const Button = ({ children, onClick }) =>
     <StyledButton
+        onClick={onClick}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
     >
@@ -21,9 +22,7 @@ const StyledButton = styled(motion.button)`
     border-radius: 20px;
     cursor: pointer;
 
-    &:hover: {
-        background-color: white;
-    }
+    &:hover: { background-color: white; }
 `
 
 export default Button
