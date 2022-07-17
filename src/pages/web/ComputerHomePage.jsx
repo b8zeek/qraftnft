@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Routes, Route, useLocation, Link } from 'react-router-dom'
@@ -6,31 +5,20 @@ import { Routes, Route, useLocation, Link } from 'react-router-dom'
 import bg from '../../assets/index_scale_adoption.webp'
 import circle from '../../assets/circle.png'
 import solana from '../../assets/s-logo.webp'
-import degen from '../../assets/degen-ape.png'
-import qr from '../../assets/qr-code.png'
-
-import Heading from '../../components/Heading'
+import ape from '../../assets/ape-white.svg'
 
 import LandingPage from './LandingPage'
 import ExamplePage from './ExamplePage'
 import AboutPage from './AboutPage'
 
-const AnimatedPage = ({ key, children }) =>
-    <Content
-        key={key}
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: '-100%', opacity: 0 }}
-        transition={{ duration: .3 }}
-    >
-        {children}
-    </Content>
 
 const Header = () =>
     <StyledHeader>
+        {/* <Ape src={ape} /> */}
         <Navigation>
             <StyledLink to='/'>Home</StyledLink>
             <StyledLink to='example'>Example</StyledLink>
+            <StyledLink to='qr' cta={true}>QR NFT</StyledLink>
             <StyledLink to='about'>About</StyledLink>
         </Navigation>
     </StyledHeader>
@@ -39,24 +27,43 @@ const StyledHeader = styled.header`
     width: 100%;
     height: 80px;
     text-align: right;
-    // background-color: rgba(255, 255, 255, .1);
+`
+
+const Ape = styled.img`
+    position: absolute;
+    top: -20px;
+    left: 230px;
+    height: 80px;
+    margin-right: 20px;
+`
+
+const Logo = styled.div`
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: white;
 `
 
 const Navigation = styled.nav`
-    padding-right: 10%;
+    padding: 20px 10%;
 `
 
 const StyledLink = styled(Link)`
-display: inline-block;
-    line-height: 80px;
+    display: inline-block;
+    line-height: 40px;
+    padding: 0 20px;
     font-size: 16px;
     font-weight: 800;
     color: white;
     text-decoration: none;
-    margin-right: 20px;
+    border-radius: 10px;
+    margin-right: 5px;
+
+    ${props => props.cta && `background-color: ${props.theme.color.darkPink};`}
 
     &:hover {
-        color: ${({ theme: { color } }) => color.green};
+        color: ${props => props.cta ? props.theme.color.white : props.theme.color.green};
+        ${props => props.cta && `background-color: ${props.theme.color.pink};`}
     }
 `
 
@@ -65,25 +72,15 @@ const ComputerHomePage = () => {
 
     return <Container>
         <Main>
-        <Header />
-        <AnimatePresence>
-            <Routes location={location} key={location.pathname}>
-                <Route path='/' element={<LandingPage />} />
-                <Route path='example' element={<ExamplePage />} />
-                <Route path='about' element={<AboutPage />} />
-            </Routes>
-        </AnimatePresence>
+            <Header />
+            <AnimatePresence>
+                <Routes location={location} key={location.pathname}>
+                    <Route path='/' element={<LandingPage />} />
+                    <Route path='example' element={<ExamplePage />} />
+                    <Route path='about' element={<AboutPage />} />
+                </Routes>
+            </AnimatePresence>
         </Main>
-        {/* <AnimatePresence>
-            {!page && <AnimatedPage key='welcome'>
-                <Heading>Welcome to QRNFT</Heading>
-                <MainImage src={degen} />
-                <QRImage src={qr} />
-            </AnimatedPage>}
-            {page && <AnimatedPage key='solana'>
-                <Heading>Solana</Heading>
-            </AnimatedPage>}
-        </AnimatePresence> */}
         <SolanaLogo src={solana} />
         <BGImage src={bg} />
         <MovingCircle src={circle} alt='background-circle' />
@@ -103,13 +100,6 @@ const Main = styled.div`
     z-index: 3;
 `
 
-const Content = styled(motion.div)`
-    position: absolute;
-    width: 70%;
-    padding: 50px 15%;
-    z-index: 3;
-`
-
 const BGImage = styled.img`
     position: absolute;
     top: 0;
@@ -125,23 +115,6 @@ const SolanaLogo = styled.img`
     left: 15%;
     z-index: 2;
     opacity: .3;
-`
-
-const MainImage = styled.img`
-    width: 400px;
-    position: absolute;
-    top: 200px;
-    left: 300px;
-    transform: perspective(500px) rotateY(20deg);
-`
-
-const QRImage = styled.img`
-    width: 400px;
-    position: absolute;
-    top: 200px;
-    left: 330px;
-    transform: perspective(500px) rotateY(20deg);
-    filter: drop-shadow(-5px 10px 10px rgba(255, 255, 255, .3));
 `
 
 const pulse = keyframes`

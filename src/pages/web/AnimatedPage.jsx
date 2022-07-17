@@ -15,7 +15,7 @@ const Content = styled(motion.div)`
     position: absolute;
     width: 70%;
     height: calc(100vh - 80px);
-    padding: 50px 15%;
+    padding: 0 15%;
     z-index: 3;
 `
 

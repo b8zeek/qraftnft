@@ -2,10 +2,12 @@ import styled from 'styled-components'
 
 import AnimatedPage from './AnimatedPage'
 import Heading from '../../components/Heading'
+import Text from '../../components/Text'
 
 const AboutPage = () =>
     <AnimatedPage>
-        <Heading>Who we are?</Heading>
+        <Heading>Who are we?</Heading>
+        <Text>Get to know us a bit better</Text>
     </AnimatedPage>
 
 
