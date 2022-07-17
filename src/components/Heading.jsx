@@ -11,8 +11,8 @@ const commonHeadingProps = `
 
 const BigHeading = styled.h1`
     ${commonHeadingProps}
-    line-height: 56px;
-    font-size: 48px;
+    line-height: 72px;
+    font-size: 64px;
     letter-spacing: -3px;
     margin: 0;
 `
