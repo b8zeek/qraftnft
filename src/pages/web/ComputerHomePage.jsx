@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Routes, Route, useLocation, Link } from 'react-router-dom'
 
 import bg from '../../assets/index_scale_adoption.webp'
 import circle from '../../assets/circle.png'
@@ -9,6 +10,10 @@ import degen from '../../assets/degen-ape.png'
 import qr from '../../assets/qr-code.png'
 
 import Heading from '../../components/Heading'
+
+import LandingPage from './LandingPage'
+import ExamplePage from './ExamplePage'
+import AboutPage from './AboutPage'
 
 const AnimatedPage = ({ key, children }) =>
     <Content
@@ -21,12 +26,55 @@ const AnimatedPage = ({ key, children }) =>
         {children}
     </Content>
 
+const Header = () =>
+    <StyledHeader>
+        <Navigation>
+            <StyledLink to='/'>Home</StyledLink>
+            <StyledLink to='example'>Example</StyledLink>
+            <StyledLink to='about'>About</StyledLink>
+        </Navigation>
+    </StyledHeader>
+
+const StyledHeader = styled.header`
+    width: 100%;
+    height: 80px;
+    text-align: right;
+    // background-color: rgba(255, 255, 255, .1);
+`
+
+const Navigation = styled.nav`
+    padding-right: 10%;
+`
+
+const StyledLink = styled(Link)`
+display: inline-block;
+    line-height: 80px;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+
+    &:hover {
+        color: ${({ theme: { color } }) => color.green};
+    }
+`
+
 const ComputerHomePage = () => {
-    const [page, setPage] = useState(0)
+    const location = useLocation()
 
     return <Container>
-        <button onClick={() => setPage(!page)}>123</button>
+        <Main>
+        <Header />
         <AnimatePresence>
+            <Routes location={location} key={location.pathname}>
+                <Route path='/' element={<LandingPage />} />
+                <Route path='example' element={<ExamplePage />} />
+                <Route path='about' element={<AboutPage />} />
+            </Routes>
+        </AnimatePresence>
+        </Main>
+        {/* <AnimatePresence>
             {!page && <AnimatedPage key='welcome'>
                 <Heading>Welcome to QRNFT</Heading>
                 <MainImage src={degen} />
@@ -35,7 +83,7 @@ const ComputerHomePage = () => {
             {page && <AnimatedPage key='solana'>
                 <Heading>Solana</Heading>
             </AnimatedPage>}
-        </AnimatePresence>
+        </AnimatePresence> */}
         <SolanaLogo src={solana} />
         <BGImage src={bg} />
         <MovingCircle src={circle} alt='background-circle' />
@@ -46,9 +94,13 @@ const Container = styled.div`
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 100vh;
     background-color: black;
-    color: white;
+`
+
+const Main = styled.div`
+    position: relative;
+    width: 100%;
+    z-index: 3;
 `
 
 const Content = styled(motion.div)`

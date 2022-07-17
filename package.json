@@ -17,6 +17,7 @@
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.0.0",
     "react-robohash": "^1.0.9",
+    "react-router-dom": "^6.3.0",
     "react-select": "^5.4.0",
     "styled-components": "^5.3.5",
     "zustand": "^4.0.0-rc.1"

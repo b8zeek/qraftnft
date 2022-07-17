@@ -14,6 +14,7 @@ const BigHeading = styled.h1`
     line-height: 72px;
     font-size: 64px;
     letter-spacing: -3px;
+    color: white;
     margin: 0;
 `
 
