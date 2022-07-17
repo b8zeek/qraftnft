@@ -82,7 +82,7 @@ const LeftSide = styled.div`
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    padding-top: 80px;
+    padding-top: 100px;
 `
 
 const RightSide = styled.div`
@@ -100,7 +100,7 @@ const ImageContainer = styled(motion.div)`
     width: 400px;
     position: absolute;
     top: 70px;
-    left: 80px;
+    left: 140px;
     transform: perspective(500px) rotateY(20deg);
 `
 
@@ -108,16 +108,20 @@ const MainImage = styled.img`
     width: 100%;
     transform: perspective(500px) rotateY(20deg);
     border-radius: 5px;
-    box-shadow: 0px 0px 30px #aaa;
+    box-shadow:
+        -2px 0 1px #fff,
+        -2px 0 20px #fff,
+        -10px 0 10px #0ba9ca,
+        -10px 0 40px #0ba9ca
+    ;
 `
 
 const QRImage = styled.img`
     width: 100%;
     position: relative;
-    left: 20px;
+    left: 30px;
     transform: perspective(500px) rotateY(20deg);
-    // backdrop-filter: blur(15px) saturate(3);
-    filter: drop-shadow(-10px 10px 10px rgba(200, 200, 200, .4));
+    filter: drop-shadow(-10px 10px 10px rgba(255, 255, 194, .6));
 `
 
 export default ExamplePage
