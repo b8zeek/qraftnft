@@ -6,11 +6,11 @@ import Heading from '../../components/Heading'
 import Text from '../../components/Text'
 
 const AnimatedTitle = ({
-    key,
+    titleKey,
     heading,
     description
 }) => <AnimatedDiv
-        key={key}
+        key={titleKey}
         initial={{ x: '100%', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: '-100%', opacity: 0 }}
@@ -26,25 +26,25 @@ const TitleContainer = () => {
     switch (location.pathname) {
         case '/':
             return <AnimatedTitle
-                key='/'
+                titleKey='/'
                 heading='Welcome'
                 description='Greetings Solana Hacker House Paris!'
             />
         case '/example':
             return <AnimatedTitle
-                key='/example'
+                titleKey='/example'
                 heading='DegenerAPE Yourself'
                 description='Link all your social media with your favorite NFT'
             />
         case '/qr':
             return <AnimatedTitle
-                key='/qr'
+                titleKey='/qr'
                 heading='QR NFT'
                 description='Show the people who are you'
             />
         case '/about':
             return <AnimatedTitle
-                key='/about'
+                titleKey='/about'
                 heading='Who are we?'
                 description='Get to know us a bit better'
             />

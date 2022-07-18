@@ -12,6 +12,7 @@ import AnimatedSection from '../../components/AnimatedSection'
 import Button from '../../components/Button'
 import RobohashComponent from '../../components/Robohash'
 import Input from '../../components/Input'
+import QRCode from '../../components/QRCode'
 
 import phantom from '../../assets/phantom.svg'
 
@@ -21,10 +22,48 @@ const QRPage = () => {
     const setRobotGenerated = store(state => state.setRobotGenerated)
     const { connectPhantomWallet } = useWallet()
     const [qr, setQR] = useState(false)
+    const [qrLink, setQRLink] = useState('')
+    const [robohashURL, setRobohashURL] = useState('')
+    const [showQR, setShowQR] = useState(false)
+
+    const generateQRNFT = () => {
+        const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
+
+        const imageLink = url.split('?')[0]
+    
+        var request = new XMLHttpRequest()
+        request.open('GET', imageLink, true)
+        request.responseType = 'blob'
+        request.onload = function() {
+            var reader = new FileReader()
+            reader.readAsDataURL(request.response)
+            reader.onload = e => {
+                console.log(e.target.result)
+                setRobohashURL(e.target.result)
+                setShowQR(true)
+            }
+        }
+        request.send()
+
+        // const templateParams = {
+        //     currentValue: qrLink,
+        //     walletAddress: phantomWallet.publicKey.toString(),
+        //     deliveryAddress: 'bejzik8@gmail.com'
+        // }
+        console.log('EXE DONE')
+
+        // emailjs.send('service_w6acx2m', 'template_0gczmq7', templateParams, 'FsM-UuY5XXpVXOUdZ')
+        //     .then(result => {
+        //         console.log(result.text)
+        //     }, error => {
+        //         console.log(error.text)
+        //     })
+    }
 
     return <AnimatedPage>
         <AnimatePresence>
         {!qr && <LeftSide
+            key='left'
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
         >
@@ -40,6 +79,7 @@ const QRPage = () => {
             </PhantomContainer>
         </LeftSide>}
         <RightSide
+            key='right'
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '-100%', opacity: 0 }}
@@ -81,6 +121,7 @@ const QRPage = () => {
             }
         </RightSide>
         {qr && <NewSide
+            key='new'
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '-100%', opacity: 0 }}
@@ -88,10 +129,16 @@ const QRPage = () => {
             {!robotGenerated && <Button onClick={setRobotGenerated.bind(null, true)}>Generate Robot</Button>}
             {robotGenerated && <>
                 <RobohashComponent walletAddress={phantomWallet.publicKey.toString()} />
-                <Input label='Enter QR code link' />
-                <Button onClick={setRobotGenerated.bind(null, true)}>Generate QR</Button>
+                <Input label='Enter QR code link' onChange={e => setQRLink(e.target.value)} />
+                {!showQR && qrLink.trim() && <Button onClick={generateQRNFT}>Generate QR</Button>}
+                {showQR &&
+                    <QRCodeContainer>
+                        <QRCode text={qrLink.trim()} robohashURL={robohashURL} />
+                    </QRCodeContainer>
+                }
             </>}
         </NewSide>}
+        
         </AnimatePresence>
     </AnimatedPage>
 }
@@ -154,6 +201,14 @@ const Section = styled(motion.div)`
     margin-bottom: 30px;
 
     ${({ cursorPointer }) => cursorPointer && 'cursor: pointer;'}
+`
+
+const QRCodeContainer = styled.div`
+    width: 100%;
+    height: 300px;
+    & div {
+        margin: 0 auto;
+    }
 `
 
 export default QRPage

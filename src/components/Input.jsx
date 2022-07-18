@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const Input = ({ label }) =>
+const Input = ({ label, onChange }) =>
     <Container>
         <StyledLabel>{label}</StyledLabel>
-        <StyledInput />
+        <StyledInput onChange={onChange} />
     </Container>
 
 const Container = styled.div`
@@ -14,15 +14,14 @@ const Container = styled.div`
 const StyledLabel = styled.label`
     line-height: 32px;
     display: block;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 400;
-    color: white;
-    margin-bottom: 20px;
+    color: rgba(150, 150, 150, 1);
 `
 
 const StyledInput = styled.input`
     width: 100%;
-    height: 40px;
+    height: 36px;
     border-radius: 10px;
     border: none;
     outline: none;
@@ -32,7 +31,7 @@ const StyledInput = styled.input`
     font-weight: 400;
     background-color: #9945ff54;
     color: white;
-    padding: 8px 20px;
+    padding: 6px 20px;
 
     &:hover { background-color: #9945ff72; }
     &:focus { background-color: #9945ff90; }
