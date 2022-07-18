@@ -1,6 +1,6 @@
 import { AwesomeQRCode } from '@awesomeqr/react'
 
-const QRCode = ({QRText, robohashURL}) =>
+const QRCode = ({ QRText, robohashURL }) =>
     <AwesomeQRCode
         options={{
             text: QRText,

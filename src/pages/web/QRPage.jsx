@@ -10,11 +10,15 @@ import Heading from '../../components/Heading'
 import Text from '../../components/Text'
 import AnimatedSection from '../../components/AnimatedSection'
 import Button from '../../components/Button'
+import RobohashComponent from '../../components/Robohash'
+import Input from '../../components/Input'
 
 import phantom from '../../assets/phantom.svg'
 
 const QRPage = () => {
     const phantomWallet = store(state => state.phantomWallet)
+    const robotGenerated = store(state => state.robotGenerated)
+    const setRobotGenerated = store(state => state.setRobotGenerated)
     const { connectPhantomWallet } = useWallet()
     const [qr, setQR] = useState(false)
 
@@ -23,7 +27,6 @@ const QRPage = () => {
         {!qr && <LeftSide
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            exit={{ x: '-100%', opacity: 0 }}
         >
             <AnimatedSection delay={.3}>
                 <Heading type='small'>Phantom Wallet</Heading>
@@ -82,7 +85,12 @@ const QRPage = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '-100%', opacity: 0 }}
         >
-            <Button>Generate Robot</Button>
+            {!robotGenerated && <Button onClick={setRobotGenerated.bind(null, true)}>Generate Robot</Button>}
+            {robotGenerated && <>
+                <RobohashComponent walletAddress={phantomWallet.publicKey.toString()} />
+                <Input label='Enter QR code link' />
+                <Button onClick={setRobotGenerated.bind(null, true)}>Generate QR</Button>
+            </>}
         </NewSide>}
         </AnimatePresence>
     </AnimatedPage>

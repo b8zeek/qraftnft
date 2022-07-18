@@ -23,6 +23,8 @@ const StyledButton = styled(motion.button)`
     cursor: pointer;
 
     &:hover: { background-color: white; }
+
+    margin: 20px 0;
 `
 
 export default Button

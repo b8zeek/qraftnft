@@ -9,7 +9,6 @@ const RobohashComponent = ({ walletAddress }) =>
 
 const RobohashContainer = styled.div`
     text-align: center;
-    margin-top: 40px;
 `
 
 export default RobohashComponent
