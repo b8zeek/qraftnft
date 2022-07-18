@@ -36,7 +36,8 @@ const QRPage = () => {
                 <PhantomInfo>
                     {phantomWallet ?
                         <>
-                            <Heading type='small'>Phantom Wallet Info</Heading>
+                            <Heading type='small' marginBottom='10px'>Phantom Wallet Info</Heading>
+                            <Text size='medium' bold>Public Address:</Text>
                             <Text size='medium'>{phantomWallet ? phantomWallet.publicKey.toString() : 'Not connected'}</Text>
                         </> :
                         <Button onClick={connectPhantomWallet.bind(null, false)}>Connect Phantom Wallet</Button>
@@ -89,14 +90,16 @@ const RightSide = styled.div`
 `
 
 const PhantomInfo = styled.div`
-    width: 100%;
+    width: calc(100% - 40px);
     height: 100%;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     border-radius: 15px;
     background: #4e44ce45;
+    overflow: hidden;
     text-align: center;
 `
 

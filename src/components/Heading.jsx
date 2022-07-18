@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const Heading = ({ type, children }) => type === 'small' ?
-    <SmallHeading>{children}</SmallHeading> :
-    <BigHeading>{children}</BigHeading>
+const Heading = ({ type, marginBottom, children }) => type === 'small' ?
+    <SmallHeading marginBottom={marginBottom}>{children}</SmallHeading> :
+    <BigHeading marginBottom={marginBottom}>{children}</BigHeading>
 
 const commonHeadingProps = `
     font-family: Inter, sans-serif;
@@ -16,6 +16,8 @@ const BigHeading = styled.h1`
     letter-spacing: -3px;
     color: white;
     margin: 0;
+
+    ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom}`}
 `
 
 const SmallHeading = styled.h2`
@@ -25,6 +27,8 @@ const SmallHeading = styled.h2`
     letter-spacing: -2px;
     color: white;
     margin: 0;
+
+    ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom}`}
 `
 
 export default Heading
