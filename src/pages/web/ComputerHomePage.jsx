@@ -9,6 +9,7 @@ import ape from '../../assets/ape-white.svg'
 
 import LandingPage from './LandingPage'
 import ExamplePage from './ExamplePage'
+import QRPage from './QRPage'
 import AboutPage from './AboutPage'
 
 
@@ -77,6 +78,7 @@ const ComputerHomePage = () => {
                 <Routes location={location} key={location.pathname}>
                     <Route path='/' element={<LandingPage />} />
                     <Route path='example' element={<ExamplePage />} />
+                    <Route path='qr' element={<QRPage />} />
                     <Route path='about' element={<AboutPage />} />
                 </Routes>
             </AnimatePresence>
