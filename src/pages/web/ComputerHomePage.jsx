@@ -19,7 +19,7 @@ const Header = () =>
         <Navigation>
             <StyledLink to='/'>Home</StyledLink>
             <StyledLink to='example'>Example</StyledLink>
-            <StyledLink to='qr' cta={true}>QR NFT</StyledLink>
+            <StyledLink to='qr' cta={+true}>QR NFT</StyledLink>
             <StyledLink to='about'>About</StyledLink>
         </Navigation>
     </StyledHeader>

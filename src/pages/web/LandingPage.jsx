@@ -4,16 +4,9 @@ import { motion } from 'framer-motion'
 import AnimatedPage from './AnimatedPage'
 import Heading from '../../components/Heading'
 import Text from '../../components/Text'
+import AnimatedSection from '../../components/AnimatedSection'
 
 import qr from '../../assets/dao-hero-cropped.webp'
-
-const AnimatedSection = ({ children, delay }) =>
-    <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1, transition: { delay: delay || .3 } }}
-    >
-        {children}
-    </motion.div>
 
 const LandingPage = () =>
     <AnimatedPage>
