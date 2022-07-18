@@ -14,75 +14,66 @@ const ExamplePage = () => {
     const [page, setPage] = useState(0)
 
     return <AnimatedPage>
-        <Heading>DegenerAPE Yourself</Heading>
-        <Text>Link all your social media with your favorite NFT</Text>
-        <Content>
-            <LeftSide>
-                {page >= 1 && <Section
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                >
-                    <Heading type='small'>Connect Phantom Wallet</Heading>
-                    <Text size='medium' marginBottom='30px'>Connect your Phantom Wallet with the application and choose the NFT you are the most proud of.</Text>
-                </Section>}
+        <LeftSide>
+            {page >= 1 && <Section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+            >
+                <Heading type='small'>Connect Phantom Wallet</Heading>
+                <Text size='medium' marginBottom='30px'>Connect your Phantom Wallet with the application and choose the NFT you are the most proud of.</Text>
+            </Section>}
 
-                {page >= 3 && <Section
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                >
-                    <Heading type='small'>Enter the Link</Heading>
-                    <Text size='medium' marginBottom='30px'>Enter the link of the page you want to connect to your NFT. It can be LinkTree, LinkedIn, YouTube, web page, etc.</Text>
-                </Section>}
+            {page >= 3 && <Section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+            >
+                <Heading type='small'>Enter the Link</Heading>
+                <Text size='medium' marginBottom='30px'>Enter the link of the page you want to connect to your NFT. It can be LinkTree, LinkedIn, YouTube, web page, etc.</Text>
+            </Section>}
 
-                {page >= 5 && <Section
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                >
-                    <Heading type='small'>Get Sticker</Heading>
-                    <Text size='medium' marginBottom='30px'>Enter your address and we'll send you your generated sticker.</Text>
-                </Section>}
+            {page >= 5 && <Section
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+            >
+                <Heading type='small'>Get Sticker</Heading>
+                <Text size='medium' marginBottom='30px'>Enter your address and we'll send you your generated sticker.</Text>
+            </Section>}
 
-                {page !== 5 && <Button onClick={() => setPage(page => ++page)}>
-                    {page === 0 && 'Start'}
-                    {page === 1 && 'Select NFT'}
-                    {page === 2 && 'Link Social'}
-                    {page === 3 && 'Generate QR Code'}
-                    {page === 4 && 'Create Sticker'}
-                </Button>}
-            </LeftSide>
-            <RightSide>
-                {page >= 2 && <ImageContainer
-                    initial={{ x: '100%', opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: '-100%', opacity: 0 }}
-                    transition={{ duration: .3 }}
-                >
-                    <MainImage src={degen} />
-                </ImageContainer>}
-                {page >= 4 && <ImageContainer
-                    offset={30}
-                    initial={{ x: '100%', opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: '-100%', opacity: 0 }}
-                    transition={{ duration: .3 }}
-                    whileHover={{ scale: 1.01, x: '2%' }}
-                >
-                    <QRImage src={qr} />
-                </ImageContainer>}
-            </RightSide>
-        </Content>
+            {page !== 5 && <Button onClick={() => setPage(page => ++page)}>
+                {page === 0 && 'Start'}
+                {page === 1 && 'Select NFT'}
+                {page === 2 && 'Link Social'}
+                {page === 3 && 'Generate QR Code'}
+                {page === 4 && 'Create Sticker'}
+            </Button>}
+        </LeftSide>
+        <RightSide>
+            {page >= 2 && <ImageContainer
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: '-100%', opacity: 0 }}
+                transition={{ duration: .3 }}
+            >
+                <MainImage src={degen} />
+            </ImageContainer>}
+            {page >= 4 && <ImageContainer
+                offset={30}
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: '-100%', opacity: 0 }}
+                transition={{ duration: .3 }}
+                whileHover={{ scale: 1.01, x: '2%' }}
+            >
+                <QRImage src={qr} />
+            </ImageContainer>}
+        </RightSide>
     </AnimatedPage>
 }
-
-const Content = styled.div`
-    width: 100%;
-`
 
 const LeftSide = styled.div`
     width: 50%;
     display: inline-block;
     vertical-align: top;
-    padding-top: 100px;
 `
 
 const RightSide = styled.div`
@@ -112,7 +103,7 @@ const MainImage = styled.img`
         -2px 0 1px #fff,
         -2px 0 20px #fff,
         -10px 0 10px #0ba9ca,
-        -10px 0 40px #0ba9ca
+        -10px 0 20px #0ba9ca
     ;
 `
 

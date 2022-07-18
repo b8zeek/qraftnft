@@ -1,18 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
 body {
+  height: 100%;
   position: relative;
-  height: 100vh;
   margin: 0;
   font-family: Inter, serif;
   font-weight: 900;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #4B0082;
-  background: -webkit-linear-gradient(to right, #4B0082, #330033);
-  background: linear-gradient(-45deg, #4B0082, #330033, #1A0019, #9400D3);
-  background-size: 400% 400%;
-  animation: gradient 8s ease infinite; */
 }
 
 /* @keyframes gradient {
