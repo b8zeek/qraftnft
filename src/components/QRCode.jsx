@@ -1,4 +1,4 @@
-import {AwesomeQRCode} from '@awesomeqr/react'
+import { AwesomeQRCode } from '@awesomeqr/react'
 
 const QRCode = ({QRText, robohashURL}) =>
     <AwesomeQRCode

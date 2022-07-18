@@ -30,31 +30,48 @@ const QRPage = () => {
             </PhantomContainer>
         </LeftSide>
         <RightSide>
-            <PhantomInfo>
-                {phantomWallet ?
-                    <>
+            {phantomWallet ?
+                <>
+                    <Section
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                    >
                         <Heading type='small' marginBottom='10px'>Phantom Wallet Info</Heading>
                         <Text size='medium' bold>Public Address:</Text>
-                        <Text size='medium' marginBottom='40px'>{phantomWallet ? phantomWallet.publicKey.toString() : 'Not connected'}</Text>
+                        <Text size='medium'>{phantomWallet ? phantomWallet.publicKey.toString() : 'Not connected'}</Text>
+                    </Section>
 
+                    <Section
+                        cursorPointer
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        whileHover={{ scale: 1.1 }}
+                    >
                         <Heading type='small' marginBottom='10px'>Generate QR Wallet Image</Heading>
-                        <Text size='medium' marginBottom='40px'>Generate a unique robot image from Phantom wallet's public key. Add the link you want to share with people and we'll send you the image.</Text>
+                        <Text size='medium'>Generate a unique robot image from Phantom wallet's public key. Add the link you want to share with people and we'll send you the image.</Text>
+                    </Section>
 
+                    <Section
+                        cursorPointer
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        whileHover={{ scale: 1.1 }}
+                    >
                         <Heading type='small' marginBottom='10px'>QR Your NFT</Heading>
                         <Text size='medium'>Select one of the NFTs from your wallet and apply a QR code to it. We suggest adding your Linktree url to it.</Text>
-                    </> :
-                    <Button onClick={connectPhantomWallet.bind(null, false)}>Connect Phantom Wallet</Button>
-                }
-            </PhantomInfo>
+                    </Section>
+                </> :
+                <Button onClick={connectPhantomWallet.bind(null, false)}>Connect Phantom</Button>
+            }
         </RightSide>
     </AnimatedPage>
 }
 
 const LeftSide = styled.div`
-    width: calc(50% - 30px);
+    width: calc(40% - 40px);
     display: inline-block;
     vertical-align: top;
-    padding: 50px 30px 0 0;
+    padding-right: 40px;
 `
 
 const PhantomContainer = styled(motion.div)`
@@ -79,25 +96,26 @@ const Phantom = styled.img`
 `
 
 const RightSide = styled.div`
-    width: 50%;
-    height: calc(100% - 100px);
+    width: 60%;
     display: inline-block;
     vertical-align: top;
-    padding: 50px 0;
+    padding-bottom: 50px;
+    text-align: center;
 `
 
-const PhantomInfo = styled.div`
-    width: calc(100% - 40px);
-    height: 100%;
-    padding: 0 20px;
+const Section = styled(motion.div)`
+    width: 70%;
+    padding: 30px 15%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     border-radius: 15px;
-    background: #4e44ce45;
-    overflow: hidden;
+    background: #4e44ce27;
     text-align: center;
+    margin-bottom: 30px;
+
+    ${({ cursorPointer }) => cursorPointer && 'cursor: pointer;'}
 `
 
 export default QRPage
