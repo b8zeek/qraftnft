@@ -68,7 +68,7 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) =>
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.1 }}
-                    onClick={() => {}}
+                    onClick={() => setPage(2)}
                 >
                     <Heading type='small' marginBottom='10px'>QR Your NFT</Heading>
                     <Text size='medium'>Select one of the NFTs from your wallet and apply a QR code to it. We suggest adding your Linktree url to it.</Text>
@@ -87,7 +87,8 @@ const QRGenerator = ({
     robohashURL,
     qrLink,
     setQRLink
-}) => <NewSide
+}) =>
+    <WalletQR
         key='new'
         initial={{ x: '100%', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -106,7 +107,12 @@ const QRGenerator = ({
                 }
             </>
         }
-    </NewSide>
+    </WalletQR>
+
+const QRNFT = () =>
+    <WalletQR>
+
+    </WalletQR> 
 
 const QRPage = () => {
     const phantomWallet = store(state => state.phantomWallet)
@@ -174,6 +180,7 @@ const QRPage = () => {
                     setQRLink={setQRLink}
                 />
             }
+            {page === 2 && <QRNFT />}
         </AnimatePresence>
     </AnimatedPage>
 }
@@ -191,17 +198,19 @@ const PhantomContainer = styled(motion.div)`
 `
 const svgShadow = keyframes`
     from {
+        left: 0;
         filter: drop-shadow( 0 0 5px #fea1df) drop-shadow( 0 0 10px #fea1df) drop-shadow( 0 0 15px #fea1df);
     }
   
     to {
-      
+        left: 5px;
         filter: drop-shadow( 0 0 15px #4e44ce) drop-shadow( 0 0 20px #4e44ce) drop-shadow( 0 0 25px #4e44ce);
     }
 `
 
 const Phantom = styled.img`
     width: 40%;
+    position: relative;
     animation: ${svgShadow} 2s ease-in-out infinite alternate;
     margin-left: 10%;
 `
@@ -214,7 +223,7 @@ const RightSide = styled(motion.div)`
     text-align: center;
 `
 
-const NewSide = styled(motion.div)`
+const WalletQR = styled(motion.div)`
     width: calc(50% - 40px);
     min-height: 100vh;
     padding-left: 40px;
