@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import store from '../state/state'
 
 export function useWallet() {
-    const [phantomWalletInstalled, setPhantomWalletInstalled] = useState(false)
-    const [walletAddress, setWalletAddress] = useState('')
+    const setPhantomWalletInstalled = store(state => state.setPhantomWalletInstalled)
+    const setPhantomWallet = store(state => state.setPhantomWallet)
 
     const connectPhantomWallet = async (onlyIfTrusted = true) => {
         try {
@@ -18,10 +18,7 @@ export function useWallet() {
                     await solana.connect()
 
                 console.log('WALLET', response)
-
-                const walletAddress = response.publicKey.toString()
-
-                setWalletAddress(walletAddress)
+                setPhantomWallet(response)
             } else {
                 setPhantomWalletInstalled(false)
                 // if (!onlyIfTrusted) visitPhantomWallet()
@@ -31,9 +28,5 @@ export function useWallet() {
         }
     }
 
-    return {
-        phantomWalletInstalled,
-        walletAddress,
-        connectPhantomWallet
-    }
+    return { connectPhantomWallet }
 }
