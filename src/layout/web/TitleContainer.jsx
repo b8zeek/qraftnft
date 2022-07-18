@@ -26,25 +26,25 @@ const TitleContainer = () => {
     switch (location.pathname) {
         case '/':
             return <AnimatedTitle
-                titleKey='/'
+                titleKey='t/'
                 heading='Welcome'
                 description='Greetings Solana Hacker House Paris!'
             />
         case '/example':
             return <AnimatedTitle
-                titleKey='/example'
+                titleKey='t/example'
                 heading='DegenerAPE Yourself'
                 description='Link all your social media with your favorite NFT'
             />
         case '/qr':
             return <AnimatedTitle
-                titleKey='/qr'
+                titleKey='t/qr'
                 heading='QR NFT'
                 description='Show the people who are you'
             />
         case '/about':
             return <AnimatedTitle
-                titleKey='/about'
+                titleKey='t/about'
                 heading='Who are we?'
                 description='Get to know us a bit better'
             />
