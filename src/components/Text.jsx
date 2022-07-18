@@ -17,7 +17,6 @@ const StyledParagraph = styled.p`
     font-weight: 400;
     color: rgba(150, 150, 150, 1);
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
     margin: 0;
 
