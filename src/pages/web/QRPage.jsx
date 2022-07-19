@@ -103,7 +103,10 @@ const QRGenerator = ({
                         <Input label='Enter QR code link' onChange={e => setQRLink(e.target.value)} />
                         {!QRGenerated && qrLink.trim() && <Button onClick={generateQRNFT}>Generate QR</Button>}
                     </> :
-                    <QRCodeContainer><QRCode text={qrLink.trim()} robohashURL={robohashURL} /></QRCodeContainer>
+                    <>
+                        <QRCodeContainer><QRCode text={qrLink.trim()} robohashURL={robohashURL} /></QRCodeContainer>
+                        <Button>Create NFT</Button>
+                    </>
                 }
             </>
         }
@@ -163,14 +166,15 @@ const QRPage = () => {
     const [robohashURL, setRobohashURL] = useState('')
     const [QRGenerated, setQRGenerated] = useState(false)
 
-    const generateQRNFT = nft => {
+    const generateQRNFT = (nft = false) => {
         let imageLink = ''
 
-        if (nft) {
+        if (nft?.data?.image) {
+            console.log('ENTERED', nft)
             imageLink = nft.data.image
         } else {
             const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
-    
+            console.log('URL', url)
             imageLink = url.split('?')[0]
         }
     
