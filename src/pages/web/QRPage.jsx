@@ -142,12 +142,12 @@ const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL 
                     <Input label='Enter QR code link' onChange={e => setQRLink(e.target.value)} />
                     <Button onClick={handleGenerateQR}>Add QR Code</Button>
                 </SelectedNFTContainer> :
-                NFTs.length === 0 ?
+                NFTs?.length === 0 ?
                     <Button onClick={fetchNFTs}>Get NFTs</Button> :
                     <>
                         <Heading type='small'>Your NFT Gallery</Heading>
                         <Gallery>
-                            {NFTs.map(NFT => <Item src={NFT.data.image} onClick={setSelectedNFT.bind(null, NFT)} />)}
+                            {NFTs?.map(NFT => <Item src={NFT.data.image} onClick={setSelectedNFT.bind(null, NFT)} />)}
                         </Gallery>
                     </>
         }
