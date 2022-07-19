@@ -12,7 +12,7 @@ const AnimatedPage = ({ children }) =>
     </Content>
 
 const Content = styled(motion.div)`
-    position: absolute;
+    position: relative;
     width: 70%;
     min-height: calc(100vh - 154px);
     padding: 0 15%;

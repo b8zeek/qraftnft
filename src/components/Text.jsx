@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
-const Text = ({ children, size, bold, marginBottom }) =>
+const Text = ({ children, size, bold, justify, italic, center, marginBottom }) =>
     <StyledParagraph
         size={size}
         bold={bold}
+        justify={justify}
+        italic={italic}
+        center={center}
         marginBottom={marginBottom}
     >
         {children}
@@ -26,6 +29,12 @@ const StyledParagraph = styled.p`
     `}
 
     ${({ bold }) => bold && 'font-weight: bold;'}
+    ${({ justify }) => justify && `
+        text-align: justify;
+        text-justify: inter-word;
+    `}
+    ${({ italic }) => italic && 'font-style: italic;'}
+    ${({ center }) => center && 'text-align: center;'}
     ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom}`}
 `
 

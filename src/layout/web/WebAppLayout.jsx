@@ -12,6 +12,7 @@ import LandingPage from '../../pages/web/LandingPage'
 import ExamplePage from '../../pages/web/ExamplePage'
 import QRPage from '../../pages/web/QRPage'
 import AboutPage from '../../pages/web/AboutPage'
+import AboutPage2 from '../../pages/web/About2Page'
 
 const ComputerHomePage = () => {
     const location = useLocation()
@@ -27,6 +28,7 @@ const ComputerHomePage = () => {
                         <Route path='example' element={<ExamplePage />} />
                         <Route path='qr' element={<QRPage />} />
                         <Route path='about' element={<AboutPage />} />
+                        <Route path='about2' element={<AboutPage2 />} />
                     </Routes>
                 </Content>
             </AnimatePresence>
