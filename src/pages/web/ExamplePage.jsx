@@ -35,8 +35,8 @@ const ExamplePage = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
             >
-                <Heading type='small'>Get Sticker</Heading>
-                <Text size='medium' marginBottom='30px'>Enter your address and we'll send you your generated sticker.</Text>
+                <Heading type='small'>Get Sticker or NFT</Heading>
+                <Text size='medium' marginBottom='30px'>Enter your address and we'll send you your generated sticker. Another thing you can do, you can mint your newly created image with your QR code, mint it and send it to someone.</Text>
             </Section>}
 
             {page !== 5 && <Button onClick={() => setPage(page => ++page)}>

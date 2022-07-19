@@ -120,7 +120,9 @@ const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL 
     const fetchNFTs = async () => {
         const data = await getNftTokenData()
 
-        setNFTs(data)
+        console.log(data)
+
+        if (data) setNFTs(data)
     }
 
     const handleGenerateQR = async () => {
