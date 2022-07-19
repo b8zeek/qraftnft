@@ -109,27 +109,65 @@ const QRGenerator = ({
         }
     </WalletQR>
 
-const QRNFT = () =>
-    <WalletQR>
+const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL }) => {
+    const [NFTs, setNFTs] = useState([])
+    const [selectedNFT, setSelectedNFT] = useState(null)
+    const [QRGenerated, setQRGenerated] = useState(false)
 
+    const fetchNFTs = async () => {
+        const data = await getNftTokenData()
+
+        setNFTs(data)
+    }
+
+    const handleGenerateQR = async () => {
+        await generateQRNFT(selectedNFT)
+        setQRGenerated(true)
+    }
+
+    return <WalletQR>
+        {QRGenerated ?
+            <QRCodeContainer><QRCode text={qrLink.trim()} robohashURL={robohashURL} /></QRCodeContainer> :
+            selectedNFT ?
+                <SelectedNFTContainer>
+                    <Item src={selectedNFT.data.image} size='big' />
+                    <Input label='Enter QR code link' onChange={e => setQRLink(e.target.value)} />
+                    <Button onClick={handleGenerateQR}>Add QR Code</Button>
+                </SelectedNFTContainer> :
+                NFTs.length === 0 ?
+                    <Button onClick={fetchNFTs}>Get NFTs</Button> :
+                    <>
+                        <Heading type='small'>Your NFT Gallery</Heading>
+                        <Gallery>
+                            {NFTs.map(NFT => <Item src={NFT.data.image} onClick={setSelectedNFT.bind(null, NFT)} />)}
+                        </Gallery>
+                    </>
+        }
     </WalletQR> 
+}
 
 const QRPage = () => {
     const phantomWallet = store(state => state.phantomWallet)
     const robotGenerated = store(state => state.robotGenerated)
     const setRobotGenerated = store(state => state.setRobotGenerated)
 
-    const { connectPhantomWallet } = useWallet()
+    const { connectPhantomWallet, getNftTokenData } = useWallet()
 
     const [page, setPage] = useState(0)
     const [qrLink, setQRLink] = useState('')
     const [robohashURL, setRobohashURL] = useState('')
     const [QRGenerated, setQRGenerated] = useState(false)
 
-    const generateQRNFT = () => {
-        const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
+    const generateQRNFT = nft => {
+        let imageLink = ''
 
-        const imageLink = url.split('?')[0]
+        if (nft) {
+            imageLink = nft.data.image
+        } else {
+            const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
+    
+            imageLink = url.split('?')[0]
+        }
     
         var request = new XMLHttpRequest()
         request.open('GET', imageLink, true)
@@ -180,7 +218,15 @@ const QRPage = () => {
                     setQRLink={setQRLink}
                 />
             }
-            {page === 2 && <QRNFT />}
+            {page === 2 &&
+                <QRNFT
+                    getNftTokenData={getNftTokenData}
+                    qrLink={qrLink}
+                    setQRLink={setQRLink}
+                    generateQRNFT={generateQRNFT}
+                    robohashURL={robohashURL}
+                />
+            }
         </AnimatePresence>
     </AnimatedPage>
 }
@@ -230,6 +276,27 @@ const WalletQR = styled(motion.div)`
     display: inline-block;
     vertical-align: top;
     text-align: center;
+`
+
+const Gallery = styled.div`
+    width: 100%;
+    margin-top: 20px;
+`
+
+const Item = styled.img`
+    width: 45%;
+    display: inline-block;
+    margin: 0 0 30px 5%;
+    cursor: pointer;
+
+    ${({ size }) => size === 'big' && `
+        width: 60%;
+        margin: 0 auto;
+    `}
+`
+
+const SelectedNFTContainer = styled.div`
+    width: 100%;
 `
 
 const Section = styled(motion.div)`
