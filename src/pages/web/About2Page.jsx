@@ -6,6 +6,8 @@ import AnimatedPage from './AnimatedPage'
 import Heading from '../../components/Heading'
 import Text from '../../components/Text'
 
+import AnimatedSection from '../../components/AnimatedSection'
+
 import ape1 from '../../assets/mirko-basic-react-mag.png'
 import ape2 from '../../assets/milos-rujevic-web-wizzard.png'
 import ape3 from '../../assets/marko-grudic-marketing-guru.png'
@@ -31,7 +33,7 @@ const Member = ({
 const AboutPage = () => {
     const [showModal, setShowModal] = useState(false)
 
-    return <AnimatedPage>
+    return <AnimatedPage withMargin>
         {showModal && <Modal
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -39,10 +41,21 @@ const AboutPage = () => {
             onClick={() => setShowModal(false)}
         />}
         <LeftSide>
-            <Heading type='small' marginBottom='30px'>About Us</Heading>
-            {/* <Text size='medium' justify marginBottom='20px'>We are a team of close friends with multiple skill sets evolving around software creation and advertisement. It all began with several inhouse projects and ideas we had and worked on. Not long after we realised the full potential of this team. Capable of many and without impregnable obstacles! Step by step, app by app, we got a strong head start for our clients.</Text> */}
-            <Text size='medium' justify marginBottom='20px'>We are a team of close friends with multiple skill sets evolving around software creation and advertisement. We have a proven history of delivering a top-notch quality products. Since we provide a premium service, we cooperate only with reputable people and companies who are serious about the business with similar mindset as ours:</Text>
-            <Text size='medium' justify italic>"Creation of the quality, unique products and user experiences with a high level of attention towards details!"</Text>
+            <AnimatedSection key='the-beginnings' delay={.4}>
+                <Heading type='small' marginBottom='30px'>The Beginnings</Heading>
+                <Text size='medium' justify marginBottom='20px'>We are a team of close friends with multiple skill sets evolving around software creation and advertisement. It all began with several inhouse projects and ideas we had and worked on. Not long after we realised the full potential of this team. Capable of many and without impregnable obstacles! Step by step, app by app, we got a strong head start for our clients.</Text>
+            </AnimatedSection>
+            <AnimatedSection key='history' delay={.6}>
+                <Heading type='small' marginBottom='30px'>History</Heading>
+                <Text size='medium' justify marginBottom='20px'>With a proven history of delivering top-notch quality products and services. We were able to scale the whole process and determine our ideal scenario:</Text>
+                <Text size='medium' justify italic>"Leave a mark we could be all proud of!"</Text>
+            </AnimatedSection>
+            <AnimatedSection key='how' delay={.8}>
+                <Heading type='small' marginBottom='30px'>How?</Heading>
+                <Text size='medium' justify marginBottom='20px'>How? By cooperating only with reputable people and companies who are serious about the business with similar mindset as ours:</Text>
+                <Text size='medium' justify italic>"Creation of the quality, unique products and user experiences with a high level of attention towards details!"</Text>
+                <Text size='medium' justify marginBottom='20px'>Sometimes things tend to look hard until we roll up our sleeves, jump into heads first with passion and Strength to overcome any obstacle! If you feel our story in your gutt and need such service, feel free to contact us!</Text>
+            </AnimatedSection>
         </LeftSide>
         <RightSide
             initial={{ scale: 0 }}
@@ -51,9 +64,10 @@ const AboutPage = () => {
             <Heading type='small' marginBottom='30px'>Meet the TEAM</Heading>
             <TeamContainer>
                 <Member
+                    margin
                     backgroundImage={ape1}
                     name='Mirko Basic'
-                    title='Con Artist'
+                    title='Master Blaster'
                     setShowModal={setShowModal}
                 />
                 <Member
@@ -61,7 +75,7 @@ const AboutPage = () => {
                     name='Milos Rujevic'
                     title='Mad Scientist'
                     setShowModal={setShowModal}
-                margin />
+                />
                 <Member
                     backgroundImage={ape3}
                     name='Marko Grudic'
@@ -74,14 +88,14 @@ const AboutPage = () => {
 }
 
 const LeftSide = styled.div`
-    width: calc(35% - 50px);
+    width: calc(60% - 50px);
     display: inline-block;
     vertical-align: top;
-    padding: 0 50px 0 0;
+    padding: 0 50px 50px 0;
 `
 
 const RightSide = styled(motion.div)`
-    width: 65%;
+    width: 40%;
     display: inline-block;
     vertical-align: top;
 `
@@ -99,10 +113,11 @@ const Modal = styled(motion.div)`
 
 const TeamContainer = styled.div`
     width: 100%;
+    padding-bottom: 50px;
 `
 
 const TeamMember = styled.div`
-    width: calc(30% - 40px);
+    width: calc(45% - 40px);
     min-height: 100px;
     position: relative;
     display: inline-block;
@@ -111,7 +126,7 @@ const TeamMember = styled.div`
     border-radius: 10px;
     padding: 20px;
     cursor: pointer;
-    ${({ margin }) => margin && 'margin: 0 5%;'}
+    ${({ margin }) => margin && 'margin: 0 5% 20px 0;'}
 `
 
 const gradient = keyframes`
@@ -163,7 +178,7 @@ const Mask = styled.div`
 
 const NameLabel = styled.p`
     line-height: 32px;
-    font-size: 24px;
+    font-size: 22px;
     font-family: Inter, sans-serif;
     font-weight: 400;
     color: #fff;

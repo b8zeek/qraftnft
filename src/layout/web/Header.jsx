@@ -17,7 +17,6 @@ const Header = () => {
             <StyledLink to='example'>Example</StyledLink>
             <StyledLink to='qr' cta={+true}>QR NFT</StyledLink>
             <StyledLink to='about'>About</StyledLink>
-            <StyledLink to='about2'>About2</StyledLink>
             <PhantomLogo
                 src={phantom}
                 alt='phantom-logo'

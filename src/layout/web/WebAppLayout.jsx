@@ -27,8 +27,7 @@ const ComputerHomePage = () => {
                         <Route path='/' element={<LandingPage />} />
                         <Route path='example' element={<ExamplePage />} />
                         <Route path='qr' element={<QRPage />} />
-                        <Route path='about' element={<AboutPage />} />
-                        <Route path='about2' element={<AboutPage2 />} />
+                        <Route path='about' element={<AboutPage2 />} />
                     </Routes>
                 </Content>
             </AnimatePresence>
