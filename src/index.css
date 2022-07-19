@@ -184,8 +184,6 @@ div a {
   transition: all 0.3s;
   transform: rotateX(-90deg);
   transform-origin: 50% 0;
-
-  border-radius: 19px !important;
 }
 .flip a:hover, .flip a:focus {
   outline: none;
