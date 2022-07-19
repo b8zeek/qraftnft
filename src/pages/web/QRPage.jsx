@@ -89,7 +89,7 @@ const QRGenerator = ({
     setQRLink
 }) =>
     <WalletQR
-        key='new'
+        key='robot'
         initial={{ x: '100%', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: '-100%', opacity: 0 }}
@@ -125,7 +125,12 @@ const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL 
         setQRGenerated(true)
     }
 
-    return <WalletQR>
+    return <WalletQR
+        key='nft'
+        initial={{ x: '100%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: '-100%', opacity: 0 }}
+    >
         {QRGenerated ?
             <QRCodeContainer><QRCode text={qrLink.trim()} robohashURL={robohashURL} /></QRCodeContainer> :
             selectedNFT ?
