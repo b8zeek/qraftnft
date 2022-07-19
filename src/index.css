@@ -138,3 +138,63 @@ body {
     width: 100%;
   }
 }
+
+div a {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  color: #9945FF;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 400;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+  font-size: 1.35em;
+}
+
+.flip  {
+  padding-top: 20px;
+  background: #000;
+}
+
+.flip a {
+  line-height: 44px;
+  perspective: 1000px;
+}
+.flip a span {
+  position: relative;
+  display: inline-block;
+  padding: 0 14px;
+  background: #14F195;
+  transition: all 0.3s;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+
+  border-radius: 19px !important;
+}
+.flip a span:before {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #09633e;
+  content: attr(data-hover);
+  transition: all 0.3s;
+  transform: rotateX(-90deg);
+  transform-origin: 50% 0;
+
+  border-radius: 19px !important;
+}
+.flip a:hover, .flip a:focus {
+  outline: none;
+}
+.flip a:hover span, .flip a:focus span {
+  transform: rotateX(90deg) translateY(-22px);
+}
+.flip a:hover span:before, .flip a:focus span:before {
+  background: #0F2027;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}

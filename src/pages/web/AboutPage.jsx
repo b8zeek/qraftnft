@@ -18,11 +18,14 @@ const AboutPage = () =>
             <div className='item'>
                 <Container>
                     <ShaderLayer>
-                        <Mask3 />
+                        <Mask2 />
                     </ShaderLayer>
                 </Container>
-                <a href='https://www.linkedin.com/in/marko-grudic/'>LK</a>
-                <span>Marko Grudic</span>
+                <Container2>
+                    <div className="flip section">
+                        <a href="https://www.linkedin.com/in/basic-mirko/"><span data-hover="Dev.">Mirko Basic</span></a>
+                    </div>
+                </Container2>
                 <p>
                     Full stack developer, who is tackling the waves on web3 like a childs play!
                     He built his career around systematical approach & leave no stones unturned.
@@ -33,24 +36,30 @@ const AboutPage = () =>
             </div>
             <div className='item'>
                 <Container>
-                    <ShaderLayer>
-                        <Mask2 />
-                    </ShaderLayer>
+                    <ShaderLayer2>
+                        <Mask3 />
+                    </ShaderLayer2>
                 </Container>
-                <a href='https://www.linkedin.com/in/basic-mirko/'>LK</a>
-                <span>Mirko Basic</span>
+                <Container2>
+                    <div className="flip section">
+                        <a href="https://www.linkedin.com/in/marko-grudic/"><span data-hover="Con artist">Marko Grudic</span></a>
+                    </div>
+                </Container2>
                 <p>Con artist. Those who are in marketing are devils minions. In Markos case his career path direction is now more specified related to the fields of crypto, web3, real estate & employment.
                     His favorite part of the job is: promoting great things which are beneficial for the masses & being fully confident in the projects, teams behind it.
                 </p>
             </div>
             <div className='item'>
                 <Container>
-                    <ShaderLayer>
+                    <ShaderLayer3>
                         <Mask />
-                    </ShaderLayer>
+                    </ShaderLayer3>
                 </Container>
-                <a href='https://www.linkedin.com/in/itmilos-delivery-manager-serbia-germany/'>LK</a>
-                <span>Milos Rujevic</span>
+                <Container2>
+                    <div className="flip section">
+                        <a href="https://www.linkedin.com/in/itmilos-delivery-manager-serbia-germany/"><span data-hover="web3 mad">Milos Rujevic</span></a>
+                    </div>
+                </Container2>
                 <p>Innovative mad scientist of the web3. With a proven history of implementing key details/innovations into companies as well as systems. Milos built his career around problem solving & creative thinking!
                     Creativity & functionality tend to go against each other.
                     Milos has a history & strong knowledge in software development as well as business development which redefined the whole Creative thinking term.
@@ -97,6 +106,42 @@ const ShaderLayer = styled.div`
     background: linear-gradient(45deg, black, #9945FF, #f4310e, #f58308, #14F195, #777, #3c5e6d, #f4310e, #9945FF, #14F195, #14F195);
     background-size: 540% 540%;
     animation: ${gradient} 4s ease infinite;
+    animation-timing-function: ease, step-start, cubic-bezier(0.1, 0.7, 1.0, 0.1);
+    border-radius: 50%;
+`
+const ShaderLayer2 = styled.div`
+    width: 220px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: black;
+    background-position: center;
+    background-size: 100%;
+    mix-blend-mode: color-dodge;
+    background: #4B0082;
+    background-attachment: fixed;
+    background: linear-gradient(45deg, black, #9945FF, #f4310e, #f58308, #14F195, #777, #3c5e6d, #f4310e, #9945FF, #14F195, #14F195);
+    background-size: 540% 540%;
+    animation: ${gradient} 8s ease infinite;
+    animation-timing-function: steps(10, jump-both);
+    border-radius: 50%;
+`
+const ShaderLayer3 = styled.div`
+    width: 220px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: black;
+    background-position: center;
+    background-size: 100%;
+    mix-blend-mode: color-dodge;
+    background: #4B0082;
+    background-attachment: fixed;
+    background: linear-gradient(45deg, black, #9945FF, #f4310e, #f58308, #14F195, #777, #3c5e6d, #f4310e, #9945FF, #14F195, #14F195);
+    background-size: 540% 540%;
+    animation: ${gradient} 5s ease-in-out infinite;
     border-radius: 50%;
 `
 
@@ -133,6 +178,9 @@ const Mask3 = styled.div`
     background-repeat: no-repeat;
 `
 
+
+const Container2 = styled.div`
+`
 
 const Mask2 = styled.div`
     width: 220px;
