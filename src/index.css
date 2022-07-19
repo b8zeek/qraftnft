@@ -139,19 +139,6 @@ body {
   }
 }
 
-div a {
-  position: relative;
-  display: inline-block;
-  outline: none;
-  color: #9945FF;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 400;
-  text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
-  font-size: 1.35em;
-}
-
 .flip  {
   padding-top: 20px;
   background: #000;
