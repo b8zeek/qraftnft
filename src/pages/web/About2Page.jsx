@@ -48,12 +48,12 @@ const AboutPage = () => {
             <AnimatedSection key='history' delay={.6}>
                 <Heading type='small' marginBottom='30px'>History</Heading>
                 <Text size='medium' justify marginBottom='20px'>With a proven history of delivering top-notch quality products and services. We were able to scale the whole process and determine our ideal scenario:</Text>
-                <Text size='medium' justify italic>"Leave a mark we could be all proud of!"</Text>
+                <Text size='medium' justify italic marginBottom='20px'>"Leave a mark we could be all proud of!"</Text>
             </AnimatedSection>
             <AnimatedSection key='how' delay={.8}>
                 <Heading type='small' marginBottom='30px'>How?</Heading>
                 <Text size='medium' justify marginBottom='20px'>How? By cooperating only with reputable people and companies who are serious about the business with similar mindset as ours:</Text>
-                <Text size='medium' justify italic>"Creation of the quality, unique products and user experiences with a high level of attention towards details!"</Text>
+                <Text size='medium' justify italic marginBottom='20px'>"Creation of the quality, unique products and user experiences with a high level of attention towards details!"</Text>
                 <Text size='medium' justify marginBottom='20px'>Sometimes things tend to look hard until we roll up our sleeves, jump into heads first with passion and Strength to overcome any obstacle! If you feel our story in your gutt and need such service, feel free to contact us!</Text>
             </AnimatedSection>
         </LeftSide>
