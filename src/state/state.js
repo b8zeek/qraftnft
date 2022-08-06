@@ -10,7 +10,9 @@ export const store = create(set => ({
     generatedQRCodes: [],
     addGeneratedQRCode: generatedQRCode => set(state => ({
         generatedQRCodes: [ ...state.generatedQRCodes, generatedQRCode ]
-    }))
+    })),
+    spinner: false,
+    setSpinner: spinner => set({ spinner })
 }))
 
 export default store

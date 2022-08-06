@@ -175,7 +175,7 @@ const QRPage = () => {
     const phantomWallet = store(state => state.phantomWallet)
     const robotGenerated = store(state => state.robotGenerated)
     const setRobotGenerated = store(state => state.setRobotGenerated)
-    const addGeneratedQRCode = store(state => state.addGeneratedQRCode)
+    const setSpinner = store(state => state.setSpinner)
 
     const { connectPhantomWallet, getNftTokenData } = useWallet()
 
@@ -227,6 +227,7 @@ const QRPage = () => {
     }
 
     const createNFT = () => {
+        setSpinner(true)
         console.log('FUNC EXECUTED')
         function b64toBlob(dataURI) {
 
@@ -240,7 +241,7 @@ const QRPage = () => {
             return new Blob([ab], { type: 'image/jpeg' })
         }
         
-        var myTimeout = setTimeout(myGreeting, 700)
+        var myTimeout = setTimeout(myGreeting, 900)
         
         function myGreeting() {
             var divCollection = document.querySelectorAll('div')
@@ -251,7 +252,7 @@ const QRPage = () => {
             clearTimeout(myTimeout)
         }
         
-        async function iterate(item) {
+        const iterate = async item => {
             try {
                 if (item.style.backgroundImage.indexOf('base64') !== -1) {
                     var createNFTHeaders = new Headers()
@@ -292,9 +293,13 @@ const QRPage = () => {
                     })
 
                     console.log('RES', transferResponse)
+                    setSpinner(false)
                 }
             } catch (error) {
                 console.log(error)
+                setSpinner(false)
+            } finally {
+                console.log('FINALLY EXECUTED')
             }
         }
     }
