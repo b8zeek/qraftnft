@@ -120,7 +120,7 @@ const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL 
     const fetchNFTs = async () => {
         const data = await getNftTokenData()
 
-        console.log(data)
+        console.log('NFT DATA', data)
 
         if (data) setNFTs(data)
     }
@@ -140,7 +140,7 @@ const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL 
             <QRCodeContainer><QRCode text={qrLink.trim()} robohashURL={robohashURL} /></QRCodeContainer> :
             selectedNFT ?
                 <SelectedNFTContainer>
-                    <Item src={selectedNFT.data.image} size='big' />
+                    <Item src={selectedNFT.image_uri} size='big' />
                     <Input label='Enter QR code link' onChange={e => setQRLink(e.target.value)} />
                     <Button onClick={handleGenerateQR}>Add QR Code</Button>
                 </SelectedNFTContainer> :
@@ -149,7 +149,7 @@ const QRNFT = ({ getNftTokenData, qrLink, setQRLink, generateQRNFT, robohashURL 
                     <>
                         <Heading type='small'>Your NFT Gallery</Heading>
                         <Gallery>
-                            {NFTs?.map(NFT => <Item src={NFT.data.image} onClick={setSelectedNFT.bind(null, NFT)} />)}
+                            {NFTs?.map(NFT => <Item src={NFT.image_uri} onClick={setSelectedNFT.bind(null, NFT)} />)}
                         </Gallery>
                     </>
         }
@@ -171,10 +171,11 @@ const QRPage = () => {
     const generateQRNFT = (nft = false) => {
         let imageLink = ''
 
-        if (nft?.data?.image) {
+        if (nft?.image_uri) {
             console.log('ENTERED', nft)
-            imageLink = nft.data.image
+            imageLink = nft.image_uri
         } else {
+            console.log(document.getElementById('robohash-container'))
             const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
             console.log('URL', url)
             imageLink = url.split('?')[0]
