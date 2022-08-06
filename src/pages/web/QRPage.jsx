@@ -132,45 +132,30 @@ const QRGenerator = ({
                     formdata.append("max_supply", "2")
                     formdata.append("royalty", "20")
                     formdata.append("file", b64toBlob(item.style.backgroundImage.substring(5).slice(0, -2)), "cb.jpeg")
-            
-                    var requestOptions = {
-                        method: 'POST',
-                        headers: createNFTHeaders,
-                        body: formdata,
-                        redirect: 'follow'
-                    }
-            
-                    const createNFTResponse = await fetch("https://api.shyft.to/sol/v1/nft/create", requestOptions)
-                    
-                    const parsedNFTResponse = await createNFTResponse.json()
 
-                    console.log('NFT RESPONSE', parsedNFTResponse)
-                    
-                    setTimeout(async () => {
-                        var transferNFTHeaders = new Headers()
-                        transferNFTHeaders.append("x-api-key", "QQx9fwLpfVTua7_o")
+                    const { data: createNFTResponseData } = await axios({
+                        method: 'post',
+                        headers: { 'x-api-key': 'QQx9fwLpfVTua7_o' },
+                        url: 'https://api.shyft.to/sol/v1/nft/create',
+                        data: formdata
+                    })
 
-                        var requestOptions = {
-                            method: 'POST',
-                            headers: transferNFTHeaders,
-                            body: JSON.stringify({
-                                "network": "devnet",
-                                "from_address": "4qerdPEVyDwPpzFNHXF4qfChb9hvXdfYr1JfXSBxXYCUFaKU5eyrK8GSfHfyJTCiKYQoxGJFMahXUHBcGL9c4Dqo",
-                                "token_address": parsedNFTResponse.result.mint,
-                                "to_address": 'BvzKvn6nUUAYtKu2pH3h5SbUkUNcRPQawg4bURBiojJx',
-                                "transfer_authority": true
-                            }),
-                            redirect: 'follow'
+                    console.log(createNFTResponseData)
+                    
+                    const transferResponse = await axios({
+                        method: 'post',
+                        headers: { 'x-api-key': 'QQx9fwLpfVTua7_o' },
+                        url: 'https://api.shyft.to/sol/v1/nft/transfer',
+                        data: {
+                            network: 'devnet',
+                            from_address: "4qerdPEVyDwPpzFNHXF4qfChb9hvXdfYr1JfXSBxXYCUFaKU5eyrK8GSfHfyJTCiKYQoxGJFMahXUHBcGL9c4Dqo",
+                            token_address: createNFTResponseData.result.mint,
+                            to_address: '4uHsdarqQw5ft5S6YD6iWZAMhaXCohHKYuKS5vD1L6e6',
+                            transfer_authority: true
                         }
+                    })
 
-                        console.log('REQ OPTS', requestOptions)
-
-                        const transferResponse = await fetch("https://api.shyft.to/sol/v1/nft/transfer", requestOptions)
-                        
-                        const parsedTransferResponse = await transferResponse.json()
-
-                        console.log('TRANSFER RESPONSE', parsedTransferResponse)
-                    }, 5000)
+                    console.log('RES', transferResponse)
                 }
             } catch (error) {
                 console.log(error)

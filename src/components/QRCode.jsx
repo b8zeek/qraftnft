@@ -5,6 +5,8 @@ const QRCode = ({ text, robohashURL }) =>
         options={{
             text: text,
             size: 321,
+            autoColor: true,
+            colorLight: true,
             logoCornerRadius: 2,
             logoMargin: 2,
             margin: 4,
