@@ -191,6 +191,7 @@ const QRPage = () => {
         }
     
         var request = new XMLHttpRequest()
+
         request.open('GET', imageLink, true)
         request.responseType = 'blob'
         request.onload = function() {
@@ -202,21 +203,8 @@ const QRPage = () => {
                 setQRGenerated(true)
             }
         }
+
         request.send()
-
-        // const templateParams = {
-        //     currentValue: qrLink,
-        //     walletAddress: phantomWallet.publicKey.toString(),
-        //     deliveryAddress: 'bejzik8@gmail.com'
-        // }
-        console.log('EXE DONE')
-
-        // emailjs.send('service_w6acx2m', 'template_0gczmq7', templateParams, 'FsM-UuY5XXpVXOUdZ')
-        //     .then(result => {
-        //         console.log(result.text)
-        //     }, error => {
-        //         console.log(error.text)
-        //     })
     }
 
     const createNFT = () => {

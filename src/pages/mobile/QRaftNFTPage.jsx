@@ -5,6 +5,7 @@ import Heading from '../../components/Heading'
 import Text from '../../components/Text'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import QRCode from '../../components/QRCode'
 
 import store from '../../state/state'
 import { useWallet } from '../../services/useWallet'
@@ -70,6 +71,28 @@ const GalleryPage = () => {
 const SingleNFT = () => {
     const NFTSelected = store(state => state.NFTSelected)
     const [QRLink, setQRLink] = useState('')
+    const [robohashURL, setRobohashURL] = useState('')
+    const [QRGenerated, setQRGenerated] = useState(false)
+
+    const generateQRNFT = nft => {
+        let imageLink = nft.image_uri
+    
+        var request = new XMLHttpRequest()
+
+        request.open('GET', imageLink, true)
+        request.responseType = 'blob'
+        request.onload = function() {
+            var reader = new FileReader()
+            reader.readAsDataURL(request.response)
+            reader.onload = e => {
+                console.log(e.target.result)
+                setRobohashURL(e.target.result)
+                setQRGenerated(true)
+            }
+        }
+
+        request.send()
+    }
 
     return <Container>
         <Heading
@@ -78,20 +101,30 @@ const SingleNFT = () => {
         >
             QR your NFT!
         </Heading>
-        <Text
-            size='small'
-            marginBottom='20px'
-        >
-            Enter the link you want to apply to the selected NFT and click Generate button.
-        </Text>
-        <NFTItem NFTData={NFTSelected} />
-        <Input
-            label='Enter QR code link'
-            fullWidth={true}
-            marginBottom='20px'
-            onChange={event => setQRLink(event.target.value)}
-        />
-        <Button size='small' onClick={() => console.log(QRLink)}>Generate QRNFT</Button>
+        {robohashURL ?
+            <>
+                <QRCodeContainer>
+                    <QRCode text={QRLink.trim()} robohashURL={robohashURL} />
+                </QRCodeContainer>
+                <Button size='small' onClick={generateQRNFT.bind(null, NFTSelected)}>Mint NFT</Button>    
+            </> :
+            <>
+                <Text
+                    size='small'
+                    marginBottom='20px'
+                >
+                    Enter the link you want to apply to the selected NFT and click Generate button.
+                </Text>
+                <NFTItem NFTData={NFTSelected} />
+                <Input
+                    label='Enter QR code link'
+                    fullWidth={true}
+                    marginBottom='20px'
+                    onChange={event => setQRLink(event.target.value)}
+                />
+                <Button size='small' onClick={generateQRNFT.bind(null, NFTSelected)}>Generate QRNFT</Button>
+            </>
+        }
     </Container>
 }
 
@@ -134,6 +167,14 @@ const NFT = styled.img`
     width: 100%;
     display: block;
     cursor: pointer;
+`
+
+const QRCodeContainer = styled.div`
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+
+    & div { margin: 0 auto; }
 `
 
 export default QRaftNFTPage
