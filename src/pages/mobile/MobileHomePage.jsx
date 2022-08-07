@@ -37,8 +37,19 @@ const Landing = () => {
     </PageContainer>
 }
 
+const NFTItem = ({ NFTData }) =>
+    <NFTItemContainer>
+        <NFT
+            key={NFTData.mint}
+            src={NFTData.image_uri}
+        />
+        <Heading type='smallest'>{NFTData.name}</Heading>
+    </NFTItemContainer>
+
 const PhantomConnectedSection = () =>{
     const phantomWallet = store(state => state.phantomWallet)
+    const NFTs = store(state => state.NFTs)
+    const { getNftTokenData } = useWallet()
 
     return <PageContainer>
         <Heading
@@ -62,7 +73,18 @@ const PhantomConnectedSection = () =>{
             <Heading type='smallest'>QR Your NFT</Heading>
             <Text size='small'>Select one of the NFTs from your wallet and apply a QR code to it. We suggest adding your Linktree url to it.</Text>
         </Section>
-        <Button size='small'>Get NFTs</Button>
+        {NFTs.length !== 0 ?
+            <Gallery>
+                <Text
+                    size='medium'
+                    marginBottom='15px'
+                >
+                    Select on one of your NFTs by clicking on it in order to apply a QR code.
+                </Text>
+                {NFTs?.map(NFTData => <NFTItem NFTData={NFTData} />)}
+            </Gallery> :
+            <Button size='small' onClick={getNftTokenData}>Get NFTs</Button>
+        }
     </PageContainer>
 }
 
@@ -112,6 +134,21 @@ const Section = styled(motion.div)`
     background: #4e44ce36;
     text-align: center;
     margin-bottom: 15px;
+`
+
+const Gallery = styled.div`
+    width: 100%;
+`
+
+const NFTItemContainer = styled.div`
+    width: 100%;
+    margin-bottom: 15px;
+`
+
+const NFT = styled.img`
+    width: 100%;
+    display: block;
+    cursor: pointer;
 `
 
 const BGImage = styled.img`

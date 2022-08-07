@@ -118,24 +118,17 @@ const QRGenerator = ({
 }
 
 const QRNFT = ({
-    getNftTokenData,
     qrLink,
     setQRLink,
     generateQRNFT,
     robohashURL,
     createNFT
 }) => {
-    const [NFTs, setNFTs] = useState([])
     const [selectedNFT, setSelectedNFT] = useState(null)
     const [QRGenerated, setQRGenerated] = useState(false)
 
-    const fetchNFTs = async () => {
-        const data = await getNftTokenData()
-
-        console.log('NFT DATA', data)
-
-        if (data) setNFTs(data)
-    }
+    const NFTs = store(state => state.NFTs)
+    const { getNftTokenData } = useWallet()
 
     const handleGenerateQR = async () => {
         await generateQRNFT(selectedNFT)
@@ -160,11 +153,11 @@ const QRNFT = ({
                     <Button onClick={handleGenerateQR}>Add QR Code</Button>
                 </SelectedNFTContainer> :
                 NFTs?.length === 0 ?
-                    <Button onClick={fetchNFTs}>Get NFTs</Button> :
+                    <Button onClick={getNftTokenData}>Get NFTs</Button> :
                     <>
                         <Heading type='small'>Your NFT Gallery</Heading>
                         <Gallery>
-                            {NFTs?.map(NFT => <Item src={NFT.image_uri} onClick={setSelectedNFT.bind(null, NFT)} />)}
+                            {NFTs?.map(NFT => <Item key={NFT.image_uri} src={NFT.image_uri} onClick={setSelectedNFT.bind(null, NFT)} />)}
                         </Gallery>
                     </>
         }
@@ -177,7 +170,7 @@ const QRPage = () => {
     const setRobotGenerated = store(state => state.setRobotGenerated)
     const setSpinner = store(state => state.setSpinner)
 
-    const { connectPhantomWallet, getNftTokenData } = useWallet()
+    const { connectPhantomWallet } = useWallet()
 
     const [page, setPage] = useState(0)
     const [qrLink, setQRLink] = useState('')
@@ -327,7 +320,6 @@ const QRPage = () => {
             }
             {page === 2 &&
                 <QRNFT
-                    getNftTokenData={getNftTokenData}
                     qrLink={qrLink}
                     setQRLink={setQRLink}
                     generateQRNFT={generateQRNFT}

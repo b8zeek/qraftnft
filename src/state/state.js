@@ -5,6 +5,8 @@ export const store = create(set => ({
     setPhantomWalletInstalled: phantomWalletInstalled => set({ phantomWalletInstalled }),
     phantomWallet: null,
     setPhantomWallet: phantomWallet => set({ phantomWallet }),
+    NFTs: [],
+    setNFTs: NFTs => set({ NFTs }),
     robotGenerated: null,
     setRobotGenerated: robotGenerated => set({ robotGenerated }),
     generatedQRCodes: [],
