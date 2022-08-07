@@ -4,18 +4,22 @@ import { motion } from 'framer-motion'
 import Heading from '../../components/Heading'
 import Text from '../../components/Text'
 import Button from '../../components/Button'
+import Input from '../../components/Input'
 
 import store from '../../state/state'
 import { useWallet } from '../../services/useWallet'
+import { useState } from 'react'
 
-const NFTItem = ({ NFTData }) =>
-    <NFTItemContainer>
+const NFTItem = ({ NFTData }) => {
+    const setNFTSelected = store(state => state.setNFTSelected)
+
+    return <NFTItemContainer onClick={() => setNFTSelected(NFTData)}>
         <NFT src={NFTData.image_uri} />
         <Heading type='smallest'>{NFTData.name}</Heading>
     </NFTItemContainer>
+}
 
-
-const QRaftNFTPage = () => {
+const GalleryPage = () => {
     const phantomWallet = store(state => state.phantomWallet)
     const NFTs = store(state => state.NFTs)
     const { getNftTokenData } = useWallet()
@@ -51,11 +55,52 @@ const QRaftNFTPage = () => {
                 >
                     Select on one of your NFTs by clicking on it in order to apply a QR code.
                 </Text>
-                {NFTs?.map(NFTData => <NFTItem NFTData={NFTData} key={NFTData.mint} />)}
+                {NFTs?.map(NFTData =>
+                    <NFTItem
+                        key={NFTData.mint}
+                        NFTData={NFTData}
+                    />
+                )}
             </Gallery> :
             <Button size='small' onClick={getNftTokenData}>Get NFTs</Button>
         }
     </Container>
+}
+
+const SingleNFT = () => {
+    const NFTSelected = store(state => state.NFTSelected)
+    const [QRLink, setQRLink] = useState('')
+
+    return <Container>
+        <Heading
+            type='small'
+            marginBottom='15px'
+        >
+            QR your NFT!
+        </Heading>
+        <Text
+            size='small'
+            marginBottom='20px'
+        >
+            Enter the link you want to apply to the selected NFT and click Generate button.
+        </Text>
+        <NFTItem NFTData={NFTSelected} />
+        <Input
+            label='Enter QR code link'
+            fullWidth={true}
+            marginBottom='20px'
+            onChange={event => setQRLink(event.target.value)}
+        />
+        <Button size='small' onClick={() => console.log(QRLink)}>Generate QRNFT</Button>
+    </Container>
+}
+
+const QRaftNFTPage = () => {
+    const NFTSelected = store(state => state.NFTSelected)
+
+    return NFTSelected ?
+        <SingleNFT /> :
+        <GalleryPage />
 }
 
 const Container = styled.div`
