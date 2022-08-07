@@ -75,9 +75,10 @@ const PhantomConnectedSection = () =>{
         </Section>
         {NFTs.length !== 0 ?
             <Gallery>
+                <Heading type='smallest'>Your NFT Gallery</Heading>
                 <Text
-                    size='medium'
-                    marginBottom='15px'
+                    size='small'
+                    marginBottom='20px'
                 >
                     Select on one of your NFTs by clicking on it in order to apply a QR code.
                 </Text>
@@ -138,11 +139,12 @@ const Section = styled(motion.div)`
 
 const Gallery = styled.div`
     width: 100%;
+    margin-top: 30px;
 `
 
 const NFTItemContainer = styled.div`
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 `
 
 const NFT = styled.img`
