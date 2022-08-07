@@ -54,7 +54,7 @@ const TitleContainer = () => {
 const AnimatedDiv = styled(motion.div)`
     width: 70%;
     height: 104px;
-    padding: 0 15% 50px;
+    padding: 0 15% 20px;
 `
 
 export default TitleContainer
