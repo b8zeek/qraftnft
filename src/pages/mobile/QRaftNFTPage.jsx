@@ -77,23 +77,30 @@ const SingleNFT = () => {
     const setSpinner = store(state => state.setSpinner)
     const [successfulMint, setSuccessfulMint] = useState(false)
 
-    const generateQRNFT = nft => {
-        let imageLink = nft.image_uri
+    const generateQRNFT = async nft => {
+        setSpinner(true)
+        try {
+            let imageLink = nft.image_uri
+        
+            var request = new XMLHttpRequest()
     
-        var request = new XMLHttpRequest()
-
-        request.open('GET', imageLink, true)
-        request.responseType = 'blob'
-        request.onload = function() {
-            var reader = new FileReader()
-            reader.readAsDataURL(request.response)
-            reader.onload = e => {
-                console.log(e.target.result)
-                setRobohashURL(e.target.result)
+            request.open('GET', imageLink, true)
+            request.responseType = 'blob'
+            request.onload = function() {
+                var reader = new FileReader()
+                reader.readAsDataURL(request.response)
+                reader.onload = e => {
+                    console.log(e.target.result)
+                    setRobohashURL(e.target.result)
+                    setSpinner(false)
+                }
             }
+    
+            request.send()
+        } catch (error) {
+            console.error(error)
+            setSpinner(false)
         }
-
-        request.send()
     }
 
     const createNFT = () => {

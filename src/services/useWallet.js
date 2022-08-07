@@ -1,14 +1,11 @@
-import axios from 'axios'
 import store from '../state/state'
-
-import { Connection, clusterApiUrl } from '@solana/web3.js'
-import { getParsedNftAccountsByOwner } from '@nfteyez/sol-rayz'
 
 export function useWallet() {
     const phantomWallet = store(state => state.phantomWallet)
     const setPhantomWalletInstalled = store(state => state.setPhantomWalletInstalled)
     const setPhantomWallet = store(state => state.setPhantomWallet)
     const setNFTs = store(state => state.setNFTs)
+    const setSpinner = store(state => state.setSpinner)
 
     const connectPhantomWallet = async (onlyIfTrusted = true) => {
         try {
@@ -34,6 +31,8 @@ export function useWallet() {
     }
 
     const getNftTokenData = async () => {
+        setSpinner(true)
+
         try {
             var myHeaders = new Headers()
             myHeaders.append('x-api-key', 'QQx9fwLpfVTua7_o')
@@ -50,8 +49,10 @@ export function useWallet() {
             console.log('NFT DATA', parsedResult)
 
             setNFTs(parsedResult.result)
+            setSpinner(false)
         } catch (error) {
             console.error(error)
+            setSpinner(false)
         }
     }
 
