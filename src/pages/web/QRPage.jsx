@@ -221,7 +221,7 @@ const QRPage = () => {
             }
             return new Blob([ab], { type: 'image/jpeg' })
         }
-        
+
         var myTimeout = setTimeout(myGreeting, 900)
         
         function myGreeting() {
@@ -275,10 +275,15 @@ const QRPage = () => {
 
                     console.log('RES', transferResponse)
                     setSpinner(false)
+                    setPage(5)
+                    setTimeout(function () {
+                        setPage(1)
+                    },1200)
                 }
             } catch (error) {
                 console.log(error)
                 setSpinner(false)
+
             } finally {
                 console.log('FINALLY EXECUTED')
             }
@@ -287,13 +292,18 @@ const QRPage = () => {
 
     return <AnimatedPage>
         <AnimatePresence>
-            {!page && <PhantomInfo />}
+            {page === 5 &&
+                <div style={{ width: '100%', backgroundColor: '#58bd58', padding: '20px', margin: '20px', color: '#fff', borderRadius: '5px'}}>
+                    You have successfully minted QRNFT
+                </div>
+            }
+            {!page && page !== 5 && <PhantomInfo />}
             <Menu
                 phantomWallet={phantomWallet}
                 connectPhantomWallet={connectPhantomWallet} 
                 setPage={setPage}
             />
-            {page === 1 &&
+            {page === 1 && page !== 5 &&
                 <QRGenerator
                     robotGenerated={robotGenerated}
                     setRobotGenerated={setRobotGenerated}
@@ -306,7 +316,7 @@ const QRPage = () => {
                     createNFT={createNFT}
                 />
             }
-            {page === 2 &&
+            {page === 2 && page !== 5 &&
                 <QRNFT
                     qrLink={qrLink}
                     setQRLink={setQRLink}
@@ -315,9 +325,11 @@ const QRPage = () => {
                     createNFT={createNFT}
                 />
             }
+
         </AnimatePresence>
     </AnimatedPage>
 }
+
 
 const LeftSide = styled(motion.div)`
     width: calc(50% - 40px);
