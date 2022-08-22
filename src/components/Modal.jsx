@@ -4,7 +4,9 @@ import { createPortal } from 'react-dom'
 const domNode = document.getElementById('app-modal')
 
 const Modal = ({ show, children }) =>
-    show ? createPortal(<ModalBackground>{children}</ModalBackground>, domNode) : null
+    show
+        ? createPortal(<ModalBackground>{children}</ModalBackground>, domNode)
+        : null
 
 const ModalBackground = styled.div`
     position: absolute;

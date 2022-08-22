@@ -13,15 +13,15 @@ const Header = () => {
     return (
         <StyledHeader>
             <Navigation>
-                <StyledLink to="/">Home</StyledLink>
-                <StyledLink to="example">Example</StyledLink>
-                <StyledLink to="qr" cta={+true}>
+                <StyledLink to='/'>Home</StyledLink>
+                <StyledLink to='example'>Example</StyledLink>
+                <StyledLink to='qr' cta={+true}>
                     QR NFT
                 </StyledLink>
-                <StyledLink to="about">About</StyledLink>
+                <StyledLink to='about'>About</StyledLink>
                 <PhantomLogo
                     src={phantom}
-                    alt="phantom-logo"
+                    alt='phantom-logo'
                     onClick={connectPhantomWallet}
                     phatnomConnected={phantomWallet}
                 />

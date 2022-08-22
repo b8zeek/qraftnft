@@ -25,33 +25,33 @@ const TitleContainer = () => {
         case '/':
             return (
                 <AnimatedTitle
-                    titleKey="t/"
-                    heading="Welcome"
-                    description="Greetings Solana Hacker House Paris!"
+                    titleKey='t/'
+                    heading='Welcome'
+                    description='Greetings Solana Hacker House Paris!'
                 />
             )
         case '/example':
             return (
                 <AnimatedTitle
-                    titleKey="t/example"
-                    heading="DegenerAPE Yourself"
-                    description="Link all your social media with your favorite NFT"
+                    titleKey='t/example'
+                    heading='DegenerAPE Yourself'
+                    description='Link all your social media with your favorite NFT'
                 />
             )
         case '/qr':
             return (
                 <AnimatedTitle
-                    titleKey="t/qr"
-                    heading="QR NFT"
-                    description="Show the people who are you"
+                    titleKey='t/qr'
+                    heading='QR NFT'
+                    description='Show the people who are you'
                 />
             )
         case '/about':
             return (
                 <AnimatedTitle
-                    titleKey="t/about"
-                    heading="Who are we?"
-                    description="Get to know us a bit better"
+                    titleKey='t/about'
+                    heading='Who are we?'
+                    description='Get to know us a bit better'
                 />
             )
     }

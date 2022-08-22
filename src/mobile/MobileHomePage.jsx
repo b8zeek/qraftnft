@@ -19,11 +19,11 @@ const MobileHomePage = () => {
                 {spinner && (
                     <SpinnerBG>
                         <Grid
-                            height="250"
-                            width="250"
-                            radius="9"
-                            color="white"
-                            ariaLabel="three-dots-loading"
+                            height='250'
+                            width='250'
+                            radius='9'
+                            color='white'
+                            ariaLabel='three-dots-loading'
                         />
                     </SpinnerBG>
                 )}

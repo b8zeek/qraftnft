@@ -19,13 +19,13 @@ import phantom from '@assets/phantom.svg'
 
 const PhantomInfo = () => (
     <LeftSide
-        key="left"
+        key='left'
         initial={{ x: '100%', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
     >
-        <AnimatedSection key="phantom" delay={0.3}>
-            <Heading type="small">Phantom Wallet</Heading>
-            <Text size="medium">
+        <AnimatedSection key='phantom' delay={0.3}>
+            <Heading type='small'>Phantom Wallet</Heading>
+            <Text size='medium'>
                 In order to use the application, you're gonna have to connect
                 your Phantom wallet. We need your public address so we can
                 generate your UNIQUE robot and we need access to your wallet so
@@ -36,14 +36,14 @@ const PhantomInfo = () => (
             initial={{ x: '-300%' }}
             animate={{ x: 0, transition: { duration: 3 } }}
         >
-            <Phantom src={phantom} alt="phantom-logo" />
+            <Phantom src={phantom} alt='phantom-logo' />
         </PhantomContainer>
     </LeftSide>
 )
 
 const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
     <RightSide
-        key="right"
+        key='right'
         initial={{ x: '100%', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: '-100%', opacity: 0 }}
@@ -51,13 +51,13 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
         {phantomWallet ? (
             <>
                 <Section initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                    <Heading type="small" marginBottom="10px">
+                    <Heading type='small' marginBottom='10px'>
                         Phantom Wallet Info
                     </Heading>
-                    <Text size="medium" bold>
+                    <Text size='medium' bold>
                         Public Address:
                     </Text>
-                    <Text size="medium">
+                    <Text size='medium'>
                         {phantomWallet
                             ? phantomWallet.publicKey.toString()
                             : 'Not connected'}
@@ -71,10 +71,10 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setPage(1)}
                 >
-                    <Heading type="small" marginBottom="10px">
+                    <Heading type='small' marginBottom='10px'>
                         Generate QR Wallet Image
                     </Heading>
-                    <Text size="medium">
+                    <Text size='medium'>
                         Generate a unique robot image from Phantom wallet's
                         public key. Add the link you want to share with people
                         and we'll send you the image.
@@ -88,10 +88,10 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
                     whileHover={{ scale: 1.1 }}
                     onClick={() => setPage(2)}
                 >
-                    <Heading type="small" marginBottom="10px">
+                    <Heading type='small' marginBottom='10px'>
                         QR Your NFT
                     </Heading>
-                    <Text size="medium">
+                    <Text size='medium'>
                         Select one of the NFTs from your wallet and apply a QR
                         code to it. We suggest adding your Linktree url to it.
                     </Text>
@@ -118,7 +118,7 @@ const QRGenerator = ({
 }) => {
     return (
         <WalletQR
-            key="robot"
+            key='robot'
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '-100%', opacity: 0 }}
@@ -135,7 +135,7 @@ const QRGenerator = ({
                                 walletAddress={phantomWallet.publicKey.toString()}
                             />
                             <Input
-                                label="Enter QR code link"
+                                label='Enter QR code link'
                                 onChange={e => setQRLink(e.target.value)}
                             />
                             {!QRGenerated && qrLink.trim() && (
@@ -181,7 +181,7 @@ const QRNFT = ({
 
     return (
         <WalletQR
-            key="nft"
+            key='nft'
             initial={{ x: '100%', opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '-100%', opacity: 0 }}
@@ -198,9 +198,9 @@ const QRNFT = ({
                 </>
             ) : selectedNFT ? (
                 <SelectedNFTContainer>
-                    <Item src={selectedNFT.image_uri} size="big" />
+                    <Item src={selectedNFT.image_uri} size='big' />
                     <Input
-                        label="Enter QR code link"
+                        label='Enter QR code link'
                         onChange={e => setQRLink(e.target.value)}
                     />
                     <Button onClick={handleGenerateQR}>Add QR Code</Button>
@@ -209,7 +209,7 @@ const QRNFT = ({
                 <Button onClick={getNftTokenData}>Get NFTs</Button>
             ) : (
                 <>
-                    <Heading type="small">Your NFT Gallery</Heading>
+                    <Heading type='small'>Your NFT Gallery</Heading>
                     <Gallery>
                         {NFTs?.map(NFT => (
                             <Item

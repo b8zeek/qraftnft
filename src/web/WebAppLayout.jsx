@@ -3,9 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Grid } from 'react-loader-spinner'
 
-import bg from '@assets/index_scale_adoption.webp'
-import circle from '@assets/circle.png'
-import solana from '@assets/s-logo.webp'
+import store from '@state/state'
 
 import Header from './Header'
 import TitleContainer from './TitleContainer'
@@ -14,7 +12,9 @@ import ExamplePage from './pages/ExamplePage'
 import QRPage from './pages/QRPage'
 import AboutPage from './pages/AboutPage'
 
-import store from '@state/state'
+import bg from '@assets/index_scale_adoption.webp'
+import circle from '@assets/circle.png'
+import solana from '@assets/s-logo.webp'
 
 const ComputerHomePage = () => {
     const location = useLocation()
@@ -28,28 +28,28 @@ const ComputerHomePage = () => {
                     <TitleContainer />
                     <Content>
                         <Routes location={location} key={location.pathname}>
-                            <Route path="/" element={<LandingPage />} />
-                            <Route path="example" element={<ExamplePage />} />
-                            <Route path="qr" element={<QRPage />} />
-                            <Route path="about" element={<AboutPage />} />
+                            <Route path='/' element={<LandingPage />} />
+                            <Route path='example' element={<ExamplePage />} />
+                            <Route path='qr' element={<QRPage />} />
+                            <Route path='about' element={<AboutPage />} />
                         </Routes>
                     </Content>
                 </AnimatePresence>
                 {spinner && (
                     <SpinnerBG>
                         <Grid
-                            height="250"
-                            width="250"
-                            radius="9"
-                            color="white"
-                            ariaLabel="three-dots-loading"
+                            height='250'
+                            width='250'
+                            radius='9'
+                            color='white'
+                            ariaLabel='three-dots-loading'
                         />
                     </SpinnerBG>
                 )}
             </Main>
             <SolanaLogo src={solana} />
             <BGImage src={bg} />
-            <MovingCircle src={circle} alt="background-circle" />
+            <MovingCircle src={circle} alt='background-circle' />
         </Container>
     )
 }

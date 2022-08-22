@@ -18,8 +18,8 @@ const ExamplePage = () => {
             <LeftSide>
                 {page >= 1 && (
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <Heading type="small">Connect Phantom Wallet</Heading>
-                        <Text size="medium" marginBottom="30px">
+                        <Heading type='small'>Connect Phantom Wallet</Heading>
+                        <Text size='medium' marginBottom='30px'>
                             Connect your Phantom Wallet with the application and
                             choose the NFT you are the most proud of.
                         </Text>
@@ -28,8 +28,8 @@ const ExamplePage = () => {
 
                 {page >= 3 && (
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <Heading type="small">Enter the Link</Heading>
-                        <Text size="medium" marginBottom="30px">
+                        <Heading type='small'>Enter the Link</Heading>
+                        <Text size='medium' marginBottom='30px'>
                             Enter the link of the page you want to connect to
                             your NFT. It can be LinkTree, LinkedIn, YouTube, web
                             page, etc.
@@ -39,8 +39,8 @@ const ExamplePage = () => {
 
                 {page >= 5 && (
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <Heading type="small">Get Sticker or NFT</Heading>
-                        <Text size="medium" marginBottom="30px">
+                        <Heading type='small'>Get Sticker or NFT</Heading>
+                        <Text size='medium' marginBottom='30px'>
                             Enter your address and we'll send you your generated
                             sticker. Another thing you can do, you can mint your
                             newly created image with your QR code, mint it and

@@ -2,7 +2,8 @@ import create from 'zustand'
 
 export const store = create(set => ({
     phantomWalletInstalled: false,
-    setPhantomWalletInstalled: phantomWalletInstalled => set({ phantomWalletInstalled }),
+    setPhantomWalletInstalled: phantomWalletInstalled =>
+        set({ phantomWalletInstalled }),
     phantomWallet: null,
     setPhantomWallet: phantomWallet => set({ phantomWallet }),
     NFTs: [],

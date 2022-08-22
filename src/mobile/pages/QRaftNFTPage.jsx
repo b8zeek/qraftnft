@@ -18,7 +18,7 @@ const NFTItem = ({ NFTData }) => {
     return (
         <NFTItemContainer onClick={() => setNFTSelected(NFTData)}>
             <NFT src={NFTData.image_uri} />
-            <Heading type="smallest">{NFTData.name}</Heading>
+            <Heading type='smallest'>{NFTData.name}</Heading>
         </NFTItemContainer>
     )
 }
@@ -30,25 +30,25 @@ const GalleryPage = () => {
 
     return (
         <Container>
-            <Heading type="small" marginBottom="15px">
+            <Heading type='small' marginBottom='15px'>
                 QRaftNFT
             </Heading>
             <Section initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                <Heading type="smallest">Phantom Wallet Info</Heading>
-                <Text size="small">Public Address:</Text>
-                <Text size="small">{phantomWallet.publicKey.toString()}</Text>
+                <Heading type='smallest'>Phantom Wallet Info</Heading>
+                <Text size='small'>Public Address:</Text>
+                <Text size='small'>{phantomWallet.publicKey.toString()}</Text>
             </Section>
             <Section initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                <Heading type="smallest">QR Your NFT</Heading>
-                <Text size="small">
+                <Heading type='smallest'>QR Your NFT</Heading>
+                <Text size='small'>
                     Select one of the NFTs from your wallet and apply a QR code
                     to it. We suggest adding your Linktree url to it.
                 </Text>
             </Section>
             {NFTs.length !== 0 ? (
                 <Gallery>
-                    <Heading type="smallest">Your NFT Gallery</Heading>
-                    <Text size="small" marginBottom="20px">
+                    <Heading type='smallest'>Your NFT Gallery</Heading>
+                    <Text size='small' marginBottom='20px'>
                         Select on one of your NFTs by clicking on it in order to
                         apply a QR code.
                     </Text>
@@ -57,7 +57,7 @@ const GalleryPage = () => {
                     ))}
                 </Gallery>
             ) : (
-                <Button size="small" onClick={getNftTokenData}>
+                <Button size='small' onClick={getNftTokenData}>
                     Get NFTs
                 </Button>
             )}
@@ -192,17 +192,17 @@ const SingleNFT = () => {
 
     return (
         <Container>
-            <Heading type="small" marginBottom="15px">
+            <Heading type='small' marginBottom='15px'>
                 QR your NFT!
             </Heading>
             {robohashURL ? (
                 <>
                     {successfulMint ? (
                         <>
-                            <Heading type="smallest">
+                            <Heading type='smallest'>
                                 NFT created successfully!
                             </Heading>
-                            <Text size="medium">
+                            <Text size='medium'>
                                 Good job! You've successfully minted your NFT
                                 and it should be in your wallet in no-time.
                                 Thank you for using our service.
@@ -216,7 +216,7 @@ const SingleNFT = () => {
                                     robohashURL={robohashURL}
                                 />
                             </QRCodeContainer>
-                            <Button size="small" onClick={createNFT}>
+                            <Button size='small' onClick={createNFT}>
                                 Mint NFT
                             </Button>
                         </>
@@ -224,19 +224,19 @@ const SingleNFT = () => {
                 </>
             ) : (
                 <>
-                    <Text size="small" marginBottom="20px">
+                    <Text size='small' marginBottom='20px'>
                         Enter the link you want to apply to the selected NFT and
                         click Generate button.
                     </Text>
                     <NFTItem NFTData={NFTSelected} />
                     <Input
-                        label="Enter QR code link"
+                        label='Enter QR code link'
                         fullWidth={true}
-                        marginBottom="20px"
+                        marginBottom='20px'
                         onChange={event => setQRLink(event.target.value)}
                     />
                     <Button
-                        size="small"
+                        size='small'
                         onClick={generateQRNFT.bind(null, NFTSelected)}
                     >
                         Generate QRNFT
