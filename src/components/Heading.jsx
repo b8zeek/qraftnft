@@ -4,7 +4,9 @@ const Heading = ({ type, marginBottom, children }) =>
     type === 'small' ? (
         <SmallHeading marginBottom={marginBottom}>{children}</SmallHeading>
     ) : type === 'smallest' ? (
-        <SmallestHeading marginBottom={marginBottom}>{children}</SmallestHeading>
+        <SmallestHeading marginBottom={marginBottom}>
+            {children}
+        </SmallestHeading>
     ) : (
         <BigHeading marginBottom={marginBottom}>{children}</BigHeading>
     )

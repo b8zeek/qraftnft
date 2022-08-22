@@ -13,7 +13,6 @@ import ExamplePage from '../../pages/web/ExamplePage'
 import QRPage from '../../pages/web/QRPage'
 import AboutPage from '../../pages/web/AboutPage'
 import { Grid } from 'react-loader-spinner'
-import { useState } from 'react'
 
 import store from '../../state/state'
 
