@@ -37,7 +37,13 @@ const ComputerHomePage = () => {
                 </AnimatePresence>
                 {spinner && (
                     <SpinnerBG>
-                        <Grid height="250" width="250" radius="9" color="white" ariaLabel="three-dots-loading" />
+                        <Grid
+                            height="250"
+                            width="250"
+                            radius="9"
+                            color="white"
+                            ariaLabel="three-dots-loading"
+                        />
                     </SpinnerBG>
                 )}
             </Main>
@@ -49,16 +55,14 @@ const ComputerHomePage = () => {
 }
 
 const Container = styled.div`
-    position: relative;
     width: 100%;
-    height: 100vh;
-    background-color: black;
+    position: relative;
+    /* background-color: black; */
     overflow: hidden;
 `
 
 const Main = styled.div`
     width: 100%;
-    height: 100vh;
     position: relative;
     z-index: 3;
 `
