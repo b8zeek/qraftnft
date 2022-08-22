@@ -16,9 +16,7 @@ export function useWallet() {
             if (solana?.isPhantom) {
                 setPhantomWalletInstalled(true)
 
-                const response = onlyIfTrusted ?
-                    await solana.connect({ onlyIfTrusted: true }) :
-                    await solana.connect()
+                const response = onlyIfTrusted ? await solana.connect({ onlyIfTrusted: true }) : await solana.connect()
 
                 console.log('WALLET', response)
                 setPhantomWallet(response)
@@ -36,14 +34,17 @@ export function useWallet() {
         try {
             var myHeaders = new Headers()
             myHeaders.append('x-api-key', 'QQx9fwLpfVTua7_o')
-            
+
             var requestOptions = {
                 method: 'GET',
                 headers: myHeaders,
                 redirect: 'follow'
             }
-            
-            let result = await fetch(`https://api.shyft.to/sol/v1/nft/read_all?network=mainnet-beta&address=${phantomWallet.publicKey}`, requestOptions)
+
+            let result = await fetch(
+                `https://api.shyft.to/sol/v1/nft/read_all?network=mainnet-beta&address=${phantomWallet.publicKey}`,
+                requestOptions
+            )
             let parsedResult = await result.json()
 
             console.log('NFT DATA', parsedResult)

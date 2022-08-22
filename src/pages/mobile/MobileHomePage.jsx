@@ -4,7 +4,7 @@ import bg from '../../assets/index_scale_adoption_mobile.webp'
 
 import LandingPage from './LandingPage'
 import QRaftNFTPage from './QRaftNFTPage'
-import { Grid } from  'react-loader-spinner'
+import { Grid } from 'react-loader-spinner'
 
 import store from '../../state/state'
 
@@ -12,24 +12,19 @@ const MobileHomePage = () => {
     const spinner = store(state => state.spinner)
     const phantomWallet = store(state => state.phantomWallet)
 
-    return <Container>
-        <Main>
-            {phantomWallet ?
-                <QRaftNFTPage /> :
-                <LandingPage />
-            }
-            {spinner && <SpinnerBG>
-                <Grid
-                    height='250'
-                    width='250'
-                    radius='9'
-                    color='white'
-                    ariaLabel='three-dots-loading'
-                />
-            </SpinnerBG>}
-        </Main>
-        <BGImage src={bg} />
-    </Container>
+    return (
+        <Container>
+            <Main>
+                {phantomWallet ? <QRaftNFTPage /> : <LandingPage />}
+                {spinner && (
+                    <SpinnerBG>
+                        <Grid height="250" width="250" radius="9" color="white" ariaLabel="three-dots-loading" />
+                    </SpinnerBG>
+                )}
+            </Main>
+            <BGImage src={bg} />
+        </Container>
+    )
 }
 
 const Container = styled.div`
@@ -60,7 +55,7 @@ const SpinnerBG = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, 0.9);
 `
 
 const BGImage = styled.img`

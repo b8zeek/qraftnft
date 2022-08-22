@@ -1,6 +1,6 @@
 import { AwesomeQRCode } from '@awesomeqr/react'
 
-const QRCode = ({ text, robohashURL }) =>
+const QRCode = ({ text, robohashURL }) => (
     <AwesomeQRCode
         options={{
             text: text,
@@ -13,11 +13,12 @@ const QRCode = ({ text, robohashURL }) =>
             logoScale: 2,
             cornerAlignment: {
                 scale: 1.5,
-                protectors: false,
+                protectors: false
             },
             protectors: true,
             backgroundImage: robohashURL
         }}
     />
+)
 
 export default QRCode

@@ -1,16 +1,19 @@
 import styled from 'styled-components'
 
-const Input = ({ label, onChange, fullWidth, marginBottom }) =>
+const Input = ({ label, onChange, fullWidth, marginBottom }) => (
     <Container fullWidth={fullWidth} marginBottom={marginBottom}>
         <StyledLabel>{label}</StyledLabel>
         <StyledInput onChange={onChange} />
     </Container>
+)
 
 const Container = styled.div`
     width: 60%;
     padding: 0 20%;
 
-    ${({ fullWidth }) => fullWidth && `
+    ${({ fullWidth }) =>
+        fullWidth &&
+        `
         width: 100%;
         padding: 0;
     `}
@@ -41,8 +44,12 @@ const StyledInput = styled.input`
     color: white;
     padding: 6px 20px;
 
-    &:hover { background-color: #9945ff72; }
-    &:focus { background-color: #9945ff90; }
+    &:hover {
+        background-color: #9945ff72;
+    }
+    &:focus {
+        background-color: #9945ff90;
+    }
 `
 
 export default Input

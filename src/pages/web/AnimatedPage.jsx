@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-const AnimatedPage = ({ children, withMargin }) =>
+const AnimatedPage = ({ children, withMargin }) => (
     <Content
         initial={{ x: '100%', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         exit={{ x: '-100%', opacity: 0 }}
-        transition={{ duration: .3 }}
+        transition={{ duration: 0.3 }}
         withMargin={withMargin}
     >
         {children}
     </Content>
+)
 
 const Content = styled(motion.div)`
     position: relative;

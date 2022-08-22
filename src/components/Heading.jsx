@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
-const Heading = ({ type, marginBottom, children }) => type === 'small' ?
-    <SmallHeading marginBottom={marginBottom}>{children}</SmallHeading> : type === 'smallest' ?
-    <SmallestHeading marginBottom={marginBottom}>{children}</SmallestHeading> :
-    <BigHeading marginBottom={marginBottom}>{children}</BigHeading>
+const Heading = ({ type, marginBottom, children }) =>
+    type === 'small' ? (
+        <SmallHeading marginBottom={marginBottom}>{children}</SmallHeading>
+    ) : type === 'smallest' ? (
+        <SmallestHeading marginBottom={marginBottom}>{children}</SmallestHeading>
+    ) : (
+        <BigHeading marginBottom={marginBottom}>{children}</BigHeading>
+    )
 
 const commonHeadingProps = `
     font-family: Inter, sans-serif;

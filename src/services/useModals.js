@@ -5,8 +5,8 @@ export function useModals() {
 
     const openModal = () => setModalOpened(true)
     const closeModal = cb => {
-      cb()
-      setModalOpened(false)
+        cb()
+        setModalOpened(false)
     }
 
     return {

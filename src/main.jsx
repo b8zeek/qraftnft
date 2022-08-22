@@ -6,11 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Theme>
-        <App />
-      </Theme>
-    </BrowserRouter>
-  </React.StrictMode>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Theme>
+                <App />
+            </Theme>
+        </BrowserRouter>
+    </React.StrictMode>
 )

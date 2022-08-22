@@ -1,15 +1,11 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-const Button = ({ children, size, onClick }) =>
-    <StyledButton
-        size={size}
-        onClick={onClick}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-    >
+const Button = ({ children, size, onClick }) => (
+    <StyledButton size={size} onClick={onClick} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
         {children}
     </StyledButton>
+)
 
 const StyledButton = styled(motion.button)`
     height: 40px;
@@ -25,7 +21,9 @@ const StyledButton = styled(motion.button)`
 
     margin: 20px 0;
 
-    ${({ size }) => size === 'small' && `
+    ${({ size }) =>
+        size === 'small' &&
+        `
         height: 32px;
         padding: 4px 20px;
         line-height: 24px;
@@ -34,7 +32,9 @@ const StyledButton = styled(motion.button)`
         margin: 0;
     `}
 
-    &:hover: { background-color: white; }
+    &:hover: {
+        background-color: white;
+    }
 `
 
 export default Button

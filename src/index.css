@@ -1,103 +1,107 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
 body {
-  height: 100%;
-  position: relative;
-  margin: 0;
-  font-family: Inter, serif;
-  font-weight: 900;
+    height: 100%;
+    position: relative;
+    margin: 0;
+    font-family: Inter, serif;
+    font-weight: 900;
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-
-
 
 .item {
-  display: flex;
-  flex-direction: column;
-  width: 32%;
-  font-weight: 400;
-  background: black;
-  margin-top: 7%; /* (100-32*3)/2 */
-  margin-bottom: 20%; /* (100-32*3)/2 */
-  position: relative;
-  align-items: center;
-  box-sizing: border-box;
-  color: #FFF;
-  background-clip: padding-box;
-  border: solid 5px #9945FF;
-  border-radius: 1em 4em 3em 1em;
-  padding:2%;
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    font-weight: 400;
+    background: black;
+    margin-top: 7%; /* (100-32*3)/2 */
+    margin-bottom: 20%; /* (100-32*3)/2 */
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+    color: #fff;
+    background-clip: padding-box;
+    border: solid 5px #9945ff;
+    border-radius: 1em 4em 3em 1em;
+    padding: 2%;
 }
 
-
 @keyframes diagonal_move {
-  0% {
-    background-position: -10rem -10rem;
-  }
-  50% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 10rem 10rem;
-  }
+    0% {
+        background-position: -10rem -10rem;
+    }
+    50% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 10rem 10rem;
+    }
 }
 
 @media only screen and (max-width: 1172px) {
-  .container {
-    flex-direction: column;
-  }
-  .item {
-    width: 100%;
-  }
+    .container {
+        flex-direction: column;
+    }
+    .item {
+        width: 100%;
+    }
 }
 
-.flip  {
-  padding-top: 20px;
-  background: #000;
+.flip {
+    padding-top: 20px;
+    background: #000;
 }
 
 .flip a {
-  line-height: 44px;
-  perspective: 1000px;
+    line-height: 44px;
+    perspective: 1000px;
 }
 .flip a span {
-  position: relative;
-  display: inline-block;
-  padding: 0 14px;
-  background: #14F195;
-  transition: all 0.3s;
-  transform-origin: 50% 0;
-  transform-style: preserve-3d;
+    position: relative;
+    display: inline-block;
+    padding: 0 14px;
+    background: #14f195;
+    transition: all 0.3s;
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
 
-  border-radius: 19px !important;
+    border-radius: 19px !important;
 }
 .flip a span:before {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background: #09633e;
-  content: attr(data-hover);
-  transition: all 0.3s;
-  transform: rotateX(-90deg);
-  transform-origin: 50% 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: #09633e;
+    content: attr(data-hover);
+    transition: all 0.3s;
+    transform: rotateX(-90deg);
+    transform-origin: 50% 0;
 }
-.flip a:hover, .flip a:focus {
-  outline: none;
+.flip a:hover,
+.flip a:focus {
+    outline: none;
 }
-.flip a:hover span, .flip a:focus span {
-  transform: rotateX(90deg) translateY(-22px);
+.flip a:hover span,
+.flip a:focus span {
+    transform: rotateX(90deg) translateY(-22px);
 }
-.flip a:hover span:before, .flip a:focus span:before {
-  background: #0F2027;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.flip a:hover span:before,
+.flip a:focus span:before {
+    background: #0f2027; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to right,
+        #2c5364,
+        #203a43,
+        #0f2027
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

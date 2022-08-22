@@ -12,9 +12,10 @@ export const store = create(set => ({
     robotGenerated: null,
     setRobotGenerated: robotGenerated => set({ robotGenerated }),
     generatedQRCodes: [],
-    addGeneratedQRCode: generatedQRCode => set(state => ({
-        generatedQRCodes: [ ...state.generatedQRCodes, generatedQRCode ]
-    })),
+    addGeneratedQRCode: generatedQRCode =>
+        set(state => ({
+            generatedQRCodes: [...state.generatedQRCodes, generatedQRCode]
+        })),
     spinner: false,
     setSpinner: spinner => set({ spinner })
 }))

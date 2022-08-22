@@ -11,20 +11,24 @@ const Header = () => {
     const phantomWallet = store(state => state.phantomWallet)
     const { connectPhantomWallet } = useWallet()
 
-    return <StyledHeader>
-        <Navigation>
-            <StyledLink to='/'>Home</StyledLink>
-            <StyledLink to='example'>Example</StyledLink>
-            <StyledLink to='qr' cta={+true}>QR NFT</StyledLink>
-            <StyledLink to='about'>About</StyledLink>
-            <PhantomLogo
-                src={phantom}
-                alt='phantom-logo'
-                onClick={connectPhantomWallet}
-                phatnomConnected={phantomWallet}
-            />
-        </Navigation>
-    </StyledHeader>
+    return (
+        <StyledHeader>
+            <Navigation>
+                <StyledLink to="/">Home</StyledLink>
+                <StyledLink to="example">Example</StyledLink>
+                <StyledLink to="qr" cta={+true}>
+                    QR NFT
+                </StyledLink>
+                <StyledLink to="about">About</StyledLink>
+                <PhantomLogo
+                    src={phantom}
+                    alt="phantom-logo"
+                    onClick={connectPhantomWallet}
+                    phatnomConnected={phantomWallet}
+                />
+            </Navigation>
+        </StyledHeader>
+    )
 }
 
 const StyledHeader = styled.header`
@@ -59,7 +63,7 @@ const PhantomLogo = styled.img`
     top: 5px;
     transform: rotateY(180deg);
     cursor: pointer;
-    animation: ${props => props.phatnomConnected ? greenGlow : redGlow} 2s ease-in-out infinite alternate;
+    animation: ${props => (props.phatnomConnected ? greenGlow : redGlow)} 2s ease-in-out infinite alternate;
 `
 
 const Navigation = styled.nav`
@@ -80,7 +84,7 @@ const StyledLink = styled(Link)`
     ${props => props.cta && `background-color: ${props.theme.color.darkPink};`}
 
     &:hover {
-        color: ${props => props.cta ? props.theme.color.white : props.theme.color.green};
+        color: ${props => (props.cta ? props.theme.color.white : props.theme.color.green)};
         ${props => props.cta && `background-color: ${props.theme.color.pink};`}
     }
 `

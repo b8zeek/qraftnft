@@ -12,7 +12,7 @@ import LandingPage from '../../pages/web/LandingPage'
 import ExamplePage from '../../pages/web/ExamplePage'
 import QRPage from '../../pages/web/QRPage'
 import AboutPage from '../../pages/web/AboutPage'
-import { Grid } from  'react-loader-spinner'
+import { Grid } from 'react-loader-spinner'
 import { useState } from 'react'
 
 import store from '../../state/state'
@@ -21,34 +21,32 @@ const ComputerHomePage = () => {
     const location = useLocation()
     const spinner = store(state => state.spinner)
 
-    return <Container>
-        <Main>
-            <Header />
-            <AnimatePresence>
-                <TitleContainer />
-                <Content>
-                    <Routes location={location} key={location.pathname}>
-                        <Route path='/' element={<LandingPage />} />
-                        <Route path='example' element={<ExamplePage />} />
-                        <Route path='qr' element={<QRPage />} />
-                        <Route path='about' element={<AboutPage />} />
-                    </Routes>
-                </Content>
-            </AnimatePresence>
-            {spinner && <SpinnerBG>
-                <Grid
-                    height='250'
-                    width='250'
-                    radius='9'
-                    color='white'
-                    ariaLabel='three-dots-loading'
-                />
-            </SpinnerBG>}
-        </Main>
-        <SolanaLogo src={solana} />
-        <BGImage src={bg} />
-        <MovingCircle src={circle} alt='background-circle' />
-    </Container>
+    return (
+        <Container>
+            <Main>
+                <Header />
+                <AnimatePresence>
+                    <TitleContainer />
+                    <Content>
+                        <Routes location={location} key={location.pathname}>
+                            <Route path="/" element={<LandingPage />} />
+                            <Route path="example" element={<ExamplePage />} />
+                            <Route path="qr" element={<QRPage />} />
+                            <Route path="about" element={<AboutPage />} />
+                        </Routes>
+                    </Content>
+                </AnimatePresence>
+                {spinner && (
+                    <SpinnerBG>
+                        <Grid height="250" width="250" radius="9" color="white" ariaLabel="three-dots-loading" />
+                    </SpinnerBG>
+                )}
+            </Main>
+            <SolanaLogo src={solana} />
+            <BGImage src={bg} />
+            <MovingCircle src={circle} alt="background-circle" />
+        </Container>
+    )
 }
 
 const Container = styled.div`
@@ -76,7 +74,7 @@ const SpinnerBG = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, .9);
+    background-color: rgba(0, 0, 0, 0.9);
 `
 
 const Content = styled.div`
@@ -92,7 +90,7 @@ const BGImage = styled.img`
     right: 0;
     z-index: 2;
     width: 60%;
-    opacity: .2;
+    opacity: 0.2;
 `
 const SolanaLogo = styled.img`
     width: 200px;
@@ -100,7 +98,7 @@ const SolanaLogo = styled.img`
     bottom: 0%;
     left: 15%;
     z-index: 2;
-    opacity: .3;
+    opacity: 0.3;
 `
 
 const pulse = keyframes`
@@ -125,7 +123,7 @@ const MovingCircle = styled.img`
     left: -100px;
     bottom: -100px;
     z-index: 1;
-    animation: ${pulse} 5s linear   alternate infinite;
+    animation: ${pulse} 5s linear alternate infinite;
 `
 
 export default ComputerHomePage

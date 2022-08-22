@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Text = ({ children, size, bold, justify, italic, center, marginBottom }) =>
+const Text = ({ children, size, bold, justify, italic, center, marginBottom }) => (
     <StyledParagraph
         size={size}
         bold={bold}
@@ -11,6 +11,7 @@ const Text = ({ children, size, bold, justify, italic, center, marginBottom }) =
     >
         {children}
     </StyledParagraph>
+)
 
 const StyledParagraph = styled.p`
     width: 100%;
@@ -23,18 +24,24 @@ const StyledParagraph = styled.p`
     overflow: hidden;
     margin: 0;
 
-    ${props => props.size === 'medium' && `
+    ${props =>
+        props.size === 'medium' &&
+        `
         line-height: 24px;
         font-size: 16px;
     `}
 
-    ${props => props.size === 'small' && `
+    ${props =>
+        props.size === 'small' &&
+        `
         line-height: 16px;
         font-size: 12px;
     `}
 
     ${({ bold }) => bold && 'font-weight: bold;'}
-    ${({ justify }) => justify && `
+    ${({ justify }) =>
+        justify &&
+        `
         text-align: justify;
         text-justify: inter-word;
     `}
