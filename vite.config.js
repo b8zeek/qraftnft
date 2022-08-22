@@ -6,10 +6,10 @@ const folders = [
     '',
     'assets',
     'components',
-    'layout',
-    'pages',
+    'mobile',
     'services',
     'state',
+    'web',
     'wrappers'
 ]
 

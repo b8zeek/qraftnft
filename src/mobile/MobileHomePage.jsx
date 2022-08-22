@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { Grid } from 'react-loader-spinner'
+
 import store from '@state/state'
 
-import LandingPage from './LandingPage'
-import QRaftNFTPage from './QRaftNFTPage'
+import LandingPage from './pages/LandingPage'
+import QRaftNFTPage from './pages/QRaftNFTPage'
 
 import bg from '@assets/index_scale_adoption_mobile.webp'
 

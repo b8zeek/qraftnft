@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components'
-import { AnimatePresence } from 'framer-motion'
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
+import { Grid } from 'react-loader-spinner'
 
 import bg from '@assets/index_scale_adoption.webp'
 import circle from '@assets/circle.png'
@@ -8,11 +9,10 @@ import solana from '@assets/s-logo.webp'
 
 import Header from './Header'
 import TitleContainer from './TitleContainer'
-import LandingPage from '@pages/web/LandingPage'
-import ExamplePage from '@pages/web/ExamplePage'
-import QRPage from '@pages/web/QRPage'
-import AboutPage from '@pages/web/AboutPage'
-import { Grid } from 'react-loader-spinner'
+import LandingPage from './pages/LandingPage'
+import ExamplePage from './pages/ExamplePage'
+import QRPage from './pages/QRPage'
+import AboutPage from './pages/AboutPage'
 
 import store from '@state/state'
 
