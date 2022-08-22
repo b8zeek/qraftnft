@@ -1,6 +1,14 @@
 import styled from 'styled-components'
 
-const Text = ({ children, size, bold, justify, italic, center, marginBottom }) => (
+const Text = ({
+    children,
+    size,
+    bold,
+    justify,
+    italic,
+    center,
+    marginBottom
+}) => (
     <StyledParagraph
         size={size}
         bold={bold}

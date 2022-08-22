@@ -1,34 +1,41 @@
 import { useState } from 'react'
+import axios from 'axios'
 import styled, { keyframes } from 'styled-components'
 import { motion, AnimatePresence } from 'framer-motion'
 
-import store from '../../state/state'
-import { useWallet } from '../../services/useWallet'
+import store from '@state/state'
+import { useWallet } from '@services/useWallet'
 
 import AnimatedPage from './AnimatedPage'
-import Heading from '../../components/Heading'
-import Text from '../../components/Text'
-import AnimatedSection from '../../components/AnimatedSection'
-import Button from '../../components/Button'
-import RobohashComponent from '../../components/Robohash'
-import Input from '../../components/Input'
-import QRCode from '../../components/QRCode'
+import Heading from '@components/Heading'
+import Text from '@components/Text'
+import AnimatedSection from '@components/AnimatedSection'
+import Button from '@components/Button'
+import RobohashComponent from '@components/Robohash'
+import Input from '@components/Input'
+import QRCode from '@components/QRCode'
 
-import phantom from '../../assets/phantom.svg'
-
-import axios from 'axios'
+import phantom from '@assets/phantom.svg'
 
 const PhantomInfo = () => (
-    <LeftSide key="left" initial={{ x: '100%', opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+    <LeftSide
+        key="left"
+        initial={{ x: '100%', opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+    >
         <AnimatedSection key="phantom" delay={0.3}>
             <Heading type="small">Phantom Wallet</Heading>
             <Text size="medium">
-                In order to use the application, you're gonna have to connect your Phantom wallet. We need your public
-                address so we can generate your UNIQUE robot and we need access to your wallet so you can select your
-                favorite NFT you want to QR.
+                In order to use the application, you're gonna have to connect
+                your Phantom wallet. We need your public address so we can
+                generate your UNIQUE robot and we need access to your wallet so
+                you can select your favorite NFT you want to QR.
             </Text>
         </AnimatedSection>
-        <PhantomContainer initial={{ x: '-300%' }} animate={{ x: 0, transition: { duration: 3 } }}>
+        <PhantomContainer
+            initial={{ x: '-300%' }}
+            animate={{ x: 0, transition: { duration: 3 } }}
+        >
             <Phantom src={phantom} alt="phantom-logo" />
         </PhantomContainer>
     </LeftSide>
@@ -50,7 +57,11 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
                     <Text size="medium" bold>
                         Public Address:
                     </Text>
-                    <Text size="medium">{phantomWallet ? phantomWallet.publicKey.toString() : 'Not connected'}</Text>
+                    <Text size="medium">
+                        {phantomWallet
+                            ? phantomWallet.publicKey.toString()
+                            : 'Not connected'}
+                    </Text>
                 </Section>
 
                 <Section
@@ -64,8 +75,9 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
                         Generate QR Wallet Image
                     </Heading>
                     <Text size="medium">
-                        Generate a unique robot image from Phantom wallet's public key. Add the link you want to share
-                        with people and we'll send you the image.
+                        Generate a unique robot image from Phantom wallet's
+                        public key. Add the link you want to share with people
+                        and we'll send you the image.
                     </Text>
                 </Section>
 
@@ -80,13 +92,15 @@ const Menu = ({ phantomWallet, connectPhantomWallet, setPage }) => (
                         QR Your NFT
                     </Heading>
                     <Text size="medium">
-                        Select one of the NFTs from your wallet and apply a QR code to it. We suggest adding your
-                        Linktree url to it.
+                        Select one of the NFTs from your wallet and apply a QR
+                        code to it. We suggest adding your Linktree url to it.
                     </Text>
                 </Section>
             </>
         ) : (
-            <Button onClick={connectPhantomWallet.bind(null, false)}>Connect Phantom</Button>
+            <Button onClick={connectPhantomWallet.bind(null, false)}>
+                Connect Phantom
+            </Button>
         )}
     </RightSide>
 )
@@ -110,19 +124,33 @@ const QRGenerator = ({
             exit={{ x: '-100%', opacity: 0 }}
         >
             {!robotGenerated ? (
-                <Button onClick={setRobotGenerated.bind(null, true)}>Generate Robot</Button>
+                <Button onClick={setRobotGenerated.bind(null, true)}>
+                    Generate Robot
+                </Button>
             ) : (
                 <>
                     {!QRGenerated ? (
                         <>
-                            <RobohashComponent walletAddress={phantomWallet.publicKey.toString()} />
-                            <Input label="Enter QR code link" onChange={e => setQRLink(e.target.value)} />
-                            {!QRGenerated && qrLink.trim() && <Button onClick={generateQRNFT}>Generate QR</Button>}
+                            <RobohashComponent
+                                walletAddress={phantomWallet.publicKey.toString()}
+                            />
+                            <Input
+                                label="Enter QR code link"
+                                onChange={e => setQRLink(e.target.value)}
+                            />
+                            {!QRGenerated && qrLink.trim() && (
+                                <Button onClick={generateQRNFT}>
+                                    Generate QR
+                                </Button>
+                            )}
                         </>
                     ) : (
                         <>
                             <QRCodeContainer>
-                                <QRCode text={qrLink.trim()} robohashURL={robohashURL} />
+                                <QRCode
+                                    text={qrLink.trim()}
+                                    robohashURL={robohashURL}
+                                />
                             </QRCodeContainer>
                             <Button onClick={createNFT}>Create NFT</Button>
                         </>
@@ -133,7 +161,13 @@ const QRGenerator = ({
     )
 }
 
-const QRNFT = ({ qrLink, setQRLink, generateQRNFT, robohashURL, createNFT }) => {
+const QRNFT = ({
+    qrLink,
+    setQRLink,
+    generateQRNFT,
+    robohashURL,
+    createNFT
+}) => {
     const [selectedNFT, setSelectedNFT] = useState(null)
     const [QRGenerated, setQRGenerated] = useState(false)
 
@@ -155,14 +189,20 @@ const QRNFT = ({ qrLink, setQRLink, generateQRNFT, robohashURL, createNFT }) => 
             {QRGenerated ? (
                 <>
                     <QRCodeContainer>
-                        <QRCode text={qrLink.trim()} robohashURL={robohashURL} />
+                        <QRCode
+                            text={qrLink.trim()}
+                            robohashURL={robohashURL}
+                        />
                     </QRCodeContainer>
                     <Button onClick={createNFT}>Create NFT</Button>
                 </>
             ) : selectedNFT ? (
                 <SelectedNFTContainer>
                     <Item src={selectedNFT.image_uri} size="big" />
-                    <Input label="Enter QR code link" onChange={e => setQRLink(e.target.value)} />
+                    <Input
+                        label="Enter QR code link"
+                        onChange={e => setQRLink(e.target.value)}
+                    />
                     <Button onClick={handleGenerateQR}>Add QR Code</Button>
                 </SelectedNFTContainer>
             ) : NFTs?.length === 0 ? (
@@ -172,7 +212,11 @@ const QRNFT = ({ qrLink, setQRLink, generateQRNFT, robohashURL, createNFT }) => 
                     <Heading type="small">Your NFT Gallery</Heading>
                     <Gallery>
                         {NFTs?.map(NFT => (
-                            <Item key={NFT.image_uri} src={NFT.image_uri} onClick={setSelectedNFT.bind(null, NFT)} />
+                            <Item
+                                key={NFT.image_uri}
+                                src={NFT.image_uri}
+                                onClick={setSelectedNFT.bind(null, NFT)}
+                            />
                         ))}
                     </Gallery>
                 </>
@@ -202,7 +246,9 @@ const QRPage = () => {
             imageLink = nft.image_uri
         } else {
             console.log(document.getElementById('robohash-container'))
-            const url = document.getElementById('robohash-container').getElementsByTagName('img')[0].src
+            const url = document
+                .getElementById('robohash-container')
+                .getElementsByTagName('img')[0].src
             console.log('URL', url)
             imageLink = url.split('?')[0]
         }
@@ -271,7 +317,13 @@ const QRPage = () => {
                     formdata.append('external_url', qrLink)
                     formdata.append('max_supply', '2')
                     formdata.append('royalty', '20')
-                    formdata.append('file', b64toBlob(item.style.backgroundImage.substring(5).slice(0, -2)), 'cb.jpeg')
+                    formdata.append(
+                        'file',
+                        b64toBlob(
+                            item.style.backgroundImage.substring(5).slice(0, -2)
+                        ),
+                        'cb.jpeg'
+                    )
 
                     const { data: createNFTResponseData } = await axios({
                         method: 'post',
@@ -330,7 +382,11 @@ const QRPage = () => {
                     </div>
                 )}
                 {!page && page !== 5 && <PhantomInfo />}
-                <Menu phantomWallet={phantomWallet} connectPhantomWallet={connectPhantomWallet} setPage={setPage} />
+                <Menu
+                    phantomWallet={phantomWallet}
+                    connectPhantomWallet={connectPhantomWallet}
+                    setPage={setPage}
+                />
                 {page === 1 && page !== 5 && (
                     <QRGenerator
                         robotGenerated={robotGenerated}

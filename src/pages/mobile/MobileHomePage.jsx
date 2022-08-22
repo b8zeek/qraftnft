@@ -1,12 +1,11 @@
 import styled from 'styled-components'
-
-import bg from '../../assets/index_scale_adoption_mobile.webp'
+import { Grid } from 'react-loader-spinner'
+import store from '@state/state'
 
 import LandingPage from './LandingPage'
 import QRaftNFTPage from './QRaftNFTPage'
-import { Grid } from 'react-loader-spinner'
 
-import store from '../../state/state'
+import bg from '@assets/index_scale_adoption_mobile.webp'
 
 const MobileHomePage = () => {
     const spinner = store(state => state.spinner)
@@ -18,7 +17,13 @@ const MobileHomePage = () => {
                 {phantomWallet ? <QRaftNFTPage /> : <LandingPage />}
                 {spinner && (
                     <SpinnerBG>
-                        <Grid height="250" width="250" radius="9" color="white" ariaLabel="three-dots-loading" />
+                        <Grid
+                            height="250"
+                            width="250"
+                            radius="9"
+                            color="white"
+                            ariaLabel="three-dots-loading"
+                        />
                     </SpinnerBG>
                 )}
             </Main>

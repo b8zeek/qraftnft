@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { useWallet } from '../../services/useWallet'
+import { useWallet } from '@services/useWallet'
 
-import Heading from '../../components/Heading'
-import Text from '../../components/Text'
-import Button from '../../components/Button'
+import Heading from '@components/Heading'
+import Text from '@components/Text'
+import Button from '@components/Button'
 
 const LandingPage = () => {
     const { connectPhantomWallet } = useWallet()
@@ -15,9 +15,13 @@ const LandingPage = () => {
                 HH Krakow
             </Heading>
             <Text size="medium" marginBottom="15px">
-                In order to use the application, you're gonna have to connect your Phantom wallet.
+                In order to use the application, you're gonna have to connect
+                your Phantom wallet.
             </Text>
-            <Button size="small" onClick={connectPhantomWallet.bind(null, false)}>
+            <Button
+                size="small"
+                onClick={connectPhantomWallet.bind(null, false)}
+            >
                 Connect Phantom
             </Button>
         </Container>

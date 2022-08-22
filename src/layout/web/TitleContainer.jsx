@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-import Heading from '../../components/Heading'
-import Text from '../../components/Text'
+import Heading from '@components/Heading'
+import Text from '@components/Text'
 
 const AnimatedTitle = ({ titleKey, heading, description }) => (
     <AnimatedDiv
@@ -23,7 +23,13 @@ const TitleContainer = () => {
 
     switch (location.pathname) {
         case '/':
-            return <AnimatedTitle titleKey="t/" heading="Welcome" description="Greetings Solana Hacker House Paris!" />
+            return (
+                <AnimatedTitle
+                    titleKey="t/"
+                    heading="Welcome"
+                    description="Greetings Solana Hacker House Paris!"
+                />
+            )
         case '/example':
             return (
                 <AnimatedTitle
@@ -33,9 +39,21 @@ const TitleContainer = () => {
                 />
             )
         case '/qr':
-            return <AnimatedTitle titleKey="t/qr" heading="QR NFT" description="Show the people who are you" />
+            return (
+                <AnimatedTitle
+                    titleKey="t/qr"
+                    heading="QR NFT"
+                    description="Show the people who are you"
+                />
+            )
         case '/about':
-            return <AnimatedTitle titleKey="t/about" heading="Who are we?" description="Get to know us a bit better" />
+            return (
+                <AnimatedTitle
+                    titleKey="t/about"
+                    heading="Who are we?"
+                    description="Get to know us a bit better"
+                />
+            )
     }
 }
 

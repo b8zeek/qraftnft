@@ -2,14 +2,14 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 
-import Heading from '../../components/Heading'
-import Text from '../../components/Text'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import QRCode from '../../components/QRCode'
+import Heading from '@components/Heading'
+import Text from '@components/Text'
+import Button from '@components/Button'
+import Input from '@components/Input'
+import QRCode from '@components/QRCode'
 
-import store from '../../state/state'
-import { useWallet } from '../../services/useWallet'
+import store from '@state/state'
+import { useWallet } from '@services/useWallet'
 import { useState } from 'react'
 
 const NFTItem = ({ NFTData }) => {
@@ -41,15 +41,16 @@ const GalleryPage = () => {
             <Section initial={{ scale: 0 }} animate={{ scale: 1 }}>
                 <Heading type="smallest">QR Your NFT</Heading>
                 <Text size="small">
-                    Select one of the NFTs from your wallet and apply a QR code to it. We suggest adding your Linktree
-                    url to it.
+                    Select one of the NFTs from your wallet and apply a QR code
+                    to it. We suggest adding your Linktree url to it.
                 </Text>
             </Section>
             {NFTs.length !== 0 ? (
                 <Gallery>
                     <Heading type="smallest">Your NFT Gallery</Heading>
                     <Text size="small" marginBottom="20px">
-                        Select on one of your NFTs by clicking on it in order to apply a QR code.
+                        Select on one of your NFTs by clicking on it in order to
+                        apply a QR code.
                     </Text>
                     {NFTs?.map(NFTData => (
                         <NFTItem key={NFTData.mint} NFTData={NFTData} />
@@ -145,7 +146,13 @@ const SingleNFT = () => {
                     formdata.append('external_url', QRLink)
                     formdata.append('max_supply', '2')
                     formdata.append('royalty', '20')
-                    formdata.append('file', b64toBlob(item.style.backgroundImage.substring(5).slice(0, -2)), 'cb.jpeg')
+                    formdata.append(
+                        'file',
+                        b64toBlob(
+                            item.style.backgroundImage.substring(5).slice(0, -2)
+                        ),
+                        'cb.jpeg'
+                    )
 
                     const { data: createNFTResponseData } = await axios({
                         method: 'post',
@@ -192,16 +199,22 @@ const SingleNFT = () => {
                 <>
                     {successfulMint ? (
                         <>
-                            <Heading type="smallest">NFT created successfully!</Heading>
+                            <Heading type="smallest">
+                                NFT created successfully!
+                            </Heading>
                             <Text size="medium">
-                                Good job! You've successfully minted your NFT and it should be in your wallet in
-                                no-time. Thank you for using our service.
+                                Good job! You've successfully minted your NFT
+                                and it should be in your wallet in no-time.
+                                Thank you for using our service.
                             </Text>
                         </>
                     ) : (
                         <>
                             <QRCodeContainer>
-                                <QRCode text={QRLink.trim()} robohashURL={robohashURL} />
+                                <QRCode
+                                    text={QRLink.trim()}
+                                    robohashURL={robohashURL}
+                                />
                             </QRCodeContainer>
                             <Button size="small" onClick={createNFT}>
                                 Mint NFT
@@ -212,7 +225,8 @@ const SingleNFT = () => {
             ) : (
                 <>
                     <Text size="small" marginBottom="20px">
-                        Enter the link you want to apply to the selected NFT and click Generate button.
+                        Enter the link you want to apply to the selected NFT and
+                        click Generate button.
                     </Text>
                     <NFTItem NFTData={NFTSelected} />
                     <Input
@@ -221,7 +235,10 @@ const SingleNFT = () => {
                         marginBottom="20px"
                         onChange={event => setQRLink(event.target.value)}
                     />
-                    <Button size="small" onClick={generateQRNFT.bind(null, NFTSelected)}>
+                    <Button
+                        size="small"
+                        onClick={generateQRNFT.bind(null, NFTSelected)}
+                    >
                         Generate QRNFT
                     </Button>
                 </>

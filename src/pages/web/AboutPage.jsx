@@ -3,14 +3,14 @@ import styled, { keyframes } from 'styled-components'
 import { motion } from 'framer-motion'
 
 import AnimatedPage from './AnimatedPage'
-import Heading from '../../components/Heading'
-import Text from '../../components/Text'
+import Heading from '@components/Heading'
+import Text from '@components/Text'
 
-import AnimatedSection from '../../components/AnimatedSection'
+import AnimatedSection from '@components/AnimatedSection'
 
-import ape1 from '../../assets/mirko-basic-react-mag.png'
-import ape2 from '../../assets/milos-rujevic-web-wizzard.png'
-import ape3 from '../../assets/marko-grudic-marketing-guru.png'
+import ape1 from '@assets/mirko-basic-react-mag.png'
+import ape2 from '@assets/milos-rujevic-web-wizzard.png'
+import ape3 from '@assets/marko-grudic-marketing-guru.png'
 
 const Member = ({ backgroundImage, name, title, margin, setShowModal }) => (
     <TeamMember margin={margin} onClick={() => setShowModal(true)}>
@@ -39,17 +39,21 @@ const AboutPage = () => {
                 <AnimatedSection key="the-beginnings" delay={0.4}>
                     <Heading type="small">The Beginnings</Heading>
                     <Text size="medium" justify marginBottom="20px">
-                        We are a team of close friends with multiple skill sets evolving around software creation and
-                        advertisement. It all began with several inhouse projects and ideas we had and worked on. Not
-                        long after we realised the full potential of this team. Capable of many and without impregnable
-                        obstacles! Step by step, app by app, we got a strong head start for our clients.
+                        We are a team of close friends with multiple skill sets
+                        evolving around software creation and advertisement. It
+                        all began with several inhouse projects and ideas we had
+                        and worked on. Not long after we realised the full
+                        potential of this team. Capable of many and without
+                        impregnable obstacles! Step by step, app by app, we got
+                        a strong head start for our clients.
                     </Text>
                 </AnimatedSection>
                 <AnimatedSection key="history" delay={0.6}>
                     <Heading type="small">History</Heading>
                     <Text size="medium" justify marginBottom="20px">
-                        With a proven history of delivering top-notch quality products and services. We were able to
-                        scale the whole process and determine our ideal scenario:
+                        With a proven history of delivering top-notch quality
+                        products and services. We were able to scale the whole
+                        process and determine our ideal scenario:
                     </Text>
                     <Text size="medium" justify italic marginBottom="20px">
                         "Leave a mark we could be all proud of!"
@@ -58,21 +62,27 @@ const AboutPage = () => {
                 <AnimatedSection key="how" delay={0.8}>
                     <Heading type="small">How?</Heading>
                     <Text size="medium" justify marginBottom="20px">
-                        How? By cooperating only with reputable people and companies who are serious about the business
-                        with similar mindset as ours:
+                        How? By cooperating only with reputable people and
+                        companies who are serious about the business with
+                        similar mindset as ours:
                     </Text>
                     <Text size="medium" justify italic marginBottom="20px">
-                        "Creation of the quality, unique products and user experiences with a high level of attention
-                        towards details!"
+                        "Creation of the quality, unique products and user
+                        experiences with a high level of attention towards
+                        details!"
                     </Text>
                     <Text size="medium" justify marginBottom="20px">
-                        Sometimes things tend to look hard until we roll up our sleeves, jump into heads first with
-                        passion and Strength to overcome any obstacle! If you feel our story in your gutt and need such
-                        service, feel free to contact us!
+                        Sometimes things tend to look hard until we roll up our
+                        sleeves, jump into heads first with passion and Strength
+                        to overcome any obstacle! If you feel our story in your
+                        gutt and need such service, feel free to contact us!
                     </Text>
                 </AnimatedSection>
             </LeftSide>
-            <RightSide initial={{ scale: 0 }} animate={{ scale: 1, transition: { delay: 0.3 } }}>
+            <RightSide
+                initial={{ scale: 0 }}
+                animate={{ scale: 1, transition: { delay: 0.3 } }}
+            >
                 <Heading type="small">Meet the TEAM</Heading>
                 <TeamContainer>
                     <Member
@@ -88,7 +98,12 @@ const AboutPage = () => {
                         title="Mad Scientist"
                         setShowModal={setShowModal}
                     />
-                    <Member backgroundImage={ape3} name="Marko Grudic" title="Con Artist" setShowModal={setShowModal} />
+                    <Member
+                        backgroundImage={ape3}
+                        name="Marko Grudic"
+                        title="Con Artist"
+                        setShowModal={setShowModal}
+                    />
                 </TeamContainer>
             </RightSide>
         </AnimatedPage>

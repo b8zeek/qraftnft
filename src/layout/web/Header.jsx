@@ -1,11 +1,10 @@
 import styled, { keyframes } from 'styled-components'
-
-import store from '../../state/state'
-import { useWallet } from '../../services/useWallet'
-
 import { Link } from 'react-router-dom'
 
-import phantom from '../../assets/phantom.svg'
+import store from '@state/state'
+import { useWallet } from '@services/useWallet'
+
+import phantom from '@assets/phantom.svg'
 
 const Header = () => {
     const phantomWallet = store(state => state.phantomWallet)
@@ -63,7 +62,8 @@ const PhantomLogo = styled.img`
     top: 5px;
     transform: rotateY(180deg);
     cursor: pointer;
-    animation: ${props => (props.phatnomConnected ? greenGlow : redGlow)} 2s ease-in-out infinite alternate;
+    animation: ${props => (props.phatnomConnected ? greenGlow : redGlow)} 2s
+        ease-in-out infinite alternate;
 `
 
 const Navigation = styled.nav`
@@ -84,7 +84,8 @@ const StyledLink = styled(Link)`
     ${props => props.cta && `background-color: ${props.theme.color.darkPink};`}
 
     &:hover {
-        color: ${props => (props.cta ? props.theme.color.white : props.theme.color.green)};
+        color: ${props =>
+            props.cta ? props.theme.color.white : props.theme.color.green};
         ${props => props.cta && `background-color: ${props.theme.color.pink};`}
     }
 `

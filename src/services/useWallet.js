@@ -1,8 +1,10 @@
-import store from '../state/state'
+import store from '@state/state'
 
 export function useWallet() {
     const phantomWallet = store(state => state.phantomWallet)
-    const setPhantomWalletInstalled = store(state => state.setPhantomWalletInstalled)
+    const setPhantomWalletInstalled = store(
+        state => state.setPhantomWalletInstalled
+    )
     const setPhantomWallet = store(state => state.setPhantomWallet)
     const setNFTs = store(state => state.setNFTs)
     const setSpinner = store(state => state.setSpinner)
@@ -16,7 +18,9 @@ export function useWallet() {
             if (solana?.isPhantom) {
                 setPhantomWalletInstalled(true)
 
-                const response = onlyIfTrusted ? await solana.connect({ onlyIfTrusted: true }) : await solana.connect()
+                const response = onlyIfTrusted
+                    ? await solana.connect({ onlyIfTrusted: true })
+                    : await solana.connect()
 
                 console.log('WALLET', response)
                 setPhantomWallet(response)

@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import AnimatedPage from './AnimatedPage'
-import Heading from '../../components/Heading'
-import Text from '../../components/Text'
-import Button from '../../components/Button'
+import Heading from '@components/Heading'
+import Text from '@components/Text'
+import Button from '@components/Button'
 
-import degen from '../../assets/degen-ape.png'
-import qr from '../../assets/qr-code.png'
+import degen from '@assets/degen-ape.png'
+import qr from '@assets/qr-code.png'
 
 const ExamplePage = () => {
     const [page, setPage] = useState(0)
@@ -20,8 +20,8 @@ const ExamplePage = () => {
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <Heading type="small">Connect Phantom Wallet</Heading>
                         <Text size="medium" marginBottom="30px">
-                            Connect your Phantom Wallet with the application and choose the NFT you are the most proud
-                            of.
+                            Connect your Phantom Wallet with the application and
+                            choose the NFT you are the most proud of.
                         </Text>
                     </Section>
                 )}
@@ -30,8 +30,9 @@ const ExamplePage = () => {
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <Heading type="small">Enter the Link</Heading>
                         <Text size="medium" marginBottom="30px">
-                            Enter the link of the page you want to connect to your NFT. It can be LinkTree, LinkedIn,
-                            YouTube, web page, etc.
+                            Enter the link of the page you want to connect to
+                            your NFT. It can be LinkTree, LinkedIn, YouTube, web
+                            page, etc.
                         </Text>
                     </Section>
                 )}
@@ -40,8 +41,10 @@ const ExamplePage = () => {
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <Heading type="small">Get Sticker or NFT</Heading>
                         <Text size="medium" marginBottom="30px">
-                            Enter your address and we'll send you your generated sticker. Another thing you can do, you
-                            can mint your newly created image with your QR code, mint it and send it to someone.
+                            Enter your address and we'll send you your generated
+                            sticker. Another thing you can do, you can mint your
+                            newly created image with your QR code, mint it and
+                            send it to someone.
                         </Text>
                     </Section>
                 )}
@@ -113,7 +116,8 @@ const MainImage = styled.img`
     width: 100%;
     transform: perspective(500px) rotateY(20deg);
     border-radius: 5px;
-    box-shadow: -2px 0 1px #fff, -2px 0 20px #fff, -10px 0 10px #0ba9ca, -10px 0 20px #0ba9ca;
+    box-shadow: -2px 0 1px #fff, -2px 0 20px #fff, -10px 0 10px #0ba9ca,
+        -10px 0 20px #0ba9ca;
 `
 
 const QRImage = styled.img`
