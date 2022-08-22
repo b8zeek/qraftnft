@@ -22,19 +22,19 @@ const ComputerHomePage = () => {
 
     return (
         <Container>
+            <Header />
             <Main>
-                <Header />
-                <AnimatePresence>
-                    <TitleContainer />
-                    <Content>
+                <TitleContainer />
+                <Content>
+                    <AnimatePresence>
                         <Routes location={location} key={location.pathname}>
                             <Route path='/' element={<LandingPage />} />
                             <Route path='example' element={<ExamplePage />} />
                             <Route path='qr' element={<QRPage />} />
                             <Route path='about' element={<AboutPage />} />
                         </Routes>
-                    </Content>
-                </AnimatePresence>
+                    </AnimatePresence>
+                </Content>
                 {spinner && (
                     <SpinnerBG>
                         <Grid
@@ -57,12 +57,13 @@ const ComputerHomePage = () => {
 const Container = styled.div`
     width: 100%;
     position: relative;
-    /* background-color: black; */
+    background-color: black;
     overflow: hidden;
 `
 
 const Main = styled.div`
     width: 100%;
+    padding-top: 80px;
     position: relative;
     z-index: 3;
 `
@@ -83,8 +84,6 @@ const SpinnerBG = styled.div`
 const Content = styled.div`
     width: 100%;
     position: relative;
-    height: calc(100% - 124px);
-    overflow-y: scroll;
 `
 
 const BGImage = styled.img`

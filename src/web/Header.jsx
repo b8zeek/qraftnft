@@ -11,49 +11,53 @@ const Header = () => {
     const { connectPhantomWallet } = useWallet()
 
     return (
-        <StyledHeader>
-            <Navigation>
-                <StyledLink to='/'>Home</StyledLink>
-                <StyledLink to='example'>Example</StyledLink>
-                <StyledLink to='qr' cta={+true}>
-                    QR NFT
-                </StyledLink>
-                <StyledLink to='about'>About</StyledLink>
-                <PhantomLogo
-                    src={phantom}
-                    alt='phantom-logo'
-                    onClick={connectPhantomWallet}
-                    phatnomConnected={phantomWallet}
-                />
-            </Navigation>
-        </StyledHeader>
+        <Container>
+            <Content>
+                <Navigation>
+                    <StyledLink to='/'>Home</StyledLink>
+                    <StyledLink to='example'>Example</StyledLink>
+                    <StyledLink to='qr' cta={+true}>
+                        QR NFT
+                    </StyledLink>
+                    <StyledLink to='about'>About</StyledLink>
+                    <PhantomLogo
+                        src={phantom}
+                        alt='phantom-logo'
+                        onClick={connectPhantomWallet}
+                        phatnomConnected={phantomWallet}
+                    />
+                </Navigation>
+            </Content>
+        </Container>
     )
 }
 
-const StyledHeader = styled.header`
+const Container = styled.header`
     width: 100%;
     height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.9);
     text-align: right;
 `
 
+const Content = styled.div`
+    width: 100%;
+    max-width: 1280px;
+    height: 80px;
+    margin: 0 auto;
+`
+
 const greenGlow = keyframes`
-    from {
-        filter: drop-shadow( 0 0 1px green) drop-shadow( 0 0 2px green) drop-shadow( 0 0 3px green);
-    }
-  
-    to {
-        filter: drop-shadow( 0 0 2px green) drop-shadow( 0 0 3px green) drop-shadow( 0 0 5px green);
-    }
+    from { filter: drop-shadow( 0 0 1px green) drop-shadow( 0 0 2px green) drop-shadow( 0 0 3px green); }
+    to { filter: drop-shadow( 0 0 2px green) drop-shadow( 0 0 3px green) drop-shadow( 0 0 5px green); }
 `
 
 const redGlow = keyframes`
-    from {
-        filter: drop-shadow( 0 0 1px red) drop-shadow( 0 0 2px red) drop-shadow( 0 0 3px red);
-    }
-  
-    to {
-        filter: drop-shadow( 0 0 2px red) drop-shadow( 0 0 3px red) drop-shadow( 0 0 5px red);
-    }
+    from { filter: drop-shadow( 0 0 1px red) drop-shadow( 0 0 2px red) drop-shadow( 0 0 3px red); }
+    to { filter: drop-shadow( 0 0 2px red) drop-shadow( 0 0 3px red) drop-shadow( 0 0 5px red); }
 `
 
 const PhantomLogo = styled.img`
@@ -67,7 +71,7 @@ const PhantomLogo = styled.img`
 `
 
 const Navigation = styled.nav`
-    padding: 20px 10%;
+    padding: 20px 0;
 `
 
 const StyledLink = styled(Link)`
