@@ -365,7 +365,11 @@ const QRPage = () => {
     }
 
     return (
-        <AnimatedPage>
+        <AnimatedPage
+            pageKey='qr-nft-page'
+            heading='QR NFT'
+            description='Show the people who are you'
+        >
             <AnimatePresence>
                 {page === 5 && (
                     <div

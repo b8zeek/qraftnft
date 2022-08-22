@@ -24,29 +24,27 @@ const ComputerHomePage = () => {
         <Container>
             <Header />
             <Main>
-                <TitleContainer />
-                <Content>
-                    <AnimatePresence>
-                        <Routes location={location} key={location.pathname}>
-                            <Route path='/' element={<LandingPage />} />
-                            <Route path='example' element={<ExamplePage />} />
-                            <Route path='qr' element={<QRPage />} />
-                            <Route path='about' element={<AboutPage />} />
-                        </Routes>
-                    </AnimatePresence>
-                </Content>
-                {spinner && (
-                    <SpinnerBG>
-                        <Grid
-                            height='250'
-                            width='250'
-                            radius='9'
-                            color='white'
-                            ariaLabel='three-dots-loading'
-                        />
-                    </SpinnerBG>
-                )}
+                {/* <TitleContainer /> */}
+                <AnimatePresence>
+                    <Routes location={location} key={location.pathname}>
+                        <Route path='/' element={<LandingPage />} />
+                        <Route path='example' element={<ExamplePage />} />
+                        <Route path='qr' element={<QRPage />} />
+                        <Route path='about' element={<AboutPage />} />
+                    </Routes>
+                </AnimatePresence>
             </Main>
+            {spinner && (
+                <SpinnerBG>
+                    <Grid
+                        height='250'
+                        width='250'
+                        radius='9'
+                        color='white'
+                        ariaLabel='three-dots-loading'
+                    />
+                </SpinnerBG>
+            )}
             <SolanaLogo src={solana} />
             <BGImage src={bg} />
             <MovingCircle src={circle} alt='background-circle' />
@@ -63,6 +61,7 @@ const Container = styled.div`
 
 const Main = styled.div`
     width: 100%;
+    min-height: calc(100vh - 80px);
     padding-top: 80px;
     position: relative;
     z-index: 3;
@@ -74,16 +73,11 @@ const SpinnerBG = styled.div`
     right: 0;
     left: 0;
     bottom: 0;
-    z-index: 4;
+    z-index: 11;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.9);
-`
-
-const Content = styled.div`
-    width: 100%;
-    position: relative;
 `
 
 const BGImage = styled.img`

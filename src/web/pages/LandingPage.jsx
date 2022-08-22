@@ -9,7 +9,11 @@ import AnimatedSection from '@components/AnimatedSection'
 import qr from '@assets/dao-hero-cropped.webp'
 
 const LandingPage = () => (
-    <AnimatedPage>
+    <AnimatedPage
+        pageKey='home-page'
+        heading='Welcome'
+        description='Greetings Solana Hacker House Krakow!'
+    >
         <LeftSide>
             <AnimatedSection keyProp='project-idea'>
                 <Heading type='small'>Project Idea</Heading>

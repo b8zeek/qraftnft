@@ -14,7 +14,11 @@ const ExamplePage = () => {
     const [page, setPage] = useState(0)
 
     return (
-        <AnimatedPage>
+        <AnimatedPage
+            pageKey='example-page'
+            heading='DegenerAPE Yourself'
+            description='Link all your social media with your favorite NFT'
+        >
             <LeftSide>
                 {page >= 1 && (
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>

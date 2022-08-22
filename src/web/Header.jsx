@@ -81,16 +81,16 @@ const StyledLink = styled(Link)`
     font-size: 16px;
     font-weight: 800;
     color: white;
+    background-color: ${({ cta, theme }) => (cta ? theme.color.pink : 'black')};
     text-decoration: none;
     border-radius: 10px;
-    margin-right: 5px;
-
-    ${props => props.cta && `background-color: ${props.theme.color.darkPink};`}
+    margin-right: 20px;
 
     &:hover {
-        color: ${props =>
-            props.cta ? props.theme.color.white : props.theme.color.green};
-        ${props => props.cta && `background-color: ${props.theme.color.pink};`}
+        color: ${({ cta, theme }) =>
+            cta ? theme.color.white : theme.color.lightPink};
+        background-color: ${({ cta, theme }) =>
+            cta ? theme.color.lightPink : 'black'};
     }
 `
 

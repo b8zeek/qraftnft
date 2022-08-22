@@ -26,7 +26,12 @@ const AboutPage = () => {
     const [showModal, setShowModal] = useState(false)
 
     return (
-        <AnimatedPage withMargin>
+        <AnimatedPage
+            pageKey='about-page'
+            heading='Who are we?'
+            description='Get to know us a bit better'
+            withMargin
+        >
             {showModal && (
                 <Modal
                     initial={{ scale: 0 }}
