@@ -1,14 +1,6 @@
 import styled from 'styled-components'
 
-const Text = ({
-    children,
-    size,
-    bold,
-    justify,
-    italic,
-    center,
-    marginBottom
-}) => (
+const Text = ({ children, size, bold, justify, italic, center, marginBottom, fontFamily }) => (
     <StyledParagraph
         size={size}
         bold={bold}
@@ -16,6 +8,7 @@ const Text = ({
         italic={italic}
         center={center}
         marginBottom={marginBottom}
+        fontFamily={fontFamily}
     >
         {children}
     </StyledParagraph>
@@ -55,7 +48,8 @@ const StyledParagraph = styled.p`
     `}
     ${({ italic }) => italic && 'font-style: italic;'}
     ${({ center }) => center && 'text-align: center;'}
-    ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom}`}
+    ${({ marginBottom }) => marginBottom && `margin-bottom: ${marginBottom};`}
+    ${({ fontFamily }) => fontFamily && `font-family: ${fontFamily};`}
 `
 
 export default Text
