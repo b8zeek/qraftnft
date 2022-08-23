@@ -47,7 +47,11 @@ const ExamplePage = () => {
                 {sections
                     .filter(({ presentOnStep }) => presentOnStep <= step)
                     .map(({ key, heading, description }) => (
-                        <AnimatedSection key={key} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                        <AnimatedSection
+                            key={key}
+                            initial={{ opacity: 0, scaleY: 0, y: '-50%' }}
+                            animate={{ opacity: 1, scaleY: 1, y: 0 }}
+                        >
                             <Heading type='small'>{heading}</Heading>
                             <Text size='medium' marginBottom='30px'>
                                 {description}
@@ -59,13 +63,8 @@ const ExamplePage = () => {
             </LeftSide>
             <RightSide>
                 {step >= 2 && (
-                    <ImageContainer
-                        initial={{ x: '100%', opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: '-100%', opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <MainImage src={degen} />
+                    <ImageContainer initial={{ x: '100%', opacity: 0 }} animate={{ x: 0, opacity: 1 }}>
+                        <ApeImage src={degen} />
                     </ImageContainer>
                 )}
                 {step >= 4 && (
@@ -73,8 +72,6 @@ const ExamplePage = () => {
                         positionAbsolute
                         initial={{ x: '100%', opacity: 0 }}
                         animate={{ x: '-50%', opacity: 1 }}
-                        exit={{ x: '-100%', opacity: 0 }}
-                        transition={{ duration: 0.3 }}
                         whileHover={{ scale: 1.01, x: '-48%' }}
                     >
                         <QRImage src={qr} />
@@ -113,7 +110,7 @@ const ImageContainer = styled(motion.div)`
     `}
 `
 
-const MainImage = styled.img`
+const ApeImage = styled.img`
     width: 100%;
     transform: perspective(500px) rotateY(20deg);
     border-radius: 5px;
