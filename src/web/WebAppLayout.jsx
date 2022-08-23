@@ -6,8 +6,7 @@ import { Grid } from 'react-loader-spinner'
 import store from '@state/state'
 
 import Header from './Header'
-import TitleContainer from './TitleContainer'
-import LandingPage from './pages/LandingPage'
+import HomePage from './pages/HomePage'
 import ExamplePage from './pages/ExamplePage'
 import QRPage from './pages/QRPage'
 import AboutPage from './pages/AboutPage'
@@ -24,10 +23,9 @@ const ComputerHomePage = () => {
         <Container>
             <Header />
             <Main>
-                {/* <TitleContainer /> */}
                 <AnimatePresence exitBeforeEnter>
                     <Routes location={location} key={location.pathname}>
-                        <Route path='/' element={<LandingPage />} />
+                        <Route path='/' element={<HomePage />} />
                         <Route path='example' element={<ExamplePage />} />
                         <Route path='qr' element={<QRPage />} />
                         <Route path='about' element={<AboutPage />} />

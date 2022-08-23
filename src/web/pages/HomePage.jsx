@@ -39,7 +39,7 @@ const sections = [
     }
 ]
 
-const LandingPage = () => (
+const HomePage = () => (
     <AnimatedPage heading='Welcome' description='Greetings Solana Hacker House Krakow!'>
         <LeftSide>
             {sections.map(({ key, animationDelay, heading, description }, index) => (
@@ -75,4 +75,4 @@ const QRImage = styled.img`
     width: 100%;
 `
 
-export default LandingPage
+export default HomePage
