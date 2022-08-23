@@ -13,7 +13,9 @@ const AnimatedPage = ({ heading, description, children, withMargin }) => (
         withMargin={withMargin}
     >
         <Heading>{heading}</Heading>
-        <Text marginBottom='20px'>{description}</Text>
+        <Heading type='small' marginBottom='50px' fontFamily='Rancho, cursive' color='rgba(150, 150, 150, 1)'>
+            {description}
+        </Heading>
         {children}
     </Container>
 )
@@ -21,7 +23,7 @@ const AnimatedPage = ({ heading, description, children, withMargin }) => (
 const Container = styled(motion.div)`
     position: relative;
     width: 90%;
-    padding: 0 5%;
+    padding: 0 5% 50px;
     z-index: 3;
     ${({ withMargin }) => withMargin && 'margin-bottom: 100px;'}
 `
