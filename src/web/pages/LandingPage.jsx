@@ -11,7 +11,7 @@ import qr from '@assets/dao-hero-cropped.webp'
 const sections = [
     {
         key: 'project-idea',
-        animationDelay: 0,
+        animationDelay: 0.3,
         heading: 'Project Idea',
         description:
             'Create a new way of socialising with the people. Generate an image with the NFT in your possession that you are proud of and add a QR code which contains link to your social networks. Show the people who are you and what you like.'
