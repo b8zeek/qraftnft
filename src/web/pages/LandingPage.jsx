@@ -42,10 +42,10 @@ const sections = [
 const LandingPage = () => (
     <AnimatedPage heading='Welcome' description='Greetings Solana Hacker House Krakow!'>
         <LeftSide>
-            {sections.map(({ key, animationDelay, heading, description }) => (
+            {sections.map(({ key, animationDelay, heading, description }, index) => (
                 <AnimatedSection key={key} delay={animationDelay}>
                     <Heading type='small'>{heading}</Heading>
-                    <Text size='medium' marginBottom='30px'>
+                    <Text size='medium' marginBottom={index !== sections.length - 1 ? '30px' : 0}>
                         {description}
                     </Text>
                 </AnimatedSection>

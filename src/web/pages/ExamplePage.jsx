@@ -10,54 +10,54 @@ import Button from '@components/Button'
 import degen from '@assets/degen-ape.png'
 import qr from '@assets/qr-code.png'
 
+const sections = [
+    {
+        presentOnStep: 1,
+        key: 'connect-phantom',
+        heading: 'Connect Phantom Wallet',
+        description: 'Connect your Phantom Wallet with the application and choose the NFT you are the most proud of.'
+    },
+    {
+        presentOnStep: 3,
+        key: 'enter-link',
+        heading: 'Enter the Link',
+        description:
+            'Enter the link of the page you want to connect to your NFT. It can be LinkTree, LinkedIn, YouTube, web page, etc.'
+    },
+    {
+        presentOnStep: 5,
+        key: 'get-sticker',
+        heading: 'Get Sticker or NFT',
+        description:
+            "Enter your address and we'll send you your generated sticker. Another thing you can do, you can mint your newly created image with your QR code, mint it and send it to someone."
+    }
+]
+
+const buttonStepText = ['Start', 'Select NFT', 'Link Social', 'Generate QR Code', 'Create Sticker']
+
 const ExamplePage = () => {
-    const [page, setPage] = useState(0)
+    const [step, setStep] = useState(0)
+
+    const nextStep = () => setStep(step => ++step)
 
     return (
         <AnimatedPage heading='DegenerAPE Yourself' description='Link all your social media with your favorite NFT'>
             <LeftSide>
-                {page >= 1 && (
-                    <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <Heading type='small'>Connect Phantom Wallet</Heading>
-                        <Text size='medium' marginBottom='30px'>
-                            Connect your Phantom Wallet with the application and choose the NFT you are the most proud
-                            of.
-                        </Text>
-                    </Section>
-                )}
+                {sections
+                    .filter(({ presentOnStep }) => presentOnStep <= step)
+                    .map(({ key, heading, description }) => (
+                        <Section key={key} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                            <Heading type='small'>{heading}</Heading>
+                            <Text size='medium' marginBottom='30px'>
+                                {description}
+                            </Text>
+                        </Section>
+                    ))}
 
-                {page >= 3 && (
-                    <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <Heading type='small'>Enter the Link</Heading>
-                        <Text size='medium' marginBottom='30px'>
-                            Enter the link of the page you want to connect to your NFT. It can be LinkTree, LinkedIn,
-                            YouTube, web page, etc.
-                        </Text>
-                    </Section>
-                )}
-
-                {page >= 5 && (
-                    <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <Heading type='small'>Get Sticker or NFT</Heading>
-                        <Text size='medium' marginBottom='30px'>
-                            Enter your address and we'll send you your generated sticker. Another thing you can do, you
-                            can mint your newly created image with your QR code, mint it and send it to someone.
-                        </Text>
-                    </Section>
-                )}
-
-                {page !== 5 && (
-                    <Button onClick={() => setPage(page => ++page)}>
-                        {page === 0 && 'Start'}
-                        {page === 1 && 'Select NFT'}
-                        {page === 2 && 'Link Social'}
-                        {page === 3 && 'Generate QR Code'}
-                        {page === 4 && 'Create Sticker'}
-                    </Button>
-                )}
+                {step < 5 && <Button onClick={nextStep}>{buttonStepText[step]}</Button>}
             </LeftSide>
             <RightSide>
-                {page >= 2 && (
+                {step >= 2 && (
                     <ImageContainer
                         initial={{ x: '100%', opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -67,7 +67,7 @@ const ExamplePage = () => {
                         <MainImage src={degen} />
                     </ImageContainer>
                 )}
-                {page >= 4 && (
+                {step >= 4 && (
                     <ImageContainer
                         positionAbsolute
                         initial={{ x: '100%', opacity: 0 }}
