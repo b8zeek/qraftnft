@@ -16,7 +16,7 @@ const sections = [
         presentOnStep: 1,
         key: 'connect-phantom',
         heading: 'Connect Phantom Wallet',
-        description: 'Connect your Phantom Wallet with the application and choose the NFT you are the most proud of.'
+        description: 'Connect your Phantom Wallet with the application and select of the NFTs in your posession.'
     },
     {
         presentOnStep: 3,
@@ -27,14 +27,36 @@ const sections = [
     },
     {
         presentOnStep: 5,
-        key: 'get-sticker',
-        heading: 'Get Sticker or NFT',
+        key: 'qraft-nft',
+        heading: 'Qraft your NFT',
         description:
-            "Enter your address and we'll send you your generated sticker. Another thing you can do, you can mint your newly created image with your QR code, mint it and send it to someone."
+            'Create an integration of your social media and your NFT! You are all to share it and present yourself.'
+    },
+    {
+        presentOnStep: 6,
+        key: 'get-sticker',
+        heading: 'Stickerize your QRNFT',
+        description:
+            'Order the stickers with your QRNFT. Give it to the people, connect to the community, share it on the events...'
+    },
+    {
+        presentOnStep: 7,
+        key: 'mint-your-qrnft',
+        heading: 'Mint your QRNFT',
+        description:
+            'Mint your newly created QRNFT! Memorize it on the blockchain, share it with the people as your visit card.'
     }
 ]
 
-const buttonStepText = ['Start', 'Select NFT', 'Link Social', 'Generate QR Code', 'Create Sticker']
+const buttonStepText = [
+    'Start',
+    'Select NFT',
+    'Link Social',
+    'Generate QR Code',
+    'QraftNFT',
+    'Stickerize your QRNFT',
+    'Mint your QRNFT'
+]
 
 const ExamplePage = () => {
     const [step, setStep] = useState(0)
@@ -46,20 +68,20 @@ const ExamplePage = () => {
             <LeftSide>
                 {sections
                     .filter(({ presentOnStep }) => presentOnStep <= step)
-                    .map(({ key, heading, description }) => (
+                    .map(({ key, heading, description }, index) => (
                         <AnimatedSection
                             key={key}
                             initial={{ opacity: 0, scaleY: 0, y: '-50%' }}
                             animate={{ opacity: 1, scaleY: 1, y: 0 }}
                         >
                             <Heading type='small'>{heading}</Heading>
-                            <Text size='medium' marginBottom='30px'>
+                            <Text size='medium' marginBottom={index !== sections.length + 1 ? '30px' : 0}>
                                 {description}
                             </Text>
                         </AnimatedSection>
                     ))}
 
-                {step < 5 && <Button onClick={nextStep}>{buttonStepText[step]}</Button>}
+                {step < 7 && <Button onClick={nextStep}>{buttonStepText[step]}</Button>}
             </LeftSide>
             <RightSide>
                 {step >= 2 && (
@@ -83,10 +105,10 @@ const ExamplePage = () => {
 }
 
 const LeftSide = styled.div`
-    width: calc(70% - 100px);
+    width: 50%;
     display: inline-block;
     vertical-align: top;
-    margin-right: 100px;
+    margin-right: 20%;
 `
 
 const RightSide = styled.div`
