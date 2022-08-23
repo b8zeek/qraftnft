@@ -25,7 +25,7 @@ const ComputerHomePage = () => {
             <Header />
             <Main>
                 {/* <TitleContainer /> */}
-                <AnimatePresence>
+                <AnimatePresence exitBeforeEnter>
                     <Routes location={location} key={location.pathname}>
                         <Route path='/' element={<LandingPage />} />
                         <Route path='example' element={<ExamplePage />} />

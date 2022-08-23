@@ -30,7 +30,6 @@ const AboutPage = () => {
             pageKey='about-page'
             heading='Who are we?'
             description='Get to know us a bit better'
-            withMargin
         >
             {showModal && (
                 <Modal
