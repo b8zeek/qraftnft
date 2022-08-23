@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import store from '@state/state'
 import { useWallet } from '@services/useWallet'
 
-import AnimatedPage from './AnimatedPage'
+import AnimatedPage from '../components/AnimatedPage'
 import Heading from '@components/Heading'
 import Text from '@components/Text'
 import AnimatedSection from '@components/AnimatedSection'
