@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import Heading from '@components/Heading'
-import Text from '@components/Text'
 
 const AnimatedPage = ({ heading, description, children, withMargin }) => (
     <Container
@@ -23,7 +22,7 @@ const AnimatedPage = ({ heading, description, children, withMargin }) => (
 const Container = styled(motion.div)`
     position: relative;
     width: 90%;
-    padding: 0 5% 50px;
+    padding: 20px 5% 50px;
     z-index: 3;
     ${({ withMargin }) => withMargin && 'margin-bottom: 100px;'}
 `

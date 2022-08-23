@@ -14,18 +14,14 @@ const ExamplePage = () => {
     const [page, setPage] = useState(0)
 
     return (
-        <AnimatedPage
-            pageKey='example-page'
-            heading='DegenerAPE Yourself'
-            description='Link all your social media with your favorite NFT'
-        >
+        <AnimatedPage heading='DegenerAPE Yourself' description='Link all your social media with your favorite NFT'>
             <LeftSide>
                 {page >= 1 && (
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <Heading type='small'>Connect Phantom Wallet</Heading>
                         <Text size='medium' marginBottom='30px'>
-                            Connect your Phantom Wallet with the application and
-                            choose the NFT you are the most proud of.
+                            Connect your Phantom Wallet with the application and choose the NFT you are the most proud
+                            of.
                         </Text>
                     </Section>
                 )}
@@ -34,9 +30,8 @@ const ExamplePage = () => {
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <Heading type='small'>Enter the Link</Heading>
                         <Text size='medium' marginBottom='30px'>
-                            Enter the link of the page you want to connect to
-                            your NFT. It can be LinkTree, LinkedIn, YouTube, web
-                            page, etc.
+                            Enter the link of the page you want to connect to your NFT. It can be LinkTree, LinkedIn,
+                            YouTube, web page, etc.
                         </Text>
                     </Section>
                 )}
@@ -45,10 +40,8 @@ const ExamplePage = () => {
                     <Section initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <Heading type='small'>Get Sticker or NFT</Heading>
                         <Text size='medium' marginBottom='30px'>
-                            Enter your address and we'll send you your generated
-                            sticker. Another thing you can do, you can mint your
-                            newly created image with your QR code, mint it and
-                            send it to someone.
+                            Enter your address and we'll send you your generated sticker. Another thing you can do, you
+                            can mint your newly created image with your QR code, mint it and send it to someone.
                         </Text>
                     </Section>
                 )}
@@ -76,12 +69,12 @@ const ExamplePage = () => {
                 )}
                 {page >= 4 && (
                     <ImageContainer
-                        offset={30}
+                        positionAbsolute
                         initial={{ x: '100%', opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
+                        animate={{ x: '-50%', opacity: 1 }}
                         exit={{ x: '-100%', opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        whileHover={{ scale: 1.01, x: '2%' }}
+                        whileHover={{ scale: 1.01, x: '-48%' }}
                     >
                         <QRImage src={qr} />
                     </ImageContainer>
@@ -92,13 +85,14 @@ const ExamplePage = () => {
 }
 
 const LeftSide = styled.div`
-    width: 50%;
+    width: calc(70% - 100px);
     display: inline-block;
     vertical-align: top;
+    margin-right: 100px;
 `
 
 const RightSide = styled.div`
-    width: 50%;
+    width: 30%;
     display: inline-block;
     vertical-align: top;
     position: relative;
@@ -109,19 +103,24 @@ const Section = styled(motion.div)`
 `
 
 const ImageContainer = styled(motion.div)`
-    width: 400px;
-    position: absolute;
-    top: 70px;
-    left: 140px;
+    width: 100%;
     transform: perspective(500px) rotateY(20deg);
+    margin: 0 0 0 auto;
+
+    ${({ positionAbsolute }) =>
+        positionAbsolute &&
+        `
+        position: absolute;
+        top: 0;
+        left: 50%;
+    `}
 `
 
 const MainImage = styled.img`
     width: 100%;
     transform: perspective(500px) rotateY(20deg);
     border-radius: 5px;
-    box-shadow: -2px 0 1px #fff, -2px 0 20px #fff, -10px 0 10px #0ba9ca,
-        -10px 0 20px #0ba9ca;
+    box-shadow: -2px 0 1px #fff, -2px 0 20px #fff, -10px 0 10px #0ba9ca, -10px 0 20px #0ba9ca;
 `
 
 const QRImage = styled.img`
