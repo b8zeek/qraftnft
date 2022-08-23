@@ -36,13 +36,7 @@ const ComputerHomePage = () => {
             </Main>
             {spinner && (
                 <SpinnerBG>
-                    <Grid
-                        height='250'
-                        width='250'
-                        radius='9'
-                        color='white'
-                        ariaLabel='three-dots-loading'
-                    />
+                    <Grid height='250' width='250' radius='9' color='white' ariaLabel='three-dots-loading' />
                 </SpinnerBG>
             )}
             <SolanaLogo src={solana} />
