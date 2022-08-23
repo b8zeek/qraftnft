@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
 import AnimatedPage from '../components/AnimatedPage'
+import AnimatedSection from '@components/AnimatedSection'
 import Heading from '@components/Heading'
 import Text from '@components/Text'
 import Button from '@components/Button'
@@ -46,12 +47,12 @@ const ExamplePage = () => {
                 {sections
                     .filter(({ presentOnStep }) => presentOnStep <= step)
                     .map(({ key, heading, description }) => (
-                        <Section key={key} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                        <AnimatedSection key={key} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                             <Heading type='small'>{heading}</Heading>
                             <Text size='medium' marginBottom='30px'>
                                 {description}
                             </Text>
-                        </Section>
+                        </AnimatedSection>
                     ))}
 
                 {step < 5 && <Button onClick={nextStep}>{buttonStepText[step]}</Button>}
@@ -96,10 +97,6 @@ const RightSide = styled.div`
     display: inline-block;
     vertical-align: top;
     position: relative;
-`
-
-const Section = styled(motion.div)`
-    width: 100%;
 `
 
 const ImageContainer = styled(motion.div)`
