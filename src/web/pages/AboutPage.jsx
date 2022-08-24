@@ -82,6 +82,16 @@ const AboutPage = () => (
                     ))}
                 </AnimatedSection>
             ))}
+            {sections.map(({ key, animationDelay, heading, description }) => (
+                <AnimatedSection key={key} delay={animationDelay}>
+                    <Heading type='small'>{heading}</Heading>
+                    {description.map(desc => (
+                        <Text key={desc} size='medium' justify marginBottom='20px'>
+                            {desc}
+                        </Text>
+                    ))}
+                </AnimatedSection>
+            ))}
         </LeftSide>
 
         <RightSide initial={{ scale: 0 }} animate={{ scale: 1, transition: { delay: 0.9 } }}>

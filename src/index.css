@@ -20,7 +20,6 @@
 
 body {
     width: 100%;
-    max-width: 1280px;
     background-color: black;
-    margin: 0 auto;
+    margin: 0;
 }

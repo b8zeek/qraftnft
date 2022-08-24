@@ -53,10 +53,12 @@ const Container = styled.div`
 
 const Main = styled.div`
     width: 100%;
+    max-width: 1280px;
     min-height: calc(100vh - 80px);
     padding-top: 80px;
     position: relative;
     z-index: 3;
+    margin: 0 auto;
 `
 
 const SpinnerBG = styled.div`
@@ -73,16 +75,16 @@ const SpinnerBG = styled.div`
 `
 
 const BGImage = styled.img`
-    position: absolute;
+    width: 50%;
+    position: fixed;
     top: 0;
-    right: 0;
+    right: 10%;
     z-index: 2;
-    width: 60%;
-    opacity: 0.2;
+    opacity: 0.1;
 `
 const SolanaLogo = styled.img`
-    width: 200px;
-    position: absolute;
+    width: 15%;
+    position: fixed;
     bottom: 0%;
     left: 15%;
     z-index: 2;
@@ -107,7 +109,7 @@ const pulse = keyframes`
 const MovingCircle = styled.img`
     height: 700px;
     width: 700px;
-    position: absolute;
+    position: fixed;
     left: -100px;
     bottom: -100px;
     z-index: 1;
