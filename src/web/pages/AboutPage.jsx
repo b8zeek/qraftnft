@@ -21,6 +21,36 @@ const Member = ({ backgroundImage, name, title, marginRight }) => (
     </TeamMember>
 )
 
+const sections = [
+    {
+        key: 'the-beginnings',
+        animationDelay: 0.3,
+        heading: 'The Beginnings',
+        description: [
+            'We are a team of close friends with multiple skill sets evolving around software creation and advertisement. It all began with several inhouse projects and ideas we had and worked on. Not long after we realised the full potential of this team. Capable of many and without impregnable obstacles! Step by step, app by app, we got a strong head start for our clients.'
+        ]
+    },
+    {
+        key: 'history',
+        animationDelay: 0.5,
+        heading: 'History',
+        description: [
+            'With a proven history of delivering top-notch quality products and services. We were able to scale the whole process and determine our ideal scenario:',
+            '"Leave a mark we could be all proud of!"'
+        ]
+    },
+    {
+        key: 'how',
+        animationDelay: 0.7,
+        heading: 'How?',
+        description: [
+            'How? By cooperating only with reputable people and companies who are serious about the business with similar mindset as ours:',
+            '"Creation of the quality, unique products and user experiences with a high level of attention towards details!"',
+            'Sometimes things tend to look hard until we roll up our sleeves, jump into heads first with passion and Strength to overcome any obstacle! If you feel our story in your gutt and need such service, feel free to contact us!'
+        ]
+    }
+]
+
 const teamMembers = [
     {
         name: 'Mirko Basic',
@@ -42,42 +72,18 @@ const teamMembers = [
 const AboutPage = () => (
     <AnimatedPage heading='Who are we?' description='Get to know us a bit better'>
         <LeftSide>
-            <AnimatedSection key='the-beginnings' delay={0.3}>
-                <Heading type='small'>The Beginnings</Heading>
-                <Text size='medium' justify marginBottom='20px'>
-                    We are a team of close friends with multiple skill sets evolving around software creation and
-                    advertisement. It all began with several inhouse projects and ideas we had and worked on. Not long
-                    after we realised the full potential of this team. Capable of many and without impregnable
-                    obstacles! Step by step, app by app, we got a strong head start for our clients.
-                </Text>
-            </AnimatedSection>
-            <AnimatedSection key='history' delay={0.5}>
-                <Heading type='small'>History</Heading>
-                <Text size='medium' justify marginBottom='20px'>
-                    With a proven history of delivering top-notch quality products and services. We were able to scale
-                    the whole process and determine our ideal scenario:
-                </Text>
-                <Text size='medium' justify italic marginBottom='20px'>
-                    "Leave a mark we could be all proud of!"
-                </Text>
-            </AnimatedSection>
-            <AnimatedSection key='how' delay={0.7}>
-                <Heading type='small'>How?</Heading>
-                <Text size='medium' justify marginBottom='20px'>
-                    How? By cooperating only with reputable people and companies who are serious about the business with
-                    similar mindset as ours:
-                </Text>
-                <Text size='medium' justify italic marginBottom='20px'>
-                    "Creation of the quality, unique products and user experiences with a high level of attention
-                    towards details!"
-                </Text>
-                <Text size='medium' justify marginBottom='20px'>
-                    Sometimes things tend to look hard until we roll up our sleeves, jump into heads first with passion
-                    and Strength to overcome any obstacle! If you feel our story in your gutt and need such service,
-                    feel free to contact us!
-                </Text>
-            </AnimatedSection>
+            {sections.map(({ key, animationDelay, heading, description }) => (
+                <AnimatedSection key={key} delay={animationDelay}>
+                    <Heading type='small'>{heading}</Heading>
+                    {description.map(desc => (
+                        <Text key={desc} size='medium' justify marginBottom='20px'>
+                            {desc}
+                        </Text>
+                    ))}
+                </AnimatedSection>
+            ))}
         </LeftSide>
+
         <RightSide initial={{ scale: 0 }} animate={{ scale: 1, transition: { delay: 0.9 } }}>
             <Heading type='small'>Meet the TEAM</Heading>
             {teamMembers.map(({ name, title, backgroundImage }, index) => (
