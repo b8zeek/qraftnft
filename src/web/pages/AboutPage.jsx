@@ -11,8 +11,8 @@ import ape1 from '@assets/mirko-basic-react-mag.png'
 import ape2 from '@assets/milos-rujevic-web-wizzard.png'
 import ape3 from '@assets/marko-grudic-marketing-guru.png'
 
-const Member = ({ backgroundImage, name, title, margin, setShowModal }) => (
-    <TeamMember margin={margin} onClick={() => setShowModal(true)}>
+const Member = ({ backgroundImage, name, title, marginRight }) => (
+    <TeamMember marginRight={marginRight}>
         <Shader>
             <Mask backgroundImage={backgroundImage} />
         </Shader>
@@ -20,6 +20,24 @@ const Member = ({ backgroundImage, name, title, margin, setShowModal }) => (
         <TitleLabel>{title}</TitleLabel>
     </TeamMember>
 )
+
+const teamMembers = [
+    {
+        name: 'Mirko Basic',
+        title: 'Master Blaster',
+        backgroundImage: ape1
+    },
+    {
+        name: 'Milos Rujevic',
+        title: 'Mad Scientist',
+        backgroundImage: ape2
+    },
+    {
+        name: 'Marko Grudic',
+        title: 'Con Artist',
+        backgroundImage: ape3
+    }
+]
 
 const AboutPage = () => (
     <AnimatedPage heading='Who are we?' description='Get to know us a bit better'>
@@ -62,20 +80,24 @@ const AboutPage = () => (
         </LeftSide>
         <RightSide initial={{ scale: 0 }} animate={{ scale: 1, transition: { delay: 0.9 } }}>
             <Heading type='small'>Meet the TEAM</Heading>
-            <TeamContainer>
-                <Member margin backgroundImage={ape1} name='Mirko Basic' title='Master Blaster' />
-                <Member backgroundImage={ape2} name='Milos Rujevic' title='Mad Scientist' />
-                <Member backgroundImage={ape3} name='Marko Grudic' title='Con Artist' />
-            </TeamContainer>
+            {teamMembers.map(({ name, title, backgroundImage }, index) => (
+                <Member
+                    key={name}
+                    name={name}
+                    title={title}
+                    backgroundImage={backgroundImage}
+                    marginRight={index % 2 === 0}
+                />
+            ))}
         </RightSide>
     </AnimatedPage>
 )
 
 const LeftSide = styled.div`
-    width: calc(60% - 50px);
+    width: 50%;
     display: inline-block;
     vertical-align: top;
-    padding: 0 50px 50px 0;
+    margin-right: 10%;
 `
 
 const RightSide = styled(motion.div)`
@@ -84,34 +106,23 @@ const RightSide = styled(motion.div)`
     vertical-align: top;
 `
 
-const TeamContainer = styled.div`
-    width: 100%;
-    padding-bottom: 50px;
-`
-
 const TeamMember = styled.div`
-    width: calc(45% - 40px);
-    min-height: 100px;
-    position: relative;
+    width: calc(47% - 40px);
     display: inline-block;
     vertical-align: top;
     background-color: #4e44ce27;
     border-radius: 10px;
     padding: 20px;
     cursor: pointer;
-    ${({ margin }) => margin && 'margin: 0 5% 20px 0;'}
+    margin-bottom: 20px;
+
+    ${({ marginRight }) => marginRight && 'margin-right: 6%;'}
 `
 
 const gradient = keyframes`
-    0% {
-        background-position: 0 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0 50%;
-    }
+    0% { background-position: 0 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
 `
 
 const Shader = styled.div`
