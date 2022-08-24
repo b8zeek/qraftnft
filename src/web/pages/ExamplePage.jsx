@@ -94,7 +94,7 @@ const ExamplePage = () => {
                         positionAbsolute
                         initial={{ x: '100%', opacity: 0 }}
                         animate={{ x: '-50%', opacity: 1 }}
-                        whileHover={{ scale: 1.01, x: '-48%' }}
+                        whileHover={{ scale: 1.01, x: '-49%' }}
                     >
                         <QRImage src={qr} />
                     </ImageContainer>
